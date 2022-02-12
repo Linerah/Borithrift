@@ -79,7 +79,7 @@
 }
 
 .general-button{
-    margin-bottom:  0.75rem;
+    margin-bottom:  0.3rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
     padding: 0.5rem;
@@ -89,7 +89,7 @@
 }
 .general-button-container-pressed{
     margin-right: 0.75rem;
-    margin-top: 0.75rem;
+    margin-top: 0.3rem;
     padding: 0.125rem;
     border-radius: 0.75rem;
     background-color: #f6c453;
