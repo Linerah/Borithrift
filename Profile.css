@@ -1,41 +1,12 @@
 
-figcaption.ratings a
-{
-    color:#f1c40f;
-    font-size:11px;
-    }
-figcaption.ratings a:hover
-{
-    color:#f39c12;
-    text-decoration:none;
-    }
-.divider 
-{
-    border-top:1px solid rgba(0,0,0,0.1);
-    }
-.emphasis 
-{
-    border-top: 4px solid transparent;
-    }
-.emphasis:hover 
-{
-    border-top: 4px solid #1abc9c;
-    }
-.emphasis h2
-{
-    margin-bottom:0;
-    }
 span.tags 
 {
-    background: #D04E6A;
+    background: rgba(24, 58, 29);;
     border-radius: 2px;
-    color: #f5f5f5;
+    color: #e1eedd;
     font-weight: bold;
     padding: 2px 4px;
     }
-
-
-
 .checked {
     color: orange;
   }
@@ -64,7 +35,7 @@ color:orange;
     padding: 0px;
     background: 0px;
     margin: -40px;
-    border: #f5f5f5;
+    border: #f0a04b;;
     border-width: 100px;
     padding-left: 0%;
 }
@@ -80,7 +51,7 @@ color:orange;
     border-style:ridge;
     border-image:stretch;
     border-width: 10px;
-    border-color: rgb(182, 86, 86);
+    border-color: #e1eedd;
     float: left;
     padding: 5px;
     display: inline-flex;
@@ -101,7 +72,7 @@ color:orange;
 body
 {
     font-family: 'Lato', 'sans-serif';
-    background-color: #daf5ff;
+    background-color: #e1eedd;
     position: relative;
     margin-left: 0%;
     margin-right: 0%;
@@ -148,9 +119,9 @@ button {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
-    color: #313133;
-    background: #4FD1C5;
-  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+    color: rgba(24, 58, 29);
+    background: #f0a04b;
+  background: linear-gradient(90deg, rgba(240,160,75,1) 0%, rgba(240,160,75,1) 100%);
     border: none;
     border-radius: 100px;
     box-shadow: 12px 12px 24px rgba(79,209,197,.64);
@@ -158,6 +129,9 @@ button {
     cursor: pointer;
     outline: none;
     position:relative;
+    background-color:rgba(24, 58, 29);
+    border: solid 2px #e1eedd;
+   
 
     }
     .Pictures {
@@ -172,7 +146,7 @@ button {
         transform: translate(-50%, -50%);
         margin-top: 5%;
         margin-left: 30%;
-        background:#f5f5f5;
+        background:#f0a04b;
         border-radius: 10px;
         box-shadow: 12px 12px 24px #313133;
      }
