@@ -1,5 +1,4 @@
 
-
 figcaption.ratings a
 {
     color:#f1c40f;
@@ -34,39 +33,8 @@ span.tags
     font-weight: bold;
     padding: 2px 4px;
     }
-.dropdown-menu 
-{
-    background-color: #34495e;    
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    width: 250px;
-    margin-left: -125px;
-    left: 50%;
-    }
-.dropdown-menu .divider 
-{
-    background:none;    
-    }
-.dropdown-menu>li>a
-{
-    color:#f5f5f5;
-    }
-.dropup .dropdown-menu 
-{
-    margin-bottom:10px;
-    }
-.dropup .dropdown-menu:before 
-{
-    content: "";
-    border-top: 10px solid #34495e;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    margin-left: -10px;
-    z-index: 10;
-    }
+
+
 
 .checked {
     color: orange;
@@ -74,42 +42,30 @@ span.tags
 .fa-star-half-full{
 color:orange;
 }
-.profile 
-{
-min-height: 355px;
-display: inline-block;
-}
 
-figcaption.Reviews
-{
-margin-top:20px;
-text-align: left;
-margin-left: 100px;
-font-family: fantasy;
-color:black;
-line-break:0px;
-display: flexbox;
-
-}
 .Pictures{
-    position: relative;
+    position: inline;
 }
 .Profile-description{
     text-align: center;
     order:1;
     float:right;
+    display: inline;
+    margin-right: 50px;
     
 } 
 .Cover{
     position: absolute;
-    display:inherit;
+    display:flex;
     z-index: -5;
     object-fit:fill;
     width: 120%;
-    height: 200px;
+    height: 250px;
     padding: 0px;
     background: 0px;
     margin: -40px;
+    border: #f5f5f5;
+    border-width: 100px;
     padding-left: 0%;
 }
 .Profile-pic{
@@ -127,14 +83,19 @@ display: flexbox;
     border-color: rgb(182, 86, 86);
     float: left;
     padding: 5px;
+    display: inline-flex;
 }
 .container{
 
     size: 10px;
-    width: 300px;
-    margin-top: 200px;
+    width: 500px;
     background: none;
-    display: inline-flex;
+    display:inline-flex;
+    text-align: right;
+    align-items:flex-end;
+    position:relative;
+    margin-left: 0%;
+
    
 }
 body
@@ -146,14 +107,72 @@ body
     margin-right: 0%;
     text-align:center;
     padding: 0%;
-    font-family: fantasy;
     display: flex;
+    font-size: 15px;
+    
     }
 .joggers{
-    width: 15%;
-    height: 15%;
-    display: inline-block;
+    width: 32%;
+    height: 25%;
+    display: inline-flex;
     font-size: 0px;
     padding: 0%;
     margin: 0%;
+    border: #f39c12;
+    border-width: 100px;
+    border:solid;
+    border-style:groove;
+    float: left;
 }
+h2{
+    display: inline;
+    text-align: left;
+    font-size: medium;
+}
+.Reviews{
+    font-size: 12px;
+    font-family: fantasy;
+    text-align: left;
+    margin-left: 10%;
+    line-break: loose;
+    display: inline-flex;
+    margin-left: -18%;
+    margin-right: 25px;
+}
+button {
+    width: 90px;
+    height: 50px;
+    margin: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #313133;
+    background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+    border: none;
+    border-radius: 100px;
+    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position:relative;
+
+    }
+    .Pictures {
+        position: relative;
+        width: 100%;
+
+     }
+     .Pictures button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 5%;
+        margin-left: 30%;
+        background:#f5f5f5;
+        border-radius: 10px;
+        box-shadow: 12px 12px 24px #313133;
+     }
