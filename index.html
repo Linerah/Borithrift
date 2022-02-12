@@ -6,15 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boricua Thrift</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
           theme: {
             extend: {
-              colors: {
-                background: '#0CD452',
-                accent1: '#FF0066',
-                accent2: '#39FF14',
-              },
               height: {
                 header: "9%",
                 main: "91%",     
@@ -24,194 +20,138 @@
         }
       </script>
 </head>
-<body class="bg-slate-900">
+<body class="bg-[#fefbe9]">
     <!-- change the opacity to 50, when we want the background to make a bit more solid-->
-    <div class="flex flex-col divide-y h-screen z-10">
-        <svg class="absolute z-0 blur-2xl top-72 left-52 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#FF0066" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
+    <div class="flex flex-col h-screen">
+
+        <svg class="blob top-72 left-52 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#f0a04b" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
         </svg>
 
-        <svg class="absolute z-0 blur-2xl top-72 right-52 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#FF0066" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
+        <svg class="blob top-72 right-52 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#f0a04b" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
         </svg>
 
-        <svg class="absolute z-0 blur-2xl right-72 bottom-10 h-60" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#39FF14" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
+        <svg class="blob right-72 bottom-10 h-60" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#f0a04b" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
         </svg>
-        <header class="flex h-header bg-slate-800 bg-opacity-70 border-b-0.2 z-10">  
+
+        <header class="flex h-header bg-[#183a1d] bg-opacity-70 ">  
             <div id="logo" class="flex w-1/2 items-center">
-                <img class="ml-3 h-3/4 rounded" src="images/flag.png" alt="puerto rico flag" srcset="">
+                <img class="pl-3 h-3/4 rounded" src="images/flag.png" alt="puerto rico flag" srcset="">
             </div>
-            <div id="user" class="flex items-center w-1/2">
-                <div class="block p-0.5 bg-accent2 ml-auto w-14 rounded-full mr-6">
-                    <img class="rounded-full bg-white w-14" src="https://avatars.dicebear.com/api/avataaars/kevin%20linera.svg" alt="person" srcset="">
+            <div class="flex items-center w-1/2">
+                <div class="user-img-container ">
+                    <img class="user-img" src="https://avatars.dicebear.com/api/avataaars/kevin%20linera.svg" alt="person" srcset="">
                 </div>
-                <div class="mr-3 p-0.5 rounded-xl bg-accent2"><button class="bg-slate-800 text-accent2 text-sm p-2 rounded-xl w-full">Profile</button></div>
-                <div class="mr-3 p-0.5 rounded-xl bg-accent2"><button class="bg-slate-800 text-accent2 text-sm p-2 rounded-xl w-full">Logout</button></div>
+                <!-- need to change it so the text stays inside the container, when we change size  -->
+                <div class="header-button-container"><button class="header-button">Profile</button></div>
+                <div class="header-button-container"><button class="header-button">Logout</button></div>
             
             </div>
         </header>
         <div class="flex h-main w-auto">
-            <div class="flex justify-center spa flex-wrap w-4/5 overflow-scroll z-10">
+            <div class="flex pl-3 pr-3 flex-wrap content-start w-4/5 overflow-scroll z-10">
 
             
-                <div class="flex mt-11 mr-3 ml-3 item rounded bg-slate-800 bg-opacity-70 drop-shadow-xl text-slate-300 w-62 h-52">
-                    <div class="flex-none">
-                        <img class=" inset-0 w-full h-full rounded-l" src="images/shrit_grey.webp" alt="grey shirt" srcset="">
-                    </div>     
-                    <div class="item-info ml-3 mt-3">
-                        <div class="item-name w-42 text-lg font-bold">
+                <div class="item-outer-container drop-shadow-xl">
+                    
+                    <img class="item-image" src="images/shrit_grey.webp" alt="grey shirt" srcset="">
+                        
+                    <div class="item-info-container">
+                        <div class="item-name">
                             Grey Shirt
                         </div>
-                        <div class="item-price pb-3 border-b b-slate-300 mr-3">
+                        <div class="item-price">
                             $90.00
                         </div>
-                        <div class="item-description mt-3 flex">
+                        <div class="item-description">
                             <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">S</button></div>
+                                <div class="general-button-container "><button class="general-button">S</button></div>
                             </div>
                             <div>
-                                <div class="mr-3 mt-3 p-0.5 rounded-xl bg-accent1 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent1 text-sm p-2 rounded-xl w-full">M</button></div>
+                                <div class="general-button-container-pressed"><button class="general-button-pressed">M</button></div>
                             </div>
                             <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">L</button></div>
+                                <div class="general-button-container "><button class="general-button ">L</button></div>
                             </div>
                             <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">XL</button></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row-reverse"><div>
-                            <div class="mr-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent2 text-sm p-2 pl-6 pr-6 rounded-xl w-full">Buy</button></div>
-                        </div></div>
-                    </div> 
-                </div>
-                <div class="flex mt-11 mr-3 ml-3 item rounded bg-slate-800 bg-opacity-70 drop-shadow-xl text-slate-300 w-62 h-52">
-                    <div class="flex-none">
-                        <img class=" inset-0 w-full h-full rounded-l" src="images/blue_shirt.webp" alt="blue shirt" srcset="">
-                    </div>     
-                    <div class="item-info ml-3 mt-3">
-                        <div class="item-name w-42 text-lg font-bold">
-                            Blue Shirt
-                        </div>
-                        <div class="item-price pb-3 border-b b-slate-300 mr-3">
-                            $89.00
-                        </div>
-                        <div class="item-description mt-3 flex">
-                            <div>
-                                <div class="mr-3 mt-3 p-0.5 rounded-xl bg-accent1 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent1 text-sm p-2 rounded-xl w-full">S</button></div>
-                            </div>
-                            <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">M</button></div>
-                            </div>
-                            <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">L</button></div>
-                            </div>
-                            <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">XL</button></div>
+                                <div class=" general-button-container "><button class="general-button ">XL</button></div>
                             </div>
                         </div>
                         <div class="flex flex-row-reverse"><div>
-                            <div class="mr-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent2 text-sm p-2 pl-6 pr-6 rounded-xl w-full">Buy</button></div>
+                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
                         </div></div>
                     </div> 
                 </div>
-                <div class="flex mt-11 mr-3 ml-3 item rounded bg-slate-800 bg-opacity-70 drop-shadow-xl text-slate-300 w-62 h-52">
-                    <div class="flex-none">
-                        <img class=" inset-0 w-full h-full rounded-l" src="images/white_shirt.jpeg" alt="white shirt" srcset="">
-                    </div>     
-                    <div class="item-info ml-3 mt-3">
-                        <div class="item-name w-42 text-lg font-bold">
-                            White Shirt
-                        </div>
-                        <div class="item-price pb-3 border-b b-slate-300 mr-3">
-                            $90.00
-                        </div>
-                        <div class="item-description mt-3 flex">
-                            <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">S</button></div>
-                            </div>
-                            <div>
-                                <div class="mr-3 mt-3 p-0.5 rounded-xl bg-accent1 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent1 text-sm p-2 rounded-xl w-full">M</button></div>
-                            </div>
-                            <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">L</button></div>
-                            </div>
-                            <div>
-                                <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">XL</button></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row-reverse"><div>
-                            <div class="mr-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent2 text-sm p-2 pl-6 pr-6 rounded-xl w-full">Buy</button></div>
-                        </div></div>
-                    </div> 
-                </div>
+
+
             </div>
+
             <div class="w-1/5 flex flex-col mt-11">
                 <div class="flex mb-3">
-                    <div class="text-lg text-accent2">Department: </div>
+                    <div class="tittle">Department: </div>
                 </div>
                 <div class=" flex flex-wrap w-full mt-3 mb-3"> 
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 mb-3 text-accent2 text-sm p-2 rounded-xl w-full">Women</button></div>
+                        <div class="general-button-container "><button class="general-button">Women</button></div>
                     </div> 
                     <div>
-                        <div class="mr-3 mt-3 p-0.5 rounded-xl bg-accent1 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent1 text-sm p-2 rounded-xl w-full">Men</button></div>
+                        <div class="general-button-container-pressed"><button class="general-button-pressed">Men</button></div>
                     </div>
-                   
-                </div>
-                
+                </div>     
                 <div class="flex mb-3">
-                    <div class="text-lg text-accent2">Browse by: </div>
+                    <div class="tittle">Browse by: </div>
                 </div>
                 <div class="w-full flex flex-wrap mt-3 mb-3">
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">New</button></div>
+                        <div class="general-button-container "><button class=" general-button">New</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mt-3 p-0.5 rounded-xl bg-accent1 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent1 text-sm p-2 rounded-xl w-full">Tops</button></div>
+                        <div class="general-button-container-pressed "><button class="general-button-pressed">Tops</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Graphic Tees</button></div>
+                        <div class="general-button-container "><button class=" general-button">Graphic Tees</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Coats + Jackets</button></div>
+                        <div class="general-button-container "><button class=" general-button">Coats + Jackets</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Bottoms</button></div>
+                        <div class="general-button-container "><button class=" general-button">Bottoms</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Jeans</button></div>
+                        <div class="general-button-container "><button class=" general-button">Jeans</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mt-3 p-0.5 rounded-xl bg-accent1 hover:bg-cyan-300"><button class="bg-slate-800 hover:text-cyan-300 text-accent1 text-sm p-2 rounded-xl w-full">Activewear</button></div>
+                        <div class="general-button-container-pressed"><button class="general-button-pressed">Activewear</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Shoes</button></div>
+                        <div class="general-button-container "><button class=" general-button">Shoes</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Vintage</button></div>
+                        <div class="general-button-container "><button class="general-button">Vintage</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Bottoms</button></div>
+                        <div class="general-button-container "><button class="general-button">Bottoms</button></div>
                     </div>
                     <div>
-                        <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Sale</button></div>
+                        <div class="general-button-container "><button class="general-button">Sale</button></div>
                     </div>
                 </div>
                 <div class="flex flex-col-reverse">
-                    <div class="mr-3 mb-3 p-0.5 rounded-xl bg-accent2 hover:bg-cyan-300"><button class="bg-slate-800 mb-3 hover:text-cyan-300 text-accent2 text-sm p-2 rounded-xl w-full">Search</button></div>
+                    <div class="general-button-container "><button class="general-button w-full">Search</button></div>
                 </div>
                 <div class="mt-6 flex flex-col">
-                    <div class="text-lg text-accent2">Top sellers this week: </div>
+                    <div class="tittle">Top sellers this week: </div>
                     <div class="flex mt-6">
-                        <div class="block p-0.5 bg-accent2 ml-auto w-14 rounded-full mr-6">
-                            <img class="rounded-full bg-white w-14" src="https://avatars.dicebear.com/api/avataaars/victorvega.svg" alt="person" srcset="">
+                        <div class="top-user-img-container">
+                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/victorvega.svg" alt="person" srcset="">
                         </div>
-                        <div class="block p-0.5 bg-accent2 ml-auto w-14 rounded-full mr-6">
-                            <img class="rounded-full bg-white w-14" src="https://avatars.dicebear.com/api/avataaars/josueestrada.svg" alt="person" srcset="">
+                        <div class=" top-user-img-container">
+                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/josueestrada.svg" alt="person" srcset="">
                         </div>
-                        <div class="block p-0.5 bg-accent2 ml-auto w-14 rounded-full mr-6">
-                            <img class="rounded-full bg-white w-14" src="https://avatars.dicebear.com/api/avataaars/kevinlinera.svg" alt="person" srcset="">
+                        <div class=" top-user-img-container">
+                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/kevinlinera.svg" alt="person" srcset="">
                         </div>
                     </div>
                 </div>
