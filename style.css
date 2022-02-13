@@ -1,3 +1,7 @@
+body {
+    background-color: #fefbe9;
+}
+
 @font-face {
     font-family: MaryKate;
     src: url("fonts/MaryKate.ttf") format("truetype");
