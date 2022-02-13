@@ -1,6 +1,6 @@
 span.tags 
 {
-    background: rgba(24, 58, 29);;
+    background: rgba(24, 58, 29);
     border-radius: 2px;
     color: #e1eedd;
     font-weight: bold;
@@ -19,24 +19,25 @@ color:orange;
 .Profile-description{
     text-align: center;
     order:1;
-    float:right;
+    /* float:right; */
     display: inline;
-    margin-right: 50px;
+    /* margin-right: 50px; */
     
 } 
 .Cover{
     position: absolute;
-    display:flex;
+    display:block;
     z-index: -5;
     object-fit:fill;
-    width: 103vw;
+    width: 100vw;
     height: 250px;
     padding: 0px;
     background: 0px;
-    margin: -40px;
+    margin-top: -250px;
     border: #f0a04b;;
     border-width: 100px;
     padding-left: 0%;
+    float: inline-start;
 }
 .Profile-pic{
     margin-top:20px;
@@ -45,16 +46,16 @@ color:orange;
     position:relative;
     max-width: 20%;
     max-height: 20%;
-    margin-right: 100%;
-    margin-left: 5%;
+    /* margin-right: 1%;
+    margin-left: 5%; */
     border-radius: 50%;
     border-style:ridge;
     border-image:round;
     border-width: 10px;
     border-color: #f0a04b;
-    float: left;
+    /* float: left; */
     padding: 5px;
-    display: inline-flex;
+    display: block;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -63,14 +64,15 @@ color:orange;
 }
 .container{
 
-    size: 10px;
-    width: 500px;
+    /* size: 10px;
+    width: 500px; */
     background: none;
-    display:inline-flex;
-    text-align: right;
+    display:block;
+    text-align: center;
     align-items:flex-end;
     position:relative;
-    margin-left: 0%;
+    /* margin-left: 25%;
+    margin-top: 30%; */
 
    
 }
@@ -83,13 +85,13 @@ h2{
 body
 {
     /* font-family: 'Lato', 'sans-serif'; */
-    background-color: rgba(24, 58, 29, 0.7); 
+    background-color: rgba(55, 116, 64, 0.6); 
     position: relative;
     margin-left: 0%;
     margin-right: 0%;
     text-align:center;
     padding: 0%;
-    display: flex;
+    display: block;
     /* font-size: 15px; */
     
     }
@@ -111,11 +113,11 @@ body
     font-size: 15px;
     /* font-family: fantasy; */
     text-align: left;
-    display: inline-flex;
-    margin-left: -21%;
-    margin-right: 30px;
+    display: block;
+    margin-left: 9%;
+    /* margin-right: 300px; */
     margin-top: 0%;
-    position: absolute;
+    position: relative;
     font-weight: bold;
     font-size: large;
     color: #e1eedd;
@@ -147,7 +149,7 @@ button {
     }
     .Pictures {
         position: relative;
-        width: 100%;
+        width: 100vw;
 
      }
      .Pictures button {
@@ -155,8 +157,8 @@ button {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        margin-top: 5%;
-        margin-left: 30%;
+        /* margin-top: 5%;
+        margin-left: 30%; */
         background:#f0a04b;
         border-radius: 10px;
         box-shadow: 12px 12px 24px #313133;
