@@ -29,7 +29,7 @@ color:orange;
     display:flex;
     z-index: -5;
     object-fit:fill;
-    width: 120%;
+    width: 103vw;
     height: 250px;
     padding: 0px;
     background: 0px;
@@ -74,17 +74,23 @@ color:orange;
 
    
 }
+h2{
+    display: inline;
+    text-align: left;
+    font-size: x-large;
+    color: #e1eedd;
+}
 body
 {
-    font-family: 'Lato', 'sans-serif';
-    background-color: #e1eedd;
+    /* font-family: 'Lato', 'sans-serif'; */
+    background-color: rgba(24, 58, 29, 0.7); 
     position: relative;
     margin-left: 0%;
     margin-right: 0%;
     text-align:center;
     padding: 0%;
     display: flex;
-    font-size: 15px;
+    /* font-size: 15px; */
     
     }
 .joggers{
@@ -100,25 +106,23 @@ body
     border-style:groove;
     float: left;
 }
-h2{
-    display: inline;
-    text-align: left;
-    font-size: x-large;
-}
+
 .Reviews{
     font-size: 15px;
-    font-family: fantasy;
+    /* font-family: fantasy; */
     text-align: left;
-    line-break: loose;
     display: inline-flex;
-    margin-left: -20%;
-    margin-right: 25px;
+    margin-left: -21%;
+    margin-right: 30px;
     margin-top: 0%;
     position: absolute;
+    font-weight: bold;
+    font-size: large;
+    color: #e1eedd;
 }
 button {
 
-    width: 90px;
+    /* width: 90px;
     height: 50px;
     margin: 3px;
     font-family: 'Nunito', sans-serif;
@@ -138,7 +142,7 @@ button {
     position:relative;
     background-color:rgba(24, 58, 29);
     border: solid 2px #e1eedd;
-   
+    */
 
     }
     .Pictures {
