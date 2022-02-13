@@ -80,12 +80,12 @@ h2{
     display: inline;
     text-align: left;
     font-size: x-large;
-    color: #e1eedd;
+    color: #000000;
 }
 body
 {
     /* font-family: 'Lato', 'sans-serif'; */
-    background-color: rgba(55, 116, 64, 0.6); 
+    background-color: rgba(55, 116, 64, 1); 
     position: relative;
     margin-left: 0%;
     margin-right: 0%;
@@ -120,7 +120,7 @@ body
     position: relative;
     font-weight: bold;
     font-size: large;
-    color: #e1eedd;
+    color: #000000;
 }
 button {
 
