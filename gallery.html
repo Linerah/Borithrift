@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  margin-left:40%;
+  margin-right: 60%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display:none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+<body>
+
+<h2 style="text-align:center;display: inline-block;">Items on Sale by Seller</h2>
+
+<div class="container" style="width: 100%; height: 100%;">
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img src="https://res.cloudinary.com/webstore/image/fetch/w_450,c_limit,c_fit,f_auto,e_trim/https%3A%2F%2Fae01.alicdn.com%2Fkf%2FHcdcfc88aba0c4a6786191490a8774751m%2FHip-Hop-Sweat-Pants-Embroidery-Japanese-Style-Trousers-Sweatpants-Streetwear-Men-Joggers-Track-Casual-Cargo-Pants.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img src="https://image.made-in-china.com/202f0j00zkTuvlCMvgpG/Baggy-Jeans-Men-Streetwear-Jogger-Jeans-Denim-Harem-Pants.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img src="https://img.joomcdn.net/32cadd07bfbe62657b9ec515bcd0161f613a8d6b_original.jpeg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img src="https://img.joomcdn.net/abfe53e064180ff3ac88a4f9385465004b26dd34_original.jpeg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img src="https://i0.wp.com/www.menstylefashion.com/wp-content/uploads/2021/06/hoodie-for-men.jpg?resize=900,900&ssl=1.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img src="https://canary.contestimg.wish.com/api/webimage/5d0488efd80529331f90314c-large.jpg?cache_buster=4b2b9c30c475dcdcdac4647fd3899e93" style="width:100%">
+  </div>
+    
+  <!-- <a class="prev" onclick="plusSlides(-1);">❮</a>
+  <a class="next" onclick="plusSlides(1);">❯</a> -->
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="https://res.cloudinary.com/webstore/image/fetch/w_450,c_limit,c_fit,f_auto,e_trim/https%3A%2F%2Fae01.alicdn.com%2Fkf%2FHcdcfc88aba0c4a6786191490a8774751m%2FHip-Hop-Sweat-Pants-Embroidery-Japanese-Style-Trousers-Sweatpants-Streetwear-Men-Joggers-Track-Casual-Cargo-Pants.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://image.made-in-china.com/202f0j00zkTuvlCMvgpG/Baggy-Jeans-Men-Streetwear-Jogger-Jeans-Denim-Harem-Pants.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://img.joomcdn.net/32cadd07bfbe62657b9ec515bcd0161f613a8d6b_original.jpeg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://img.joomcdn.net/abfe53e064180ff3ac88a4f9385465004b26dd34_original.jpeg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://i0.wp.com/www.menstylefashion.com/wp-content/uploads/2021/06/hoodie-for-men.jpg?resize=900,900&ssl=1.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="https://canary.contestimg.wish.com/api/webimage/5d0488efd80529331f90314c-large.jpg?cache_buster=4b2b9c30c475dcdcdac4647fd3899e93" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+  </div>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+</body>
+</html>

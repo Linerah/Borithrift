@@ -60,7 +60,7 @@
     margin-right: 0.75rem;
     padding: 0.125rem;
     border-radius: 0.75rem;
-    background-color: #f0a04b;
+    background-color: #e1eedd;
 
 }
 
@@ -68,35 +68,36 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
     padding: 0.5rem 1.5rem;
-    background-color:rgba(24, 58, 29);
+    background-color:#f0a04b;
     border-radius: 0.75rem;
-    color: #f0a04b;
+    color: rgba(24, 58, 29);
     width: 100%;
 }
 
 .general-button-container{
     margin-right: 0.75rem;
     margin-bottom: 0.75rem;
-    padding: 0.125rem;
+    padding: 0.1rem;
     border-radius: 0.75rem;
-    background-color: #f0a04b;
+    border:1px;
+    background-color: #e1eedd;
 }
 
 .general-button{
-    margin-bottom:  0.75rem;
+    margin-bottom:  0.15rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
     padding: 0.5rem;
     border-radius: 0.75rem;
-    background-color:rgba(24, 58, 29);
-    color: #f0a04b;
+    background-color:#f0a04b;
+    color: rgba(24, 58, 29);
 }
 .general-button-container-pressed{
     margin-right: 0.75rem;
-    margin-top: 0.75rem;
+    margin-top: 0.3rem;
     padding: 0.125rem;
     border-radius: 0.75rem;
-    background-color: #f6c453;
+    background-color:rgba(24, 58, 29);
 }
 
 .general-button-pressed{

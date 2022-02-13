@@ -1,7 +1,6 @@
-
 span.tags 
 {
-    background: rgba(24, 58, 29);;
+    background: rgba(24, 58, 29);
     border-radius: 2px;
     color: #e1eedd;
     font-weight: bold;
@@ -20,66 +19,80 @@ color:orange;
 .Profile-description{
     text-align: center;
     order:1;
-    float:right;
+    /* float:right; */
     display: inline;
-    margin-right: 50px;
+    /* margin-right: 50px; */
     
 } 
 .Cover{
     position: absolute;
-    display:flex;
+    display:block;
     z-index: -5;
     object-fit:fill;
-    width: 120%;
+    width: 100vw;
     height: 250px;
     padding: 0px;
     background: 0px;
-    margin: -40px;
+    margin-top: -250px;
     border: #f0a04b;;
     border-width: 100px;
     padding-left: 0%;
+    float: inline-start;
 }
 .Profile-pic{
     margin-top:20px;
     text-align: left;
     margin-left: 80px;
     position:relative;
-    width: 20%;
-    margin-right: 100%;
-    margin-left: 5%;
-    border-radius: 100%;
+    max-width: 20%;
+    max-height: 20%;
+    /* margin-right: 1%;
+    margin-left: 5%; */
+    border-radius: 50%;
     border-style:ridge;
-    border-image:stretch;
+    border-image:round;
     border-width: 10px;
-    border-color: #e1eedd;
-    float: left;
+    border-color: #f0a04b;
+    /* float: left; */
     padding: 5px;
-    display: inline-flex;
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
 }
 .container{
 
-    size: 10px;
-    width: 500px;
+    /* size: 10px;
+    width: 500px; */
     background: none;
-    display:inline-flex;
-    text-align: right;
+    display:block;
+    text-align: center;
     align-items:flex-end;
     position:relative;
-    margin-left: 0%;
+    /* margin-left: 25%;
+    margin-top: 30%; */
 
    
 }
+h2{
+    display: inline;
+    text-align: left;
+    font-size: x-large;
+    color: #e1eedd;
+}
 body
 {
-    font-family: 'Lato', 'sans-serif';
-    background-color: #e1eedd;
+    /* font-family: 'Lato', 'sans-serif'; */
+    background-color: rgba(55, 116, 64, 0.6); 
     position: relative;
     margin-left: 0%;
     margin-right: 0%;
     text-align:center;
     padding: 0%;
-    display: flex;
-    font-size: 15px;
+    display: block;
+    /* font-size: 15px; */
     
     }
 .joggers{
@@ -95,23 +108,23 @@ body
     border-style:groove;
     float: left;
 }
-h2{
-    display: inline;
-    text-align: left;
-    font-size: medium;
-}
+
 .Reviews{
-    font-size: 12px;
-    font-family: fantasy;
+    font-size: 15px;
+    /* font-family: fantasy; */
     text-align: left;
-    margin-left: 10%;
-    line-break: loose;
-    display: inline-flex;
-    margin-left: -18%;
-    margin-right: 25px;
+    display: block;
+    margin-left: 9%;
+    /* margin-right: 300px; */
+    margin-top: 0%;
+    position: relative;
+    font-weight: bold;
+    font-size: large;
+    color: #e1eedd;
 }
 button {
-    width: 90px;
+
+    /* width: 90px;
     height: 50px;
     margin: 3px;
     font-family: 'Nunito', sans-serif;
@@ -131,12 +144,12 @@ button {
     position:relative;
     background-color:rgba(24, 58, 29);
     border: solid 2px #e1eedd;
-   
+    */
 
     }
     .Pictures {
         position: relative;
-        width: 100%;
+        width: 100vw;
 
      }
      .Pictures button {
@@ -144,9 +157,11 @@ button {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        margin-top: 5%;
-        margin-left: 30%;
+        /* margin-top: 5%;
+        margin-left: 30%; */
         background:#f0a04b;
         border-radius: 10px;
         box-shadow: 12px 12px 24px #313133;
      }
+
+
