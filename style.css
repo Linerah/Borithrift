@@ -1,3 +1,7 @@
+@font-face {
+    font-family: MaryKate;
+    src: url("fonts/MaryKate.ttf") format("truetype");
+}
 .item-outer-container{
     display: flex;
     margin: 2.75rem 0.75rem 0 0.75rem;
@@ -145,5 +149,16 @@
     background-color: #e1eedd;
 }
 
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+.sign-in-button-container {
+    display: flex;
+    justify-content: center;
+}
 
-
+.text-font-MaryKate {
+    font-family: MaryKate;
+    font-size: 2em;
+}
