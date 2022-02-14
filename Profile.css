@@ -19,9 +19,7 @@ color:orange;
 .Profile-description{
     text-align: center;
     order:1;
-    /* float:right; */
     display: inline;
-    /* margin-right: 50px; */
     
 } 
 .Cover{
@@ -46,14 +44,11 @@ color:orange;
     position:relative;
     max-width: 20%;
     max-height: 20%;
-    /* margin-right: 1%;
-    margin-left: 5%; */
     border-radius: 50%;
     border-style:ridge;
     border-image:round;
     border-width: 10px;
     border-color: #f0a04b;
-    /* float: left; */
     padding: 5px;
     display: block;
     width: 200px;
@@ -63,16 +58,11 @@ color:orange;
     overflow: hidden;
 }
 .container{
-
-    /* size: 10px;
-    width: 500px; */
     background: none;
     display:block;
     text-align: center;
     align-items:flex-end;
     position:relative;
-    /* margin-left: 25%;
-    margin-top: 30%; */
 
    
 }
@@ -80,19 +70,17 @@ h2{
     display: inline;
     text-align: left;
     font-size: x-large;
-    color: #e1eedd;
+    color: #000000;
 }
 body
 {
-    /* font-family: 'Lato', 'sans-serif'; */
-    background-color: rgba(55, 116, 64, 0.6); 
+    background-color: rgba(55, 116, 64, 1); 
     position: relative;
     margin-left: 0%;
     margin-right: 0%;
     text-align:center;
     padding: 0%;
     display: block;
-    /* font-size: 15px; */
     
     }
 .joggers{
@@ -111,42 +99,15 @@ body
 
 .Reviews{
     font-size: 15px;
-    /* font-family: fantasy; */
     text-align: left;
     display: block;
     margin-left: 9%;
-    /* margin-right: 300px; */
     margin-top: 0%;
     position: relative;
     font-weight: bold;
     font-size: large;
-    color: #e1eedd;
+    color: #000000;
 }
-button {
-
-    /* width: 90px;
-    height: 50px;
-    margin: 3px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    color: rgba(24, 58, 29);
-    background: #f0a04b;
-  background: linear-gradient(90deg, rgba(240,160,75,1) 0%, rgba(240,160,75,1) 100%);
-    border: none;
-    border-radius: 100px;
-    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
-    transition: all 0.3s ease-in-out 0s;
-    cursor: pointer;
-    outline: none;
-    position:relative;
-    background-color:rgba(24, 58, 29);
-    border: solid 2px #e1eedd;
-    */
-
-    }
     .Pictures {
         position: relative;
         width: 100vw;
@@ -157,11 +118,35 @@ button {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        /* margin-top: 5%;
-        margin-left: 30%; */
         background:#f0a04b;
         border-radius: 10px;
         box-shadow: 12px 12px 24px #313133;
      }
 
-
+     body {
+        font-family: Arial;
+        width: 100%;
+    }
+    img {
+        vertical-align: middle;
+    }
+    .cursor {
+        cursor: zoom-in;
+    }
+    .caption-container {
+        text-align: center;
+        background-color: #000;
+        padding: 2px 16px;
+        color: white;
+    }
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+    .demo {
+        opacity: 0.6;
+    }
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
