@@ -169,13 +169,31 @@ body {
     font-family: MaryKate;
     font-size: 2em;
     padding-right: 1em;
+    color: #183a1d;
 }
 
 .user-credentials-input {
     border: solid 1px black;
 }
 
+.footer-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.links {
+    text-decoration: underline;
+    font-size: 1.3em;
+    color: #183a1d;
+}
+
 .text-font-MaryKate {
     font-family: MaryKate;
     font-size: 2.5em;
+}
+
+.footer-big-text {
+    color: #f0a04b;
+    font-size: 3.5em;
 }
