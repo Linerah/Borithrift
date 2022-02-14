@@ -169,6 +169,7 @@ body {
     font-family: MaryKate;
     font-size: 2em;
     padding-right: 1em;
+    color: #183a1d;
 }
 
 .user-credentials-input {
@@ -183,6 +184,8 @@ body {
 
 .links {
     text-decoration: underline;
+    font-size: 1.3em;
+    color: #183a1d;
 }
 .links::before {
     content: "• ";
@@ -191,4 +194,9 @@ body {
 .text-font-MaryKate {
     font-family: MaryKate;
     font-size: 2.5em;
+}
+
+.footer-big-text {
+    color: #f0a04b;
+    font-size: 3.5em;
 }
