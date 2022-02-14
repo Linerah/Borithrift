@@ -142,3 +142,10 @@ body
         float: left;
         width: 16.66%;
     }
+    .demo {
+        opacity: 0.6;
+    }
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
