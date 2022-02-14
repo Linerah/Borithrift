@@ -187,9 +187,6 @@ body {
     font-size: 1.3em;
     color: #183a1d;
 }
-.links::before {
-    content: "• ";
-}
 
 .text-font-MaryKate {
     font-family: MaryKate;
