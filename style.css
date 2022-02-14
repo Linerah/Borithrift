@@ -154,13 +154,25 @@ body {
     background-color: #e1eedd;
 }
 
-.logo-container {
-    display: flex;
-    justify-content: center;
-}
 .sign-in-button-container {
     display: flex;
     justify-content: center;
+    padding-top: 20px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.user-credentials-label {
+    font-family: MaryKate;
+    font-size: 2em;
+    padding-right: 1em;
+}
+
+.user-credentials-input {
+    border: solid 1px black;
 }
 
 .text-font-MaryKate {
