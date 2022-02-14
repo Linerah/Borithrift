@@ -19,24 +19,8 @@ color:orange;
 .Profile-description{
     text-align: center;
     order:1;
-    display: inline;
-    
+    display: inline;   
 } 
-.Cover{
-    position: absolute;
-    display:block;
-    z-index: -5;
-    object-fit:fill;
-    width: 100vw;
-    height: 250px;
-    padding: 0px;
-    background: 0px;
-    margin-top: -250px;
-    border: #f0a04b;;
-    border-width: 100px;
-    padding-left: 0%;
-    float: inline-start;
-}
 .Profile-pic{
     margin-top:20px;
     text-align: left;
