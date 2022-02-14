@@ -1,7 +1,6 @@
-
 span.tags 
 {
-    background: rgba(24, 58, 29);;
+    background: rgba(24, 58, 29);
     border-radius: 2px;
     color: #e1eedd;
     font-weight: bold;
@@ -20,66 +19,73 @@ color:orange;
 .Profile-description{
     text-align: center;
     order:1;
-    float:right;
     display: inline;
-    margin-right: 50px;
     
 } 
 .Cover{
     position: absolute;
-    display:flex;
+    display:block;
     z-index: -5;
     object-fit:fill;
-    width: 120%;
+    width: 100vw;
     height: 250px;
     padding: 0px;
     background: 0px;
-    margin: -40px;
+    margin-top: -250px;
     border: #f0a04b;;
     border-width: 100px;
     padding-left: 0%;
+    float: inline-start;
 }
 .Profile-pic{
     margin-top:20px;
     text-align: left;
     margin-left: 80px;
     position:relative;
-    width: 20%;
-    margin-right: 100%;
-    margin-left: 5%;
-    border-radius: 100%;
+    max-width: 20%;
+    max-height: 20%;
+    border-radius: 50%;
     border-style:ridge;
-    border-image:stretch;
+    border-image:round;
     border-width: 10px;
-    border-color: #e1eedd;
-    float: left;
+    border-color: #f39c12;
     padding: 5px;
-    display: inline-flex;
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 .container{
-
-    size: 10px;
-    width: 500px;
     background: none;
-    display:inline-flex;
-    text-align: right;
+    display:block;
+    text-align: center;
     align-items:flex-end;
     position:relative;
-    margin-left: 0%;
 
    
 }
+h2{
+    display: inline;
+    text-align: center;
+    font-size: x-large;
+    color: #000000;
+    position: relative;
+}
 body
 {
-    font-family: 'Lato', 'sans-serif';
-    background-color: #e1eedd;
+    background-color: rgba(55, 116, 64, 1); 
     position: relative;
     margin-left: 0%;
     margin-right: 0%;
     text-align:center;
     padding: 0%;
-    display: flex;
-    font-size: 15px;
+    display: block;
     
     }
 .joggers{
@@ -95,48 +101,20 @@ body
     border-style:groove;
     float: left;
 }
-h2{
-    display: inline;
-    text-align: left;
-    font-size: medium;
-}
-.Reviews{
-    font-size: 12px;
-    font-family: fantasy;
-    text-align: left;
-    margin-left: 10%;
-    line-break: loose;
-    display: inline-flex;
-    margin-left: -18%;
-    margin-right: 25px;
-}
-button {
-    width: 90px;
-    height: 50px;
-    margin: 3px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    color: rgba(24, 58, 29);
-    background: #f0a04b;
-  background: linear-gradient(90deg, rgba(240,160,75,1) 0%, rgba(240,160,75,1) 100%);
-    border: none;
-    border-radius: 100px;
-    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
-    transition: all 0.3s ease-in-out 0s;
-    cursor: pointer;
-    outline: none;
-    position:relative;
-    background-color:rgba(24, 58, 29);
-    border: solid 2px #e1eedd;
-   
 
-    }
+.Reviews{
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    margin-top: 0%;
+    position: relative;
+    font-weight: bold;
+    font-size: large;
+    color: #000000;
+}
     .Pictures {
         position: relative;
-        width: 100%;
+        width: 100vw;
 
      }
      .Pictures button {
@@ -144,9 +122,30 @@ button {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        margin-top: 5%;
-        margin-left: 30%;
         background:#f0a04b;
         border-radius: 10px;
         box-shadow: 12px 12px 24px #313133;
      }
+    img {
+        vertical-align: middle;
+    }
+    .cursor {
+        cursor: zoom-in;
+    }
+    .gallery-header {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+    .demo {
+        opacity: 0.6;
+    }
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
