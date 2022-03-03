@@ -7,6 +7,15 @@ class User:
     def __init__(self, email, password):
         self.email = email
         self.password = password
+    
+    # Setters
+    def set_password(self, password):
+        self.password = password
+    def set_email(self, email):
+        self.email = email
+    # Getters
+    def get_email(self, email):
+        return self.email
 
     def check_valid_email(self, email):
         regex = re.compile(r"([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+")
@@ -26,3 +35,5 @@ class User:
         hashed_password = hashlib.sha256()
         hashed_password.update(password.encode('utf8'))
         return hashed_password.hexdigest()
+
+#! Make password attempts slow to prevent brute force attacks (done outside class)
