@@ -4,13 +4,13 @@ from mimetypes import init
 import hashlib
 import re
 class User:
-    def __init__(self, email, password,username,Usertype):
+    def __init__(self, email, password,username,user_type):
         self.email = email
         self.password = password
         self.username =username
-        self.type=type
-        if type(username) is not str or type(Usertype) is not str :
-            raise TypeError("username and Usertype must be a string")
+        self.user_type=user_type
+        if type(username) is not str or type(user_type) is not str :
+            raise TypeError("username and user type must be a string")
     # Setters
     def set_password(self, password):
         self.password = password
