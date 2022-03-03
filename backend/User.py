@@ -14,7 +14,7 @@ class User:
     def set_email(self, email):
         self.email = email
     # Getters
-    def get_email(self, email):
+    def get_email(self):
         return self.email
 
     def check_valid_email(self, email):
