@@ -1,6 +1,3 @@
-from mimetypes import init
-
-
 import hashlib
 import re
 class User:
@@ -32,7 +29,7 @@ class User:
 
     # Hashes password and returns hash in hexadecimal format
     def hash_password(self, password):
-        hashed_password = hashlib.sha256()
+        hashed_password = hashlib.sha512()
         hashed_password.update(password.encode('utf8'))
         return hashed_password.hexdigest()
 
