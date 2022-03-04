@@ -1,11 +1,11 @@
-from user import User
+from User import User
 class Profile(User):
-    def __init__(self, user_items, reviews,reviewers_total, profile_image):
-        super(User,self).__init__(self, email, password,username,user_type)
+    def __init__(self, email,password,username,user_type,user_items, reviews,reviewers_total, profile_image):
+        super().__init__(email, password,username,user_type)
         if (type(user_items) is not list):
             raise TypeError("user items must be a list")
-        if (type(reviews) is not int):
-            raise TypeError("review must be an integer")
+        if (type(reviews) is not float):
+            raise TypeError("review must be a float")
         if (reviews<0) or (reviews>5):
             raise ValueError("reviews must be between 0 and 5")
         self.reviewers_total=reviewers_total
@@ -24,5 +24,3 @@ class Profile(User):
         self.user_items=self.user_items.append(item)
     def Remove_Item(self,item):
         self.user_items.remove(item)
-
-
