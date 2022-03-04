@@ -1,25 +1,28 @@
-
-class Profile():
-    def __init__(self, username, userItems, reviews,reviewesTotal, profileImage):
-        if (type(username) is not str or type(profileImage) is not str): 
-            raise TypeError("username and profile URL must be a string")
-        if (type(userItems) is not dict):
-            raise TypeError("user items must be a dictionary")
+from user import User
+class Profile(User):
+    def __init__(self, user_items, reviews,reviewers_total, profile_image):
+        super(User,self).__init__(self, email, password,username,user_type)
+        if (type(user_items) is not list):
+            raise TypeError("user items must be a list")
         if (type(reviews) is not int):
             raise TypeError("review must be an integer")
         if (reviews<0) or (reviews>5):
             raise ValueError("reviews must be between 0 and 5")
-        self.reviewersTotal=reviewesTotal
-        self.username = username
-        self.userItems = userItems
+        self.reviewers_total=reviewers_total
+        self.user_items = user_items
         self.reviews = reviews
-        self.profileImage=profileImage
-    def ReviewScore(self, newReview):
-        if (type(newReview) is not int):
+        self.profile_image=profile_image
+    def Review_Score(self, new_review):
+        if (type(new_review) is not int):
             raise TypeError("reviews must be an integer")
-        if (newReview<0) or (newReview>5):
+        if (new_review<0) or (new_review>5):
             raise ValueError("reviews must be between 0 and 5")
-        totalreviews=self.reviewersTotal*self.reviews
-        self.reviewersTotal=self.reviewersTotal+1
-        self.reviews=(totalreviews+newReview)/self.reviewersTotal
-        
+        total_reviews=self.reviewers_total*self.reviews
+        self.reviewers_total=self.reviewers_total+1
+        self.reviews=(total_reviews+new_review)/self.reviewers_total
+    def Add_Item_to_Sell(self,item):
+        self.user_items=self.user_items.append(item)
+    def Remove_Item(self,item):
+        self.user_items.remove(item)
+
+
