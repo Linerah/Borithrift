@@ -14,7 +14,7 @@ class User:
             raise ValueError("Invalid username")
         if (user_type != "seller" or user_type != "buyer"):
             raise ValueError("Invalid user type")
-            
+
         self.email = email
         self.password = password
         self.username = username
@@ -33,19 +33,21 @@ class User:
         # rfc 2822 email standard
         regex = re.compile(r"""[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*
         @(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?""")
-
-        if re.fullmatch(regex, email):
+        if (re.fullmatch(regex, email)):
             return True
         return False
     def check_valid_password(self, password):
         # Min 8 chars, 1 letter, 1 number
         regex = re.compile(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")
-        if re.fullmatch(regex, password):
+        if (re.fullmatch(regex, password)):
             return True
         return False
     def check_valid_username(self, username):
         # 3-20 alphanum cahrs and "." "_"
         regex = re.compile(r"[a-zA-Z0-9._]{3,20}$")
+        if (re.fullmatch(regex, username)):
+            return True
+        return False
 
     # Hashes password and returns hash in hexadecimal format
     def hash_password(self, password):
