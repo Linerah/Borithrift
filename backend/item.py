@@ -9,7 +9,7 @@ class Item:
         self.gender = self.valid_list_type(gender)
         self.description = self.valid_string_type(description)
         self.image = self.valid_string_type(image)
-        self.seller = self.valid_seller_type(seller)
+        self.seller = self.valid_seller_type(self.valid_user_type(seller))
 
     def valid_string_type(self, string_input):
         if(type(string_input) != str):
@@ -27,11 +27,16 @@ class Item:
             raise TypeError('The value is not of type int')
         return list_input
     
+    def valid_user_type(seller_input):
+        if(type(seller_input) != User):
+            raise TypeError('The user is not of type User')
+        return seller_input
+        
     def valid_seller_type(seller_input):
         if(seller_input.user_type != 'seller'):
             raise TypeError('The user is not of type seller')
         return seller_input
-
+    
     def __str__(self) -> str:
         extra_hyphens = len(self.name)
         print(f'-----------------<{self.name}>-----------------')
