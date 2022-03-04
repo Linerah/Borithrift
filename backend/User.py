@@ -1,13 +1,25 @@
 import hashlib
 import re
 class User:
-    def __init__(self, email, password,username,user_type):
+    def __init__(self, email, password, username, user_type):
+        if ((type(email) is not str) or (type(password) is not str) or 
+        (type(username) is not str) or (type(user_type) is not str)):
+            raise TypeError("email, password, username and user_type parameters must be strings")
+
+        if (not self.check_valid_email(email)):
+            raise ValueError("Invalid email")
+        if (not self.check_valid_password(password)):
+            raise ValueError("Invalid password")
+        if (not self.check_valid_username(username)):
+            raise ValueError("Invalid username")
+        if (user_type != "seller" or user_type != "buyer"):
+            raise ValueError("Invalid user type")
+            
         self.email = email
         self.password = password
-        self.username =username
-        self.user_type=user_type
-        if type(username) is not str or type(user_type) is not str :
-            raise TypeError("username and user type must be a string")
+        self.username = username
+        self.user_type= user_type
+
     # Setters
     def set_password(self, password):
         self.password = password
@@ -18,17 +30,22 @@ class User:
         return self.email
 
     def check_valid_email(self, email):
-        regex = re.compile(r"([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+")
+        # rfc 2822 email standard
+        regex = re.compile(r"""[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*
+        @(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?""")
+
         if re.fullmatch(regex, email):
             return True
         return False
-
     def check_valid_password(self, password):
         # Min 8 chars, 1 letter, 1 number
         regex = re.compile(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")
         if re.fullmatch(regex, password):
             return True
         return False
+    def check_valid_username(self, username):
+        # 3-20 alphanum cahrs and "." "_"
+        regex = re.compile(r"[a-zA-Z0-9._]{3,20}$")
 
     # Hashes password and returns hash in hexadecimal format
     def hash_password(self, password):
