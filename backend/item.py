@@ -6,7 +6,7 @@ class Item:
         self.price = self.valid_float_type(price)
         self.size = self.valid_string_type(size)
         self.style = self.valid_string_type(style)
-        self.gender = self.valid_list_type(gender)
+        self.gender = self.valid_string_type(gender)
         self.description = self.valid_string_type(description)
         self.image = self.valid_string_type(image)
         self.seller = self.valid_seller_type(self.valid_user_type(seller))
@@ -21,11 +21,6 @@ class Item:
         if(type(float_input) != float):
             raise TypeError('The value is not of type int')
         return float_input
-
-    def valid_list_type(self, list_input):
-        if(type(list_input) != list):
-            raise TypeError('The value is not of type int')
-        return list_input
     
     def valid_user_type(seller_input):
         if(type(seller_input) != User):

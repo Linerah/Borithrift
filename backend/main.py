@@ -19,6 +19,11 @@ Kevin_items=[item6,item7]
 Kevin=Profile("kevinlinera@techexchange.in","HotDog","kevilin","Seller",Victor_items,4.45,38,"../flag.png")
 total_items=[item1,item2,item3,item4,item5,item6,item7]
 
+# all_users = []
+# all_profiles = []
+# all_items = [kevins, victors]
+
+
 def greet():
     print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products" )
     History=input("Are you a returning user: Press 1 for yes and 2 to sign up:")
@@ -32,5 +37,26 @@ def greet():
         current_user=input("Username:")
         current_pass=input("Password:")
         # validate_user(current_user,current_pass)
+        
+#      if input == "add_user":
+#         password=
+#         username=
+#         all_users.add(User())
+         
     pass
 greet()
+
+# boricuas API
+'''
+all_users = []
+all_profiles = []
+
+def create_user(username, password):
+    user = User(username, password)
+    profile = Profile(..., username)
+
+   all_profile.add(profile)
+   all_users.add(user)
+   '''
+
+
