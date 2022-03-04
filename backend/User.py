@@ -1,5 +1,6 @@
 import hashlib
 import re
+import time
 class User:
     def __init__(self, email, password, username, user_type):
         if ((type(email) is not str) or (type(password) is not str) or 
@@ -19,16 +20,26 @@ class User:
         self.password = password
         self.username = username
         self.user_type= user_type
+        self.usr_id = self.generate_user_ID()
+    
+    def __init__(self):
+        usr_id = self.generate_user_ID()
+        print(usr_id)
 
     # Setters
     def set_password(self, password):
         self.password = password
     def set_email(self, email):
         self.email = email
+    def set_username(self, username):
+        self.username = username
     # Getters
     def get_email(self):
         return self.email
+    def get_username(self):
+        return self.username
 
+    # Check validity
     def check_valid_email(self, email):
         # rfc 2822 email standard
         regex = re.compile(r"""[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*
@@ -52,7 +63,15 @@ class User:
     # Hashes password and returns hash in hexadecimal format
     def hash_password(self, password):
         hashed_password = hashlib.sha512()
-        hashed_password.update(password.encode('utf8'))
+        hashed_password.update(password.encode("utf8"))
         return hashed_password.hexdigest()
+    
+    # Generate unique user ID
+    def generate_user_ID(self):
+        cur_time = str(time.time())
+        hashed_time = hashlib.sha1()
+        hashed_time.update(cur_time.encode("utf8"))
+        return hashed_time.hexdigest()
 
 #! Make password attempts slow to prevent brute force attacks (done outside class)
+#! Add missing setters and getters
