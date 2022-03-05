@@ -9,7 +9,7 @@ class Item:
         self.gender = self.valid_string_type(gender)
         self.description = self.valid_string_type(description)
         self.image = self.valid_string_type(image)
-        self.seller = self.valid_seller_type(self.valid_user_type(seller))
+        # self.seller = self.valid_seller_type(self.valid_user_type(seller))
 
     def valid_string_type(self, string_input):
         if(type(string_input) != str):
@@ -34,9 +34,9 @@ class Item:
     
     def __str__(self) -> str:
         extra_hyphens = len(self.name)
-        print(f'-----------------<{self.name}>-----------------')
-        print(f'image url: {self.image}')
-        print(f'price: {self.price}')
-        print(f'size: {self.size}')
-        print(f'description: {self.description}')
-        print(extra_hyphens*'-' + '------------------------------------')
+        return(f'-----------------<{self.name}>-----------------\nimage url: {self.image}\nprice: {self.price}\nsize: {self.size}\ndescription: {self.description}\n' + extra_hyphens*'-' + '------------------------------------')
+        # print(f'image url: {self.image}')
+        # print(f'price: {self.price}')
+        # print(f'size: {self.size}')
+        # print(f'description: {self.description}')
+        # print(extra_hyphens*'-' + '------------------------------------')
