@@ -1,12 +1,10 @@
-# Generate a unique user ID based on time since epoch
-import hashlib
-import time
+import re
 
+def check_valid_email(email):
+    # RFC 5322 email standard
+    regex = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+    if (re.fullmatch(regex, email)):
+        return True
+    return False
 
-def generate_user_ID():
-    cur_time = str(time.time())
-    hashed_time = hashlib.sha1()
-    hashed_time.update(cur_time.encode("utf8"))
-    return hashed_time.hexdigest()
-
-print(generate_user_ID())
+print(check_valid_email("josue@tech.in"))

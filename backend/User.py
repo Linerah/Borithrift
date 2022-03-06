@@ -22,16 +22,18 @@ class User:
         self.user_type= user_type
         self.usr_id = self.generate_user_ID()
     
-    def __init__(self):
-        usr_id = self.generate_user_ID()
-        print(usr_id)
-
     # Setters
     def set_password(self, password):
+        if (not self.check_valid_password(password)):
+            raise ValueError("Invalid password")
         self.password = password
     def set_email(self, email):
+        if (not self.check_valid_email(email)):
+            raise ValueError("Invalid email")
         self.email = email
     def set_username(self, username):
+        if (not self.check_valid_username(username)):
+            raise ValueError("Invalid username")
         self.username = username
     # Getters
     def get_email(self):
@@ -40,10 +42,9 @@ class User:
         return self.username
 
     # Check validity
-    def check_valid_email(self, email):
-        # rfc 2822 email standard
-        regex = re.compile(r"""[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*
-        @(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?""")
+    def check_valid_email(email):
+        # RFC 5322 email standard
+        regex = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
         if (re.fullmatch(regex, email)):
             return True
         return False
@@ -74,4 +75,3 @@ class User:
         return hashed_time.hexdigest()
 
 #! Make password attempts slow to prevent brute force attacks (done outside class)
-#! Add missing setters and getters
