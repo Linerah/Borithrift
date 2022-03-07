@@ -6,23 +6,25 @@ def greet():
     print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
     history = input("Are you a returning user: Press 1 for yes and 2 to sign up:\n")
     history = valid_input_int_value(valid_input_int_type(int(history)))
+    user = ''
     if(history==1):
         print("Welcome back! Please provide your username and password:")
-        user = ''
         while(type(user) == str):
             user = login()
             if(type(user) == str):
                 print(user)
         return user
     elif(history==2):
-        new_user=input("Select a username:\n")
-        new_pass=input("Select a password:\n")
-        new_email=input("Email:\n")
-        new_user_to_add=User(new_email,new_pass,new_user)
-        all_users.append(new_user_to_add)
-        new_user_profile=Profile(new_user,[],0.0,0,"")
-        all_users[new_user]=(new_user_profile)
-        return new_user_profile
+        print("To an create account, Please provide the following:")
+        while(type(user) == str):
+            user = register()
+            if(type(user) == str):
+                print(user)
+
+        new_user_profile=Profile(user.username,[],0.0,0,"")
+        all_users[user.username] = user 
+        all_profiles[user.username] = new_user_profile
+        return user
 
 def get_user_items(current_user):
     print('Your items are:')
@@ -73,6 +75,18 @@ def buy_or_sell(user):
             return
     pass
 
+def register():
+    new_user=input("Select a username:\n")
+    new_pass=input("Select a password:\n")
+    new_email=input("Email:\n")
+    return validate_username(new_user, new_pass, new_email)
+
+def validate_username(username, password, email):
+    if(username in all_users):
+        return "Username already exists"
+    else:
+        return User(email, password, username)
+
 def login():
     current_user=input("Username:")
     current_pass=input("Password:")
@@ -111,9 +125,9 @@ josue = User("josue@whereever.com", "b5678567857", "josueestr")
 kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
 
 # All profiles -- profile is linked with user, through username 
-victor_profile = Profile("victorandresvega",[],4.25,27,"../flag.png")
-josue_profile = Profile("josueestr",[],3.75,15,"../flag.png")
-kevin_profile = Profile("kevilin",[],4.45,38,"../flag.png")
+victor_profile = Profile(victor.username,[],4.25,27,"../flag.png")
+josue_profile = Profile(josue.username,[],3.75,15,"../flag.png")
+kevin_profile = Profile(kevin.username,[],4.45,38,"../flag.png")
 
 # All items -- item is linked with user, through username
 victor_item1 = Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png", victor)
