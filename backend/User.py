@@ -13,7 +13,7 @@ class User:
             raise ValueError("Invalid password")
         if (not self.check_valid_username(username)):
             raise ValueError("Invalid username")
-        if (user_type != "seller" or user_type != "buyer"):
+        if (user_type != "seller" and user_type != "buyer"):
             raise ValueError("Invalid user type")
 
         self.email = email
@@ -42,7 +42,7 @@ class User:
         return self.username
 
     # Check validity
-    def check_valid_email(email):
+    def check_valid_email(self, email):
         # RFC 5322 email standard
         regex = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
         if (re.fullmatch(regex, email)):

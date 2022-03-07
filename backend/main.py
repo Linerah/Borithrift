@@ -1,38 +1,12 @@
 from item import Item
 from User import User
 from Profile import Profile
-# def __init__(self, name, price, size, style, gender, description, image, seller):
-item1=Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png","victorandres")
-item2=Item("Japan Tee",25.00,"M","Casual","Men","Basic T-shirt for everyday use","../images/japan_tee.png","josuestr")
-item3=Item("Blue Shirt",10.00,"S","Casual","Men","Basic T-shirt for everyday use","../images/blue_shirt.png","victorandres")
-item4=Item("Black Running Jacket",25.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/running_jacket_black.png","victorandres")
-item5=Item("Spread Positive Energy Shirt",15.00,"L","Casual","Men","Basic T-shirt for everyday use","../images/spreed_energy_tee.png","victorandres")
-item6=Item("White Tee",10.00,"S","Casual","Men","Basic T-shirt for everyday use","../images/white_shirt.png","victorandres")
-item7=Item("Green Running Jacket",35.00,"M","Casual","Men","Basic T-shirt for everyday use","../images/running_jacket_green.png","victorandres")
-#def __init__(self, user_items, reviews,reviewers_total, profile_image):
-    # def __init__(self, email, password,username,user_type):
-Victor_items=[item1,item2,item3]
-Victor=Profile("victorandresvega",Victor_items,4.25,27,"../flag.png")
-Josue_items=[item4,item5]
-Josue=Profile("josueestr",Josue_items,3.75,15,"../flag.png")
-Kevin_items=[item6,item7]
-Kevin=Profile("kevilin",Kevin_items,4.45,38,"../flag.png")
-total_items=[item1,item2,item3,item4,item5,item6,item7]
-all_users={"victorandresvega":Victor,"josueestr":Josue,"kevilin":Kevin}
-# all_users = []
-# all_profiles = []
-# all_items = [kevins, victors]
-
 
 def greet():
     print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
-    History=input("Are you a returning user: Press 1 for yes and 2 to sign up:\n")
-    History=int(History)
-    if(type(History) is not int):
-        raise TypeError("Your response has to be an integer")
-    if(History <1 or History>2):
-        raise ValueError("Your response has to be either 1 or 2")
-    if(History==1):
+    history = input("Are you a returning user: Press 1 for yes and 2 to sign up:\n")
+    history = valid_input_int_value(valid_input_int_type(int(history)))
+    if(history==1):
         print("Welcome back! Please provide your username and password:")
         current_user=input("Username:")
         current_pass=input("Password:")
@@ -42,7 +16,7 @@ def greet():
 #         password=
 #         username=
 #         all_users.add(User())
-    elif(History==2):
+    elif(history==2):
         new_user=input("Select a username:\n")
         new_pass=input("Select a password:\n")
         new_email=input("Email:\n")
@@ -67,7 +41,7 @@ def show_total_items(total_items):
 def buy_or_sell(user):
     option=input("Press Buy to see and buy items on sale or Sell to exchange your products:\n")
     if(option=="Buy"):
-        show_total_items(total_items)
+        show_total_items(all_items)
     elif(option=="Sell"):
         get_user_items(user)
         action=input("Do you wish to add or remove an item?\n Press 1 for Add 2 for Remove and 3 to exit:\n")
@@ -86,7 +60,7 @@ def buy_or_sell(user):
             # def __init__(self, name, price, size, style, gender, description, image, seller):
             item_to_add=Item(name_of_item,price_of_item,size_of_item,style_of_item,item_gender,description_of_item,item_image,user)
             user.Add_Item_to_Sell(item_to_add)
-            total_items.append(item_to_add)
+            all_items.append(item_to_add)
             get_user_items(user)
             buy_or_sell(user)
         elif(action=="2"):
@@ -94,12 +68,61 @@ def buy_or_sell(user):
             item_to_remove=input("Select Item to Remove by its number on list:")
             item_to_remove=int(item_to_remove)
             user.Remove_Item(user.user_items[item_to_remove-1])
-            total_items.remove(user.user_items[item_to_remove-1])
+            all_items.remove(user.user_items[item_to_remove-1])
             get_user_items(user)
             buy_or_sell(user)
         elif(action=="3"):
             return
     pass
+
+def add_items_to_corresponding_profiles(items):
+    for item in items:
+        username = item.seller_username
+        if(username in all_profiles):
+            all_profiles[username].Add_Item_to_Sell(item)
+
+def valid_input_int_type(integer_input):
+    if(type(integer_input) != int):
+        raise TypeError("Your response has to be an integer")
+    return integer_input
+
+def valid_input_int_value(integer_input):
+    if(integer_input <1 or integer_input>2):
+        raise ValueError("Your response has to be either 1 or 2")
+    return integer_input
+
+
+# All users
+# TODO : eliminate user type from the User class
+victor = User("victor@whereever.com", "a12341231", "victorandresvega", "seller")
+josue = User("josue@whereever.com", "b5678567857", "josueestr", "seller")
+kevin = User("kevin@whereever.com", "c0000000000", "kevilin", "seller")
+
+# All profiles -- profile is linked with user, through username 
+victor_profile = Profile("victorandresvega",[],4.25,27,"../flag.png")
+josue_profile = Profile("josueestr",[],3.75,15,"../flag.png")
+kevin_profile = Profile("kevilin",[],4.45,38,"../flag.png")
+
+# All items -- item is linked with user, through username
+victor_item1 = Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png", victor)
+victor_item2 = Item("Japan Tee",25.00,"M","Casual","Men","Basic T-shirt for everyday use","../images/japan_tee.png", victor)
+victor_item3 = Item("Blue Shirt",10.00,"S","Casual","Men","Basic T-shirt for everyday use","../images/blue_shirt.png", victor)
+josue_item1 = Item("Black Running Jacket",25.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/running_jacket_black.png", josue)
+josue_item2 = Item("Spread Positive Energy Shirt",15.00,"L","Casual","Men","Basic T-shirt for everyday use","../images/spreed_energy_tee.png", josue)
+kevin_item1 = Item("White Tee",10.00,"S","Casual","Men","Basic T-shirt for everyday use","../images/white_shirt.png", kevin)
+kevin_item2 = Item("Green Running Jacket",35.00,"M","Casual","Men","Basic T-shirt for everyday use","../images/running_jacket_green.png", kevin)
+
+# Fake DB of items 
+all_items= [victor_item1,victor_item2,victor_item3,josue_item1,josue_item2,kevin_item1,kevin_item2]
+# Fake DB of users 
+all_users= {"victorandresvega": victor,"josueestr": josue,"kevilin": kevin}
+# Fake DB of profiles
+all_profiles = {"victorandresvega": victor_profile, "josueestr": josue_profile, "kevilin": kevin_profile}
+
+# adding items to the corresponding user's profile
+add_items_to_corresponding_profiles(all_items)
+
+# start program
 current_user=greet()
 buy_or_sell(current_user)
      

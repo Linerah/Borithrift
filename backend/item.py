@@ -9,7 +9,7 @@ class Item:
         self.gender = self.valid_string_type(gender)
         self.description = self.valid_string_type(description)
         self.image = self.valid_string_type(image)
-        # self.seller = self.valid_seller_type(self.valid_user_type(seller))
+        self.seller_username = self.valid_user_type(seller).username
 
     def valid_string_type(self, string_input):
         if(type(string_input) != str):
@@ -19,18 +19,14 @@ class Item:
 
     def valid_float_type(self, float_input):
         if(type(float_input) != float):
-            raise TypeError('The value is not of type int')
+            raise TypeError('The value is not of type float')
         return float_input
     
-    def valid_user_type(seller_input):
-        if(type(seller_input) != User):
+    def valid_user_type(self, seller_input):
+        if(type(seller_input) != User): # profile could change to user
             raise TypeError('The user is not of type User')
         return seller_input
         
-    def valid_seller_type(seller_input):
-        if(seller_input.user_type != 'seller'):
-            raise TypeError('The user is not of type seller')
-        return seller_input
     
     def __str__(self) -> str:
         extra_hyphens = len(self.name)
