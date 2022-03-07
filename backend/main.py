@@ -106,7 +106,6 @@ def valid_input_int_value(integer_input):
 
 
 # All users
-# TODO : eliminate user type from the User class
 victor = User("victor@whereever.com", "a12341231", "victorandresvega")
 josue = User("josue@whereever.com", "b5678567857", "josueestr")
 kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
