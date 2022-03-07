@@ -1,17 +1,25 @@
 from item import Item
 from User import User
 from Profile import Profile
+import os
+
+def clear_console():
+    clear = lambda: os.system('clear')
+    clear()
 
 def greet():
+    clear_console()
     print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
     history = input("Are you a returning user: Press 1 for yes and 2 to sign up:\n")
     history = valid_input_int_value(valid_input_int_type(int(history)))
     user = ''
+    clear_console()
     if(history==1):
         print("Welcome back! Please provide your username and password:")
         while(type(user) == str):
             user = login()
             if(type(user) == str):
+                clear_console()
                 print(user)
         return user
     elif(history==2):
@@ -19,6 +27,7 @@ def greet():
         while(type(user) == str):
             user = register()
             if(type(user) == str):
+                clear_console()
                 print(user)
 
         new_user_profile=Profile(user.username,[],0.0,0,"")
@@ -40,40 +49,59 @@ def show_total_items(total_items):
 
 def buy_or_sell(user):
     option=input("Press Buy to see and buy items on sale or Sell to exchange your products:\n")
+    clear_console()
     if(option=="Buy"):
         show_total_items(all_items)
     elif(option=="Sell"):
-        get_user_items(user)
+        user_profile = all_profiles[user.username]
+        get_user_items(user_profile)
         action=input("Do you wish to add or remove an item?\n Press 1 for Add 2 for Remove and 3 to exit:\n")
+        clear_console()
         if(action=="1"):
-            name_of_item=input("Name of Item:")
-            name_of_item=str(name_of_item)
-            price_of_item=input("Price of Item:")
-            price_of_item=float(price_of_item)
-            size_of_item=input("Size of Item:")
-            size_of_item=str(size_of_item)
-            style_of_item=input("Style of Item:")
-            item_gender=input("Gender of Item:")
-            description_of_item=input("Description of Item:") 
-
-            item_image=input("Image URL:")
+            name_of_item= str(input("Name of Item:"))
+            price_of_item= float(validate_float("Price of Item:"))
+            size_of_item= str(input("Size of Item:"))
+            style_of_item= str(input("Style of Item:"))
+            item_gender= str(input("Gender of Item:"))
+            description_of_item= str(input("Description of Item:"))
+            item_image= input("Image URL:")
             # def __init__(self, name, price, size, style, gender, description, image, seller):
-            item_to_add=Item(name_of_item,price_of_item,size_of_item,style_of_item,item_gender,description_of_item,item_image,user)
-            user.Add_Item_to_Sell(item_to_add)
+            item_to_add= Item(name_of_item,price_of_item,size_of_item,style_of_item,item_gender,description_of_item,item_image,user)
+            user_profile.Add_Item_to_Sell(item_to_add)
             all_items.append(item_to_add)
-            get_user_items(user)
+            clear_console()
+            get_user_items(user_profile)
             buy_or_sell(user)
         elif(action=="2"):
-            get_user_items(user)
-            item_to_remove=input("Select Item to Remove by its number on list:")
-            item_to_remove=int(item_to_remove)
-            user.Remove_Item(user.user_items[item_to_remove-1])
-            all_items.remove(user.user_items[item_to_remove-1])
-            get_user_items(user)
+            
+            get_user_items(user_profile)
+            item_to_remove= int(input("Select Item to Remove by its number on list:"))
+            user_profile.Remove_Item(user_profile.user_items[item_to_remove-1])
+            all_items.remove(user_profile.user_items[item_to_remove-1])
+            clear_console()
+            print('The item was removed successfully')
+            get_user_items(user_profile)
             buy_or_sell(user)
         elif(action=="3"):
             return
     pass
+
+
+def validate_float(output_val):
+    value = input(output_val)
+    while(not is_float(value)):
+        print('Input value should be of type float')
+        value = input(output_val)
+    return value
+
+def is_float(values):
+    count = 0
+    for value in values:
+        if(value == '.'):
+            count += 1
+        elif(value not in '0123456789'):
+            return False
+    return count <= 1
 
 def register():
     new_user=input("Select a username:\n")
@@ -104,7 +132,7 @@ def validate_user(username, password):
 
 def add_items_to_corresponding_profiles(items):
     for item in items:
-        username = item.seller_username
+        username = item.username
         if(username in all_profiles):
             all_profiles[username].Add_Item_to_Sell(item)
 
@@ -150,6 +178,7 @@ add_items_to_corresponding_profiles(all_items)
 
 # start program
 current_user=greet()
+clear_console()
 buy_or_sell(current_user)
      
 

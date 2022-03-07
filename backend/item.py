@@ -1,7 +1,7 @@
 from User import User
 class Item:
 
-    def __init__(self, name, price, size, style, gender, description, image, seller):
+    def __init__(self, name, price, size, style, gender, description, image, user):
         self.name = self.valid_string_type(name)
         self.price = self.valid_float_type(price)
         self.size = self.valid_string_type(size)
@@ -9,7 +9,7 @@ class Item:
         self.gender = self.valid_string_type(gender)
         self.description = self.valid_string_type(description)
         self.image = self.valid_string_type(image)
-        self.seller_username = self.valid_user_type(seller).username
+        self.username = self.valid_user_type(user).username
 
     def valid_string_type(self, string_input):
         if(type(string_input) != str):
@@ -22,17 +22,12 @@ class Item:
             raise TypeError('The value is not of type float')
         return float_input
     
-    def valid_user_type(self, seller_input):
-        if(type(seller_input) != User): # profile could change to user
+    def valid_user_type(self, user):
+        if(type(user) != User): # profile could change to user
             raise TypeError('The user is not of type User')
-        return seller_input
+        return user
         
     
     def __str__(self) -> str:
         extra_hyphens = len(self.name)
-        return(f'-----------------<{self.name}>-----------------\nimage url: {self.image}\nprice: {self.price}\nsize: {self.size}\ndescription: {self.description}\n' + extra_hyphens*'-' + '------------------------------------')
-        # print(f'image url: {self.image}')
-        # print(f'price: {self.price}')
-        # print(f'size: {self.size}')
-        # print(f'description: {self.description}')
-        # print(extra_hyphens*'-' + '------------------------------------')
+        return(f'-----------------<{self.name}>-----------------\n   image url: {self.image}\n   price: {self.price}\n   size: {self.size}\n   description: {self.description}\n' + '   ' + extra_hyphens*'-' + '------------------------------------')
