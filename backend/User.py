@@ -13,7 +13,7 @@ class User:
             raise ValueError("Invalid password")
         if (not self.check_valid_username(username)):
             raise ValueError("Invalid username")
-        if (user_type != "seller" or user_type != "buyer"):
+        if (user_type != "seller" and user_type != "buyer"):
             raise ValueError("Invalid user type")
 
         self.email = email
