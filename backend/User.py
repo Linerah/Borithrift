@@ -42,7 +42,7 @@ class User:
         return self.username
 
     # Check validity
-    def check_valid_email(email):
+    def check_valid_email(self, email):
         # RFC 5322 email standard
         regex = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
         if (re.fullmatch(regex, email)):
