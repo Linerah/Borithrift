@@ -8,22 +8,18 @@ def greet():
     history = valid_input_int_value(valid_input_int_type(int(history)))
     if(history==1):
         print("Welcome back! Please provide your username and password:")
-        current_user=input("Username:")
-        current_pass=input("Password:")
-        # validate_user(current_user,current_pass)
-        return all_users[current_user]
-#      if input == "add_user":
-#         password=
-#         username=
-#         all_users.add(User())
+        user = ''
+        while(type(user) == str):
+            user = login()
+            if(type(user) == str):
+                print(user)
+        return user
     elif(history==2):
         new_user=input("Select a username:\n")
         new_pass=input("Select a password:\n")
         new_email=input("Email:\n")
-        type_of_client=input("Seller or Buyer:\n")
-        # def __init__(self, email, password, username, user_type):
-        # new_user_to_add=User(new_email,new_pass,new_user,type_of_client)
-        # all_users.append(new_user_to_add)
+        new_user_to_add=User(new_email,new_pass,new_user)
+        all_users.append(new_user_to_add)
         new_user_profile=Profile(new_user,[],0.0,0,"")
         all_users[new_user]=(new_user_profile)
         return new_user_profile
@@ -33,11 +29,13 @@ def get_user_items(current_user):
     for i in range(len(current_user.user_items)):
         print(f'{i+1}. {current_user.user_items[i]}')
     pass
+
 def show_total_items(total_items):
     print('Items on sale are:')
     for i in range(len(total_items)):
         print(f'{i+1}. {total_items[i]}')
     pass
+
 def buy_or_sell(user):
     option=input("Press Buy to see and buy items on sale or Sell to exchange your products:\n")
     if(option=="Buy"):
@@ -75,6 +73,21 @@ def buy_or_sell(user):
             return
     pass
 
+def login():
+    current_user=input("Username:")
+    current_pass=input("Password:")
+    return validate_user(current_user, current_pass)
+
+def validate_user(username, password):
+    if(username in all_users):
+        user = all_users[username]
+        if(user.password == password):
+            return user
+        else:
+            return 'Password are incorrect'
+    else:
+        return 'User does not exist'
+
 def add_items_to_corresponding_profiles(items):
     for item in items:
         username = item.seller_username
@@ -94,9 +107,9 @@ def valid_input_int_value(integer_input):
 
 # All users
 # TODO : eliminate user type from the User class
-victor = User("victor@whereever.com", "a12341231", "victorandresvega", "seller")
-josue = User("josue@whereever.com", "b5678567857", "josueestr", "seller")
-kevin = User("kevin@whereever.com", "c0000000000", "kevilin", "seller")
+victor = User("victor@whereever.com", "a12341231", "victorandresvega")
+josue = User("josue@whereever.com", "b5678567857", "josueestr")
+kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
 
 # All profiles -- profile is linked with user, through username 
 victor_profile = Profile("victorandresvega",[],4.25,27,"../flag.png")

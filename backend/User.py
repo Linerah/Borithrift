@@ -2,9 +2,9 @@ import hashlib
 import re
 import time
 class User:
-    def __init__(self, email, password, username, user_type):
+    def __init__(self, email, password, username):
         if ((type(email) is not str) or (type(password) is not str) or 
-        (type(username) is not str) or (type(user_type) is not str)):
+        (type(username) is not str)):
             raise TypeError("email, password, username and user_type parameters must be strings")
 
         if (not self.check_valid_email(email)):
@@ -13,13 +13,10 @@ class User:
             raise ValueError("Invalid password")
         if (not self.check_valid_username(username)):
             raise ValueError("Invalid username")
-        if (user_type != "seller" and user_type != "buyer"):
-            raise ValueError("Invalid user type")
-
+    
         self.email = email
         self.password = password
         self.username = username
-        self.user_type= user_type
         self.usr_id = self.generate_user_ID()
     
     # Setters
