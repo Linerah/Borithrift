@@ -10,7 +10,7 @@ def clear_console():
 def greet():
     clear_console()
     print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
-    history = input("Are you a returning user: Press 1 for yes and 2 to sign up:\n")
+    history = ""
     user = ''
     clear_console()
     while(history != 1 and history !=2):
@@ -72,7 +72,12 @@ def buy_or_sell(user):
         seller=all_profiles[item.username]
         seller._Remove_Item(item)
         all_items.remove(item)
-        review=int(input("Thank you for your purchase, please rate this user from 1 to 5:"))
+        review=-1
+        while(review<0 or review>5):
+            try:
+                review=int(input("Thank you for your purchase, please rate this user from 1 to 5:"))
+            except ValueError or TypeError:
+                review=int(input("Thank you for your purchase, please rate this user from 1 to 5:"))
         seller._Review_Score(review)
         after=input("Do you wish to make another purchase or update your items? Press Yes or No:")
         if(after=="No"):
