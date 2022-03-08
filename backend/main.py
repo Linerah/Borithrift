@@ -30,7 +30,7 @@ def greet():
                 clear_console()
                 print(user)
 
-        new_user_profile=Profile(user.username,[],0.0,0,"")
+        new_user_profile=Profile(user.username,0.0,0,"")
         all_users[user.username] = user 
         all_profiles[user.username] = new_user_profile
         return user
@@ -41,17 +41,36 @@ def get_user_items(current_user):
         print(f'{i+1}. {current_user.user_items[i]}')
     pass
 
-def show_total_items(total_items):
+def show_total_items(total_items,username):
     print('Items on sale are:')
+    counter=0
     for i in range(len(total_items)):
-        print(f'{i+1}. {total_items[i]}')
+        if(total_items[i].username != username.username):
+            counter+=1
+            print(f'{counter}. {total_items[i]}')
+            user=all_profiles[total_items[i].username]
+            print(f"   Sold by: {user.username} {round(user.reviews,2)} stars")
+
     pass
 
 def buy_or_sell(user):
-    option=input("Press Buy to see and buy items on sale or Sell to exchange your products:\n")
+    option=input("Press Buy to see and buy items on sale or Sell to exchange your products or Exit to exit:\n")
     clear_console()
     if(option=="Buy"):
-        show_total_items(all_items)
+        user_profile = all_profiles[user.username]
+        show_total_items(all_items,user)
+        item_to_buy= int(input("Select Item to Buy by its number on list:"))
+        item=all_items[item_to_buy-1]
+        seller=all_profiles[item.username]
+        seller._Remove_Item(item)
+        all_items.remove(item)
+        review=int(input("Thank you for your purchase, please rate this user from 1 to 5:"))
+        seller._Review_Score(review)
+        after=input("Do you wish to make another purchase or update your items? Press Yes or No:")
+        if(after=="No"):
+            return
+        buy_or_sell(user)
+
     elif(option=="Sell"):
         user_profile = all_profiles[user.username]
         get_user_items(user_profile)
@@ -84,6 +103,8 @@ def buy_or_sell(user):
             buy_or_sell(user)
         elif(action=="3"):
             return
+    elif(option=="Exit"):
+        return
     pass
 
 
@@ -134,7 +155,7 @@ def add_items_to_corresponding_profiles(items):
     for item in items:
         username = item.username
         if(username in all_profiles):
-            all_profiles[username].Add_Item_to_Sell(item)
+            all_profiles[username]._Add_Item_to_Sell(item)
 
 def valid_input_int_type(integer_input):
     if(type(integer_input) != int):
@@ -153,9 +174,9 @@ josue = User("josue@whereever.com", "b5678567857", "josueestr")
 kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
 
 # All profiles -- profile is linked with user, through username 
-victor_profile = Profile(victor.username,[],4.25,27,"../flag.png")
-josue_profile = Profile(josue.username,[],3.75,15,"../flag.png")
-kevin_profile = Profile(kevin.username,[],4.45,38,"../flag.png")
+victor_profile = Profile(victor.username,4.25,27,"../flag.png")
+josue_profile = Profile(josue.username,3.75,15,"../flag.png")
+kevin_profile = Profile(kevin.username,4.45,38,"../flag.png")
 
 # All items -- item is linked with user, through username
 victor_item1 = Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png", victor)
