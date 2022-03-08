@@ -2,6 +2,7 @@ import hashlib
 import re
 import time
 class User:
+    """"""
     def __init__(self, email, password, username):
         if ((type(email) is not str) or (type(password) is not str) or 
         (type(username) is not str)):
@@ -15,7 +16,7 @@ class User:
             raise ValueError("Invalid username")
     
         self.email = email
-        self.password = password
+        self.password = self.hash_password(password)
         self.username = username
         self.usr_id = self.generate_user_ID()
     
@@ -23,7 +24,7 @@ class User:
     def set_password(self, password):
         if (not self.check_valid_password(password)):
             raise ValueError("Invalid password")
-        self.password = password
+        self.password = self.hash_password(password)
     def set_email(self, email):
         if (not self.check_valid_email(email)):
             raise ValueError("Invalid email")
@@ -33,12 +34,14 @@ class User:
             raise ValueError("Invalid username")
         self.username = username
     # Getters
+    def get_password(self):
+        return self.password
     def get_email(self):
         return self.email
     def get_username(self):
         return self.username
 
-    # Check validity
+    # Validity checks
     def check_valid_email(self, email):
         # RFC 5322 email standard
         regex = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
@@ -59,14 +62,14 @@ class User:
             return True
         return False
 
-    # Hashes password and returns hash in hexadecimal format
     def hash_password(self, password):
+        # Hashes password and returns hash in hexadecimal format
         hashed_password = hashlib.sha512()
         hashed_password.update(password.encode("utf8"))
         return hashed_password.hexdigest()
     
-    # Generate unique user ID
     def generate_user_ID(self):
+        # Generate unique user ID
         cur_time = str(time.time())
         hashed_time = hashlib.sha1()
         hashed_time.update(cur_time.encode("utf8"))
