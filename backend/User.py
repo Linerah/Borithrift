@@ -2,7 +2,14 @@ import hashlib
 import re
 import time
 class User:
-    """"""
+    """
+    Creates a user which stores and validates and email, a password and a username.
+
+    Attrbibutes:
+        email (str): The user's email adress. Verified to be RFC 5322 comliant.
+        password (str): The user's password. Verified to be 8 chara, 1 letter and 1 number minimum length. Stored as hash from sha512.
+        username (str): The user's displayed name. Verified to be 3-20 alphanum characters and can include "." and "_".
+    """
     def __init__(self, email, password, username):
         if ((type(email) is not str) or (type(password) is not str) or 
         (type(username) is not str)):
@@ -21,23 +28,23 @@ class User:
         self.usr_id = self.generate_user_ID()
     
     # Setters
-    def set_password(self, password):
-        if (not self.check_valid_password(password)):
-            raise ValueError("Invalid password")
-        self.password = self.hash_password(password)
     def set_email(self, email):
         if (not self.check_valid_email(email)):
             raise ValueError("Invalid email")
         self.email = email
+    def set_password(self, password):
+        if (not self.check_valid_password(password)):
+            raise ValueError("Invalid password")
+        self.password = self.hash_password(password)
     def set_username(self, username):
         if (not self.check_valid_username(username)):
             raise ValueError("Invalid username")
         self.username = username
     # Getters
-    def get_password(self):
-        return self.password
     def get_email(self):
         return self.email
+    def get_password(self):
+        return self.password
     def get_username(self):
         return self.username
 
@@ -62,12 +69,12 @@ class User:
             return True
         return False
 
+    # Generators
     def hash_password(self, password):
         # Hashes password and returns hash in hexadecimal format
         hashed_password = hashlib.sha512()
         hashed_password.update(password.encode("utf8"))
         return hashed_password.hexdigest()
-    
     def generate_user_ID(self):
         # Generate unique user ID
         cur_time = str(time.time())
