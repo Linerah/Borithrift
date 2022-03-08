@@ -9,7 +9,7 @@ def clear_console():
 
 def greet():
     clear_console()
-    print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
+    print("Hello, welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
     history = ""
     user = ''
     clear_console()
@@ -38,8 +38,8 @@ def greet():
                 print(user)
 
         new_user_profile=Profile(user.username,0.0,0,"")
-        all_users[user.username] = user 
-        all_profiles[user.username] = new_user_profile
+        all_users[user.get_username()] = user 
+        all_profiles[user.get_username()] = new_user_profile
         return user
 
 
@@ -175,10 +175,10 @@ def login():
 def validate_user(username, password):
     if(username in all_users):
         user = all_users[username]
-        if(user.password == password):
+        if(user.compare_password(password)):
             return user
         else:
-            return 'Password are incorrect'
+            return 'Password is incorrect'
     else:
         return 'User does not exist'
 
@@ -205,9 +205,9 @@ josue = User("josue@whereever.com", "b5678567857", "josueestr")
 kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
 
 # All profiles -- profile is linked with user, through username 
-victor_profile = Profile(victor.username,4.25,27,"../flag.png")
-josue_profile = Profile(josue.username,3.75,15,"../flag.png")
-kevin_profile = Profile(kevin.username,4.45,38,"../flag.png")
+victor_profile = Profile(victor.get_username(),4.25,27,"../flag.png")
+josue_profile = Profile(josue.get_username(),3.75,15,"../flag.png")
+kevin_profile = Profile(kevin.get_username(),4.45,38,"../flag.png")
 
 # All items -- item is linked with user, through username
 victor_item1 = Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png", victor)

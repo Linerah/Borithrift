@@ -81,3 +81,9 @@ class User:
         hashed_time = hashlib.sha1()
         hashed_time.update(cur_time.encode("utf8"))
         return hashed_time.hexdigest()
+
+    # Compare
+    def compare_password(self, password):
+        if (self.password == self.hash_password(password)):
+            return True
+        return False
