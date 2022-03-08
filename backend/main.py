@@ -67,6 +67,12 @@ def buy_or_sell(user):
     if(option=="Buy"):
         user_profile = all_profiles[user.username]
         show_total_items(all_items,user)
+        item_to_buy=-1
+        while(item_to_buy<0 or item_to_buy>len(all_items)-1):
+                try:
+                    item_to_buy= int(input("Select Item to Remove by its number on list:"))
+                except:
+                    print("Option not valid")
         item_to_buy= int(input("Select Item to Buy by its number on list:"))
         item=all_items[item_to_buy-1]
         seller=all_profiles[item.username]
@@ -79,10 +85,15 @@ def buy_or_sell(user):
             except ValueError or TypeError:
                 review=int(input("Thank you for your purchase, please rate this user from 1 to 5:"))
         seller._Review_Score(review)
-        after=input("Do you wish to make another purchase or update your items? Press Yes or No:")
+        while(after!="Yes" and after!="No"):
+            try:
+                after=input("Thank you for your purchase, please rate this user from 1 to 5:")
+            except:
+                print("Option not valid")
         if(after=="No"):
             return
-        buy_or_sell(user)
+        if(after=="Yes"):
+            buy_or_sell(user)
 
     elif(option=="Sell"):
         user_profile = all_profiles[user.username]
@@ -105,9 +116,13 @@ def buy_or_sell(user):
             get_user_items(user_profile)
             buy_or_sell(user)
         elif(action=="2"):
-            
+            item_to_remove=-1
             get_user_items(user_profile)
-            item_to_remove= int(input("Select Item to Remove by its number on list:"))
+            while(item_to_remove<0 or item_to_remove>len(user_profile.user_items)-1):
+                try:
+                    item_to_remove= int(input("Select Item to Remove by its number on list:"))
+                except:
+                    print("Option not valid")
             user_profile.Remove_Item(user_profile.user_items[item_to_remove-1])
             all_items.remove(user_profile.user_items[item_to_remove-1])
             clear_console()
