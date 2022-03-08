@@ -185,7 +185,7 @@ def validate_user(username, password):
         if(user.password == password):
             return user
         else:
-            return 'Password are incorrect'
+            return 'Password is incorrect'
     else:
         return 'User does not exist'
 
