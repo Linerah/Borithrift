@@ -30,4 +30,4 @@ class Item:
     
     def __str__(self) -> str:
         extra_hyphens = len(self.name)
-        return(f'-----------------<{self.name}>-----------------\n   image url: {self.image}\n   price: {self.price}\n   size: {self.size}\n   description: {self.description}\n' + '   ' + extra_hyphens*'-' + '------------------------------------')
+        return(f'-----------------<{self.name}>-----------------\n   image url: {self.image}\n   price: {self.price}\n   size: {self.size}\n   description: {self.description}')
