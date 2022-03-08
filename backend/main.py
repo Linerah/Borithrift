@@ -11,9 +11,16 @@ def greet():
     clear_console()
     print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
     history = input("Are you a returning user: Press 1 for yes and 2 to sign up:\n")
-    history = valid_input_int_value(valid_input_int_type(int(history)))
     user = ''
     clear_console()
+    while(history != 1 and history !=2):
+        try:
+            history = int(input("Are you a returning user: Press 1 for yes and 2 to sign up:\n"))
+            if history != 1 and history !=2:
+                print("Option not available\n")
+        except:
+            print("Invalid type of entry")
+    
     if(history==1):
         print("Welcome back! Please provide your username and password:")
         while(type(user) == str):
@@ -34,6 +41,7 @@ def greet():
         all_users[user.username] = user 
         all_profiles[user.username] = new_user_profile
         return user
+
 
 def get_user_items(current_user):
     print('Your items are:')
@@ -105,6 +113,9 @@ def buy_or_sell(user):
             return
     elif(option=="Exit"):
         return
+    else:
+        print("Option not valid")
+        buy_or_sell(user)
     pass
 
 
