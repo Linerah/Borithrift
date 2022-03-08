@@ -5,7 +5,7 @@ class User:
     def __init__(self, email, password, username):
         if ((type(email) is not str) or (type(password) is not str) or 
         (type(username) is not str)):
-            raise TypeError("email, password, username and user_type parameters must be strings")
+            raise TypeError("email, password and username parameters must be strings")
 
         if (not self.check_valid_email(email)):
             raise ValueError("Invalid email")
@@ -47,6 +47,7 @@ class User:
         return False
     def check_valid_password(self, password):
         # Min 8 chars, 1 letter, 1 number
+        time.sleep(1)  # Make password verification slower to prevent brute force attack
         regex = re.compile(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")
         if (re.fullmatch(regex, password)):
             return True
@@ -70,5 +71,3 @@ class User:
         hashed_time = hashlib.sha1()
         hashed_time.update(cur_time.encode("utf8"))
         return hashed_time.hexdigest()
-
-#! Make password attempts slow to prevent brute force attacks (done outside class)
