@@ -8,11 +8,9 @@ def clear_console():
     clear()
 
 def greet():
-    clear_console()
-    print("Hello, welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
+    print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
     history = ""
     user = ''
-    clear_console()
     while(history != 1 and history !=2):
         try:
             history = int(input("Are you a returning user: Press 1 for yes and 2 to sign up:\n"))
@@ -20,7 +18,6 @@ def greet():
                 print("Option not available\n")
         except:
             print("Invalid type of entry")
-    
     if(history==1):
         print("Welcome back! Please provide your username and password:")
         while(type(user) == str):
@@ -68,13 +65,21 @@ def buy_or_sell(user):
         user_profile = all_profiles[user.username]
         show_total_items(all_items,user)
         item_to_buy=-1
-        while(item_to_buy<0 or item_to_buy>len(all_items)-1):
+        while(item_to_buy<0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
                 try:
-                    item_to_buy= int(input("Select Item to Remove by its number on list:"))
+                    item_to_buy= int(input("Select Item to Buy by its number on list:"))
+                    if (item_to_buy<0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
+                        print("Option not valid")
                 except:
                     print("Option not valid")
-        item_to_buy= int(input("Select Item to Buy by its number on list:"))
-        item=all_items[item_to_buy-1]
+        counter=0
+        for i in range(len(all_items)):
+            
+            if(all_items[i].username!=current_user.username):
+                counter+=1
+            if counter == item_to_buy:
+                item_to_buy=i
+        item=all_items[item_to_buy]
         seller=all_profiles[item.username]
         seller._Remove_Item(item)
         all_items.remove(item)
@@ -83,11 +88,12 @@ def buy_or_sell(user):
             try:
                 review=int(input("Thank you for your purchase, please rate this user from 1 to 5:"))
             except ValueError or TypeError:
-                review=int(input("Thank you for your purchase, please rate this user from 1 to 5:"))
+                print("Review Score not valid")
         seller._Review_Score(review)
+        after=""
         while(after!="Yes" and after!="No"):
             try:
-                after=input("Thank you for your purchase, please rate this user from 1 to 5:")
+                after=input("Would you like to complete another action?")
             except:
                 print("Option not valid")
         if(after=="No"):
