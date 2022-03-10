@@ -25,12 +25,12 @@ class TestProfile(unittest.TestCase):
             with self.subTest():
                 self.assertEqual(test_username, username)
 
-        test_reviews = [(self.victor_profile.reviews, 4.25), (self.josue_profile.reviews, 3.75), (self.kevin_profile.reviews, 4.45)]
+        test_reviews = [(self.victor_profile.ratings, 4.25), (self.josue_profile.ratings, 3.75), (self.kevin_profile.ratings, 4.45)]
         for test_review, review in test_reviews:
             with self.subTest():
                 self.assertEqual(test_review, review)
         
-        test_reviewers_total = [(self.victor_profile.reviewers_total, 27), (self.josue_profile.reviewers_total, 15), (self.kevin_profile.reviewers_total, 38)]
+        test_reviewers_total = [(self.victor_profile.raters_amount, 27), (self.josue_profile.raters_amount, 15), (self.kevin_profile.raters_amount, 38)]
         for test_reviewer_total, reviewer_total in test_reviewers_total:
             with self.subTest():
                 self.assertEqual(test_reviewer_total, reviewer_total)
@@ -125,7 +125,7 @@ class TestProfile(unittest.TestCase):
 
      
         # checking values: victor -> (4) -> (4.241) kevin -> (0) -> (4.335)
-        test_new_reviews = [(self.victor_profile, 4, 4.241), (self.kevin_profile, 0, 4.335)]
+        test_new_reviews = [(self.victor_profile, 4, 4.24), (self.kevin_profile, 0, 4.34)]
         for profile, new_review, result in test_new_reviews:
             with self.subTest():
                 self.assertAlmostEqual(profile._Review_Score(new_review), result)
