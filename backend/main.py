@@ -110,9 +110,9 @@ def buy_or_sell(user):
         if(action=="1"):
             name_of_item= str(input("Name of Item:"))
             price_of_item= float(validate_float("Price of Item:"))
-            size_of_item= str(input("Size of Item:"))
+            size_of_item= str(validate_size("Size of Item:"))
             style_of_item= str(input("Style of Item:"))
-            item_gender= str(input("Gender of Item:"))
+            item_gender= str(validate_gender("Gender of Item:"))
             description_of_item= str(input("Description of Item:"))
             item_image= input("Image URL:")
             # def __init__(self, name, price, size, style, gender, description, image, seller):
@@ -151,6 +151,36 @@ def validate_float(output_val):
     while(not is_float(value)):
         print('Input value should be of type float')
         value = input(output_val)
+    return value
+
+def validate_size(output_val):
+    size_list = ['XXS','XS','S', 'M', 'L', 'XL', 'XXL']
+    value = input(output_val)
+    not_valid = True
+    for size in size_list:
+        if size == value:
+            return value 
+    while(not_valid):
+        print(f'{value} is not a valid size. (Ex. sizes: ..., L, XL, XXL)')
+        value = input(output_val)
+        for size in size_list:
+            if size == value:
+                not_valid = False
+    return value
+
+def validate_gender(output_val):
+    gender_list = ['Men','Women']
+    value = input(output_val)
+    not_valid = True
+    for gender in gender_list:
+        if gender == value:
+            return value 
+    while(not_valid):
+        print(f'{value} is not a valid gender department. (Ex. gender: Men, Women)')
+        value = input(output_val)
+        for gender in gender_list:
+            if gender == value:
+                not_valid = False
     return value
 
 def is_float(values):
