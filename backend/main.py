@@ -73,12 +73,13 @@ def buy_or_sell(user):
                 except:
                     print("Option not valid")
         counter=0
-        for i in range(len(all_items)):
-            
+        for i in range(len(all_items)):        
             if(all_items[i].username!=current_user.username):
                 counter+=1
+                
             if counter == item_to_buy:
                 item_to_buy=i
+                break
         item=all_items[item_to_buy]
         seller=all_profiles[item.username]
         seller._Remove_Item(item)
