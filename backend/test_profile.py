@@ -81,11 +81,13 @@ class TestProfile(unittest.TestCase):
         test_items = [1.0, 1, True, 'hello', [], (), {}] 
         for item in test_items: 
              with self.subTest():
-                self.assertRaises(TypeError, self.victor_profile._Add_Item_to_Sell(item))
+                 with self.assertRaises(TypeError):
+                    self.victor_profile._Add_Item_to_Sell(item)
 
         # TODO: the test below fails
         # should not add item if it is owned by another user
-        self.assertRaises(ValueError, self.kevin_profile._Add_Item_to_Sell(self.victor_item1))
+        with self.assertRaises(ValueError):
+            self.kevin_profile._Add_Item_to_Sell(self.victor_item1)
         pass
 
     def test_remove_item(self):
@@ -93,29 +95,33 @@ class TestProfile(unittest.TestCase):
         test_items = [1.0, 1, True, 'hello', [], (), {}] 
         for item in test_items: 
              with self.subTest():
-                self.assertRaises(TypeError, self.victor_profile._Remove_Item(item))
+                with self.assertRaises(TypeError):
+                    self.victor_profile._Remove_Item(item)
 
         # TODO: the test below fails
         # should not remove an item if it is owned by another user
-        self.assertRaises(ValueError, self.kevin_profile._Remove_Item(self.victor_item1))
+        with self.assertRaises(ValueError):
+            self.kevin_profile._Remove_Item(self.victor_item1)
 
         # TODO: the test below fails
         # should not remove an item if it is not part of items 
-        kevin_item1 = Item("White Tee",10.00,"S","Casual","Men","Basic T-shirt for everyday use","../images/white_shirt.png", kevin)
-        self.assertRaises(ValueError, self.kevin_profile._Remove_Item(self.victor_item1))
+        with self.assertRaises(ValueError):
+            self.kevin_profile._Remove_Item(self.victor_item1)
 
     def test_review_score(self):
         # new_review should be of type integer
         test_new_reviews = [ 1.0, True, 'hello',[], (), {}] 
         for new_review in test_new_reviews:
              with self.subTest():
-                self.assertRaises(TypeError, self.josue_profile._Review_Score(new_review))
+                 with self.assertRaises(TypeError):
+                    self.josue_profile._Review_Score(new_review)
 
         # reviews - must be between 0 and 5
         test_new_reviews = [ -1, 6] 
         for new_review in test_new_reviews:
              with self.subTest():
-                self.assertRaises(ValueError, self.josue_profile._Review_Score(new_review))
+                with self.assertRaises(ValueError):
+                    self.josue_profile._Review_Score(new_review)
 
      
         # checking values: victor -> (4) -> (4.241) kevin -> (0) -> (4.335)
