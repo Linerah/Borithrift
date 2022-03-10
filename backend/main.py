@@ -135,13 +135,14 @@ def buy_or_sell(user):
         elif(action=="2"):
             item_to_remove=-1
             get_user_items(user_profile)
-            while(item_to_remove<=0 or item_to_remove>len(user_profile.user_items)-1):
+            while(item_to_remove<=0 or item_to_remove>len(user_profile.user_items)):
                 try:
                     item_to_remove= int(input("Select Item to Remove by its number on list:"))
                 except:
                     print("Option not valid")
-            user_profile._Remove_Item(user_profile.user_items[item_to_remove-1])
             all_items.remove(user_profile.user_items[item_to_remove-1])
+            user_profile._Remove_Item(user_profile.user_items[item_to_remove-1])
+            
             clear_console()
             print('The item was removed successfully')
             get_user_items(user_profile)
