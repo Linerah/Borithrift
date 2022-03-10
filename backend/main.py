@@ -312,18 +312,3 @@ current_user=greet()
 clear_console()
 buy_or_sell(current_user)
      
-
-# boricuas API
-'''
-all_users = []
-all_profiles = []
-
-def create_user(username, password):
-    user = User(username, password)
-    profile = Profile(..., username)
-
-   all_profile.add(profile)
-   all_users.add(user)
-   '''
-
-
