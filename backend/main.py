@@ -104,7 +104,7 @@ def buy_or_sell(user):
         after=""
         while(after!="Yes" and after!="No"):
             try:
-                after=input("Would you like to complete another action?")
+                after=input("Would you like to complete another action(Yes/No)? ")
             except:
                 print("Option not valid")
         if(after=="No"):
