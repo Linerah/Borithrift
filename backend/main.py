@@ -6,7 +6,9 @@ import os
 def clear_console():
     clear = lambda: os.system('clear')
     clear()
-
+'''
+function in charge of opening the page and give options to users if they are a registered user or if they want to sign up
+'''
 def greet():
     print("Hello, Welcome to Borithrift an online platform for boricuas to exchange second-hand products\n" )
     history = ""
@@ -39,13 +41,17 @@ def greet():
         all_profiles[user.get_username()] = new_user_profile
         return user
 
-
+'''
+shows the items that the user currently online is currently exchanging
+'''
 def get_user_items(current_user):
     print('Your items are:')
     for i in range(len(current_user.user_items)):
         print(f'{i+1}. {current_user.user_items[i]}')
     pass
-
+'''
+shows all the items currently on sale excluding those sold by the user currently online
+'''
 def show_total_items(total_items,username):
     print('Items on sale are:')
     counter=0
@@ -57,7 +63,11 @@ def show_total_items(total_items,username):
             print(f"   Sold by: {user.username} {round(user.ratings,2)} stars")
 
     pass
-
+'''
+method that once the user is logged in gives it options whether to buy or manage the products they want to sell
+if the user chooses to buy then the user is prompted a list of items(excluding the ones they sell) to choose which item they want to buy
+if the user chooses to sell then they can manage their products, choosing to add new items or remove them
+'''
 def buy_or_sell(user):
     option=input("Press Buy to see and buy items on sale or Sell to exchange your products or Exit to exit:\n")
     clear_console()
@@ -125,13 +135,14 @@ def buy_or_sell(user):
         elif(action=="2"):
             item_to_remove=-1
             get_user_items(user_profile)
-            while(item_to_remove<=0 or item_to_remove>len(user_profile.user_items)-1):
+            while(item_to_remove<=0 or item_to_remove>len(user_profile.user_items)):
                 try:
                     item_to_remove= int(input("Select Item to Remove by its number on list:"))
                 except:
                     print("Option not valid")
-            user_profile.Remove_Item(user_profile.user_items[item_to_remove-1])
             all_items.remove(user_profile.user_items[item_to_remove-1])
+            user_profile._Remove_Item(user_profile.user_items[item_to_remove-1])
+            
             clear_console()
             print('The item was removed successfully')
             get_user_items(user_profile)
@@ -191,7 +202,9 @@ def is_float(values):
         elif(value not in '0123456789'):
             return False
     return count <= 1
-
+'''
+Function in charge of creating new accounts that makes sures the values given by the user are valid according to User class standards
+'''
 def register():
     new_username=""
     new_pass=""
@@ -224,11 +237,16 @@ def register():
             print("Invalid format for email")
             new_email=""      
     return User(new_email, new_pass, new_username)
+'''
+function that prompts user to input their username and password if they are a registered user
+'''
 def login():
     current_user=input("Username:")
     current_pass=input("Password:")
     return validate_user(current_user, current_pass)
-
+'''
+function in charge of making sure that the username and password are a match for the registered users
+'''
 def validate_user(username, password):
     if(username in all_users):
         user = all_users[username]
@@ -238,7 +256,9 @@ def validate_user(username, password):
             return 'Password is incorrect'
     else:
         return 'User does not exist'
-
+'''
+function that adds items to the corresponding user's user_items list
+'''
 def add_items_to_corresponding_profiles(items):
     for item in items:
         username = item.username
@@ -255,7 +275,9 @@ def valid_input_int_value(integer_input):
         raise ValueError("Your response has to be either 1 or 2")
     return integer_input
 
-
+'''
+Mock database created 
+'''
 # All users
 victor = User("victor@whereever.com", "a12341231", "victorandresvega")
 josue = User("josue@whereever.com", "b5678567857", "josueestr")

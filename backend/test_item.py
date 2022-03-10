@@ -26,11 +26,16 @@ class testItem(unittest.TestCase):
         self.assertEqual(self.item7.image, "../images/running_jacket_green.png")
         self.assertEqual(self.item7.username, self.user.get_username())
     def test01_init_types(self):
-        self.assertRaises(TypeError, Item, False,0.00,"aa","aa","aa","aa","aa",self.user)
-        self.assertRaises(TypeError, Item, "aa",0,"aa","aa","aa","aa","aa",self.user)
-        self.assertRaises(TypeError, Item, "aa",0.00,False,"aa","aa","aa","aa",self.user)
-        self.assertRaises(TypeError, Item, "aa",0.00,"aa",False,"aa","aa","aa",self.user)
-        self.assertRaises(TypeError, Item, "aa",0.00,"aa","aa",False,"aa","aa",self.user)
-        self.assertRaises(TypeError, Item, "aa",0.00,"aa","aa","aa",False,"aa",self.user)
-        self.assertRaises(TypeError, Item, "aa",0.00,"aa","aa","aa","aa",False,self.user)
-        self.assertRaises(TypeError, Item, "aa",0.00,"aa","aa","aa","aa","aa",False)
+        self.assertRaises(TypeError, Item, False,0.00,"XXS","aa","Men","aa","aa",self.user)
+        self.assertRaises(TypeError, Item, "aa",0,"XS","aa","aa","Women","aa",self.user)
+        self.assertRaises(TypeError, Item, "aa",0.00,False,"aa","Men","aa","aa",self.user)
+        self.assertRaises(TypeError, Item, "aa",0.00,"S",False,"Women","aa","aa",self.user)
+        self.assertRaises(TypeError, Item, "aa",0.00,"M","aa",False,"aa","aa",self.user)
+        self.assertRaises(TypeError, Item, "aa",0.00,"L","aa","Men",False,"aa",self.user)
+        self.assertRaises(TypeError, Item, "aa",0.00,"XL","aa","Women","aa",False,self.user)
+        self.assertRaises(TypeError, Item, "aa",0.00,"XXL","aa","Men","aa","aa",False)
+    def test02_init_values(self):
+        self.assertRaises(ValueError, Item, "",0.00,"XXS","aa","Men","aa","aa",self.user)  # String len
+        self.assertRaises(ValueError, Item, "aa",-1337.00,"XS","aa","Women","aa","aa",self.user)  # Negative number
+        self.assertRaises(ValueError, Item, "aa",0.00,"S","aa","chair","aa","aa",self.user)  # Gender
+        self.assertRaises(ValueError, Item, "aa",0.00,"plant","aa","Men","aa","aa",self.user)  # Size
