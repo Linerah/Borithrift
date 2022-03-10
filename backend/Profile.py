@@ -1,5 +1,17 @@
 from User import User
 from item import Item
+"""
+    Class is in charge of managing and creating user profiles which contains their username, ratings, 
+    the amount of raters that have reviewed this user and the profile image URL. It also contains the items
+    the user is currently selling 
+
+
+    Attrbibutes:
+        username (str): username of user
+        ratings(float): is the average rating given by all the raters that have reviewed this user
+        raters_amount (int): amount of raters that have reviewed this user upon buying from them.
+        profile_image (str): Contains the URL of the profile picture of the user.
+        """
 class Profile():
     def __init__(self,username, ratings,raters_amount, profile_image):
         # super().__init__(email, password,username,user_type)
