@@ -116,7 +116,7 @@ def buy_or_sell(user):
             item_image= input("Image URL:")
             # def __init__(self, name, price, size, style, gender, description, image, seller):
             item_to_add= Item(name_of_item,price_of_item,size_of_item,style_of_item,item_gender,description_of_item,item_image,user)
-            user_profile.Add_Item_to_Sell(item_to_add)
+            user_profile._Add_Item_to_Sell(item_to_add)
             all_items.append(item_to_add)
             clear_console()
             get_user_items(user_profile)
@@ -162,17 +162,37 @@ def is_float(values):
     return count <= 1
 
 def register():
-    new_user=input("Select a username:\n")
-    new_pass=input("Select a password:\n")
-    new_email=input("Email:\n")
-    return validate_username(new_user, new_pass, new_email)
-
-def validate_username(username, password, email):
-    if(username in all_users):
-        return "Username already exists"
-    else:
-        return User(email, password, username)
-
+    new_username=""
+    new_pass=""
+    new_email=""
+    
+    while(not new_username):
+        try:
+            new_username=input("Select a username:\n")
+            if(new_username in all_users):
+                new_username=""
+                print("Username already exists")
+            new_user=User("validemail@gmail.com","ValidPassword1",new_username)
+        except:
+            print("Invalid entry! username has to be unique and must be between 3-20 characters long and not contain any special characters")
+            new_username=""
+            
+    
+    while(not new_pass):
+        try:
+            new_pass=input("Select a password:\n")
+            new_user=User("validemail@gmail.com",new_pass,new_username)
+        except:
+            print("Invalid entry! Password must be at least 8 characters long and must contain at least 1 letter and 1 number")
+            new_pass=""
+    while(not new_email):
+        try:
+            new_email=input("Email:\n")
+            new_user=User(new_email,new_pass,new_username)
+        except:
+            print("Invalid format for email")
+            new_email=""      
+    return User(new_email, new_pass, new_username)
 def login():
     current_user=input("Username:")
     current_pass=input("Password:")
