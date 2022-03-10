@@ -124,7 +124,7 @@ def buy_or_sell(user):
         elif(action=="2"):
             item_to_remove=-1
             get_user_items(user_profile)
-            while(item_to_remove<0 or item_to_remove>len(user_profile.user_items)-1):
+            while(item_to_remove<=0 or item_to_remove>len(user_profile.user_items)-1):
                 try:
                     item_to_remove= int(input("Select Item to Remove by its number on list:"))
                 except:
