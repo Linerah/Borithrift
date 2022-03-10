@@ -38,7 +38,7 @@ class Profile():
             raise ValueError("Cannot be type None")
         if(type(item) != Item):
             raise TypeError("object has to be of type Item")
-        if(self.username != item.user):
+        if(self.username != item.username):
             raise ValueError("Incorrect Owner")
         self.user_items.append(item)
     def _Remove_Item(self,item):
