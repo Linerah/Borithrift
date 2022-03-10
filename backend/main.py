@@ -65,20 +65,21 @@ def buy_or_sell(user):
         user_profile = all_profiles[user.username]
         show_total_items(all_items,user)
         item_to_buy=-1
-        while(item_to_buy<0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
+        while(item_to_buy<=0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
                 try:
                     item_to_buy= int(input("Select Item to Buy by its number on list:"))
-                    if (item_to_buy<0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
+                    if (item_to_buy<=0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
                         print("Option not valid")
                 except:
                     print("Option not valid")
         counter=0
-        for i in range(len(all_items)):
-            
+        for i in range(len(all_items)):        
             if(all_items[i].username!=current_user.username):
                 counter+=1
+                
             if counter == item_to_buy:
                 item_to_buy=i
+                break
         item=all_items[item_to_buy]
         seller=all_profiles[item.username]
         seller._Remove_Item(item)
@@ -116,7 +117,7 @@ def buy_or_sell(user):
             item_image= input("Image URL:")
             # def __init__(self, name, price, size, style, gender, description, image, seller):
             item_to_add= Item(name_of_item,price_of_item,size_of_item,style_of_item,item_gender,description_of_item,item_image,user)
-            user_profile.Add_Item_to_Sell(item_to_add)
+            user_profile._Add_Item_to_Sell(item_to_add)
             all_items.append(item_to_add)
             clear_console()
             get_user_items(user_profile)
@@ -124,7 +125,7 @@ def buy_or_sell(user):
         elif(action=="2"):
             item_to_remove=-1
             get_user_items(user_profile)
-            while(item_to_remove<0 or item_to_remove>len(user_profile.user_items)-1):
+            while(item_to_remove<=0 or item_to_remove>len(user_profile.user_items)-1):
                 try:
                     item_to_remove= int(input("Select Item to Remove by its number on list:"))
                 except:
@@ -162,17 +163,37 @@ def is_float(values):
     return count <= 1
 
 def register():
-    new_user=input("Select a username:\n")
-    new_pass=input("Select a password:\n")
-    new_email=input("Email:\n")
-    return validate_username(new_user, new_pass, new_email)
-
-def validate_username(username, password, email):
-    if(username in all_users):
-        return "Username already exists"
-    else:
-        return User(email, password, username)
-
+    new_username=""
+    new_pass=""
+    new_email=""
+    
+    while(not new_username):
+        try:
+            new_username=input("Select a username:\n")
+            if(new_username in all_users):
+                new_username=""
+                print("Username already exists")
+            new_user=User("validemail@gmail.com","ValidPassword1",new_username)
+        except:
+            print("Invalid entry! username has to be unique and must be between 3-20 characters long and not contain any special characters")
+            new_username=""
+            
+    
+    while(not new_pass):
+        try:
+            new_pass=input("Select a password:\n")
+            new_user=User("validemail@gmail.com",new_pass,new_username)
+        except:
+            print("Invalid entry! Password must be at least 8 characters long and must contain at least 1 letter and 1 number")
+            new_pass=""
+    while(not new_email):
+        try:
+            new_email=input("Email:\n")
+            new_user=User(new_email,new_pass,new_username)
+        except:
+            print("Invalid format for email")
+            new_email=""      
+    return User(new_email, new_pass, new_username)
 def login():
     current_user=input("Username:")
     current_pass=input("Password:")
