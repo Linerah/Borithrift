@@ -31,6 +31,11 @@ class Profile():
         self.user_items = []
         self.ratings = ratings
         self.profile_image=profile_image
+    '''
+    function that takes in a new rating for the seller from which the item was bought and updates that user's rating
+    taking into account the number of their previous raters and rating. It then returns the updated rating of that seller
+    in two decimal places
+    '''
     def _Review_Score(self, new_review):
         if(type(self.ratings)==None):
             raise ValueError
@@ -44,6 +49,9 @@ class Profile():
         self.raters_amount=self.raters_amount+1
         self.ratings=(total_ratings+new_review)/self.raters_amount
         return round(self.ratings,2)
+    '''
+    Function that takes an Item that the user wants to add to the items they are currently selling and updates their list of items
+    '''
     def _Add_Item_to_Sell(self,item):
         
         if(type(item)==None):
@@ -53,6 +61,10 @@ class Profile():
         if(self.username != item.username):
             raise ValueError("Incorrect Owner")
         self.user_items.append(item)
+    '''
+    Function that takes in an Item and deletes it from the user's list of items on sale, this is done when a 
+    user chooses to stop selling and item or when an item is bought
+    '''
     def _Remove_Item(self,item):
         if(type(item)==None):
             raise ValueError("Cannot be type None")
