@@ -54,7 +54,7 @@ def show_total_items(total_items,username):
             counter+=1
             print(f'{counter}. {total_items[i]}')
             user=all_profiles[total_items[i].username]
-            print(f"   Sold by: {user.username} {round(user.reviews,2)} stars")
+            print(f"   Sold by: {user.username} {round(user.ratings,2)} stars")
 
     pass
 
@@ -130,7 +130,7 @@ def buy_or_sell(user):
                     item_to_remove= int(input("Select Item to Remove by its number on list:"))
                 except:
                     print("Option not valid")
-            user_profile.Remove_Item(user_profile.user_items[item_to_remove-1])
+            user_profile._Remove_Item(user_profile.user_items[item_to_remove-1])
             all_items.remove(user_profile.user_items[item_to_remove-1])
             clear_console()
             print('The item was removed successfully')
