@@ -34,3 +34,8 @@ class testItem(unittest.TestCase):
         self.assertRaises(TypeError, Item, "aa",0.00,"L","aa","Men",False,"aa",self.user)
         self.assertRaises(TypeError, Item, "aa",0.00,"XL","aa","Women","aa",False,self.user)
         self.assertRaises(TypeError, Item, "aa",0.00,"XXL","aa","Men","aa","aa",False)
+    def test02_init_values(self):
+        self.assertRaises(ValueError, Item, "",0.00,"XXS","aa","Men","aa","aa",self.user)  # String len
+        self.assertRaises(ValueError, Item, "aa",-1337.00,"XS","aa","Women","aa","aa",self.user)  # Negative number
+        self.assertRaises(ValueError, Item, "aa",0.00,"S","aa","chair","aa","aa",self.user)  # Gender
+        self.assertRaises(ValueError, Item, "aa",0.00,"plant","aa","Men","aa","aa",self.user)  # Size
