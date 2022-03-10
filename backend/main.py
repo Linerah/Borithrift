@@ -65,7 +65,7 @@ def buy_or_sell(user):
         user_profile = all_profiles[user.username]
         show_total_items(all_items,user)
         item_to_buy=-1
-        while(item_to_buy<0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
+        while(item_to_buy<=0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
                 try:
                     item_to_buy= int(input("Select Item to Buy by its number on list:"))
                     if (item_to_buy<=0 or item_to_buy>len(all_items)-len(user_profile.user_items)):
