@@ -54,7 +54,7 @@ def show_total_items(total_items,username):
             counter+=1
             print(f'{counter}. {total_items[i]}')
             user=all_profiles[total_items[i].username]
-            print(f"   Sold by: {user.username} {round(user.reviews,2)} stars")
+            print(f"   Sold by: {user.username} {round(user.ratings,2)} stars")
 
     pass
 

@@ -1,5 +1,17 @@
 from User import User
 from item import Item
+"""
+    Class is in charge of managing and creating user profiles which contains their username, ratings, 
+    the amount of raters that have reviewed this user and the profile image URL. It also contains the items
+    the user is currently selling 
+
+
+    Attrbibutes:
+        username (str): username of user
+        ratings(float): is the average rating given by all the raters that have reviewed this user
+        raters_amount (int): amount of raters that have reviewed this user upon buying from them.
+        profile_image (str): Contains the URL of the profile picture of the user.
+        """
 class Profile():
     def __init__(self,username, ratings,raters_amount, profile_image):
         # super().__init__(email, password,username,user_type)
@@ -20,6 +32,10 @@ class Profile():
         self.ratings = ratings
         self.profile_image=profile_image
     def _Review_Score(self, new_review):
+        if(type(self.ratings)==None):
+            raise ValueError
+        if(type(new_review)==None):
+            raise ValueError("Cannot be type None")
         if (type(new_review) != int):
             raise TypeError("ratings must be an integer")
         if (new_review<0) or (new_review>5):
@@ -27,11 +43,19 @@ class Profile():
         total_ratings=self.raters_amount*self.ratings
         self.raters_amount=self.raters_amount+1
         self.ratings=(total_ratings+new_review)/self.raters_amount
+        return round(self.ratings,2)
     def _Add_Item_to_Sell(self,item):
+        
+        if(type(item)==None):
+            raise ValueError("Cannot be type None")
         if(type(item) != Item):
             raise TypeError("object has to be of type Item")
+        if(self.username != item.username):
+            raise ValueError("Incorrect Owner")
         self.user_items.append(item)
     def _Remove_Item(self,item):
+        if(type(item)==None):
+            raise ValueError("Cannot be type None")
         if(type(item) != Item):
             raise TypeError("object has to be of type Item")
         if(item not in self.user_items):
