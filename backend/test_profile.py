@@ -10,6 +10,8 @@ class TestProfile(unittest.TestCase):
         self.josue_profile = Profile("josueestr", 3.75, 15,"../flag.png")
         self.kevin_profile = Profile("kevilin", 4.45, 38,"../flag.png")
         self.victor = User("victor@whereever.com", "a12341231", "victorandresvega")
+        self.victor_item1 = Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png", self.victor)
+
     
     # Tear Down will run even if a method succeeded or not
     # TODO: we could remove the tear dow, because we are not actually disposing
@@ -83,8 +85,7 @@ class TestProfile(unittest.TestCase):
 
         # TODO: the test below fails
         # should not add item if it is owned by another user
-        victor_item1 = Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png", self.victor)
-        self.assertRaises(ValueError, self.kevin_profile._Add_Item_to_Sell(victor_item1))
+        self.assertRaises(ValueError, self.kevin_profile._Add_Item_to_Sell(self.victor_item1))
         pass
 
     def test_remove_item(self):
@@ -96,13 +97,12 @@ class TestProfile(unittest.TestCase):
 
         # TODO: the test below fails
         # should not remove an item if it is owned by another user
-        victor_item1 = Item("Yosemite Tee",15.00,"L","Sportswear","Men","Basic T-shirt for everyday use","../images/yosemite_tee.png", self.victor)
-        self.assertRaises(ValueError, self.kevin_profile._Remove_Item(victor_item1))
+        self.assertRaises(ValueError, self.kevin_profile._Remove_Item(self.victor_item1))
 
         # TODO: the test below fails
         # should not remove an item if it is not part of items 
         kevin_item1 = Item("White Tee",10.00,"S","Casual","Men","Basic T-shirt for everyday use","../images/white_shirt.png", kevin)
-        self.assertRaises(ValueError, self.kevin_profile._Remove_Item(victor_item1))
+        self.assertRaises(ValueError, self.kevin_profile._Remove_Item(self.victor_item1))
 
     def test_review_score(self):
         # new_review should be of type integer

@@ -22,7 +22,7 @@ class Item:
         self.gender = self.valid_gender_value(self.valid_string_type(gender))
         self.description = self.valid_string_length(self.valid_string_type(description), 1, 150)
         self.image = self.valid_string_length(self.valid_string_type(image), 1, 150)
-        self.username = self.valid_user_type(user).username
+        self.username = self.valid_user_type(user).username # to avoid testing if the username is real
 
     def valid_string_type(self, string_input):
         # checking to see if input is a string
