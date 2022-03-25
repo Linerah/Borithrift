@@ -35,8 +35,13 @@ def greet():
             if(type(user) == str):
                 clear_console()
                 print(user)
-
+        
         new_user_profile=Profile(user.username,0.0,0,"")
+        #new_user_profile=Profile.create_new(user.username,0.0,0,"")
+        
+#         Profile.save_profile(new_user_profile)   
+#         Profile.create_new_profile(user) # is a Profile
+        
         all_users[user.get_username()] = user 
         all_profiles[user.get_username()] = new_user_profile
         return user
@@ -248,14 +253,20 @@ def login():
 function in charge of making sure that the username and password are a match for the registered users
 '''
 def validate_user(username, password):
-    if(username in all_users):
-        user = all_users[username]
-        if(user.compare_password(password)):
-            return user
-        else:
-            return 'Password is incorrect'
+    
+    if User.user_exists(username):
+        user = User.get_user(username) # type of user is User
     else:
-        return 'User does not exist'
+        return 'Password is incorrect'
+        
+#     if(username in all_users):
+#         user = all_users[username]
+#         if(user.compare_password(password)):
+#             return user
+#         else:
+#             return 'Password is incorrect'
+#     else:
+#         return 'User does not exist'
 '''
 function that adds items to the corresponding user's user_items list
 '''
