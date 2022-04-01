@@ -7,11 +7,11 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Borithrift</title>
             <script src="https://cdn.tailwindcss.com"></script>
-            <link rel="stylesheet" href="style.css">
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
         </head>
     <body>
         <header class="center">
-            <img src="images/Borithrift-500.png" alt="Borithrift logo">
+            <img src="./static/images/Borithrift-500.png" alt="Borithrift logo">
         </header>
         <div class="center">
             <form>
@@ -23,7 +23,7 @@
         </div>
         <div class="sign-in-button-container">
             <button class="general-button text-font-MaryKate">
-                <a href="landing.html">Sign in to Borithrift</a>
+                <a href="/landing">Sign in to Borithrift</a>
             </button>
         </div>
         <footer class="footer-container">

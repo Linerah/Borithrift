@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borithrift</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
     <script>
         tailwind.config = {
           theme: {
@@ -37,15 +37,15 @@
 
         <header class="flex h-header bg-[#183a1d] bg-opacity-70 ">  
             <div id="logo" class="flex w-1/2 items-center">
-                <img class="pl-3 h-52 rounded" src="images/Borithrift-1000.png" alt="puerto rico flag" srcset="">
+                <img class="pl-3 h-52 rounded" src="./static/images/Borithrift-1000.png" alt="puerto rico flag" srcset="">
             </div>
             <div class="flex items-center w-1/2">
                 <div class="user-img-container ">
                     <img class="user-img" src="https://avatars.dicebear.com/api/avataaars/kevin%20linera.svg" alt="person" srcset="">
                 </div>
                 <!-- need to change it so the text stays inside the container, when we change size  -->
-                <div class="header-button-container"><button class="header-button"><a href="Profile.html">Profile</a></button></div>
-                <div class="header-button-container"><button class="header-button"> <a href="index.html">Logout</a></button></div>
+                <div class="header-button-container"><button class="header-button"><a href="/profile">Profile</a></button></div>
+                <div class="header-button-container"><button class="header-button"> <a href="/index">Logout</a></button></div>
             
             </div>
         </header>
@@ -55,7 +55,7 @@
             
                 <div class="item-outer-container drop-shadow-xl">
                     
-                    <img class="item-image w-40" src="images/yosemite_tee.png" alt="grey shirt" srcset="">
+                    <img class="item-image w-40" src="./static/images/yosemite_tee.png" alt="grey shirt" srcset="">
                         
                     <div class="item-info-container">
                         <div class="item-name">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="item-outer-container drop-shadow-xl">
                     
-                    <img class="item-image w-40" src="images/japan_tee.png" alt="grey shirt" srcset="">
+                    <img class="item-image w-40" src="./static/images/japan_tee.png" alt="grey shirt" srcset="">
                         
                     <div class="item-info-container">
                         <div class="item-name">
@@ -115,7 +115,7 @@
                 </div>
                 <div class="item-outer-container drop-shadow-xl">
                     
-                    <img class="item-image w-40" src="images/running_jacket_black.png" alt="grey shirt" srcset="">
+                    <img class="item-image w-40" src="./static/images/running_jacket_black.png" alt="grey shirt" srcset="">
                         
                     <div class="item-info-container">
                         <div class="item-name">
@@ -145,7 +145,7 @@
                 </div>
                 <div class="item-outer-container drop-shadow-xl">
                     
-                    <img class="item-image w-40" src="images/spreed_energy_tee.png" alt="grey shirt" srcset="">
+                    <img class="item-image w-40" src="./static/images/spreed_energy_tee.png" alt="grey shirt" srcset="">
                         
                     <div class="item-info-container">
                         <div class="item-name">
@@ -175,7 +175,7 @@
                 </div>
                 <div class="item-outer-container drop-shadow-xl">
                     
-                    <img class="item-image w-40" src="images/running_jacket_green.png" alt="grey shirt" srcset="">
+                    <img class="item-image w-40" src="./static/images/running_jacket_green.png" alt="grey shirt" srcset="">
                         
                     <div class="item-info-container">
                         <div class="item-name">

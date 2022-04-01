@@ -1,4 +1,9 @@
-Flask==2.0.2
-gunicorn==19.9.0
-flask-pymongo==3.12.1
-dnspython==2.1.0
+click==8.0.4
+dnspython==2.2.1
+Flask==2.0.3
+Flask-PyMongo==2.3.0
+itsdangerous==2.1.1
+Jinja2==3.0.3
+MarkupSafe==2.1.1
+pymongo==4.0.2
+Werkzeug==2.0.3

@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-    <link href="Profile.css" rel="stylesheet" id="bootstrap-css">
-    <link href="style.css" rel="stylesheet" id="bootstrap-css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/Profile.css') }}">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +36,7 @@
             <button
                 style="margin-top:-5%;margin-left:500px;margin-right:-300px;float:right;width: 100px; height: 50px; font-size: large;color:rgba(24, 58, 29);"><i
                     class="fa fa-home"></i> <a style="text-decoration: none;color:rgba(24, 58, 29);;"
-                    href="landing.html">Home</a></button>
+                    href="/landing">Home</a></button>
 
 
         </div>

@@ -26,7 +26,7 @@ app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'database'
 
 # URI of database
-app.config['MONGO_URI'] = "<replace_with_real_mongodb_url>"
+app.config['MONGO_URI'] = "mongodb+srv://admin:uEu9OcSgs1v42KG2@cluster0.3kizj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app)
@@ -37,3 +37,12 @@ mongo = PyMongo(app)
 @app.route('/index')
 def index():
     return render_template('index.html')
+
+# LANDING Route
+@app.route('/landing')
+def landing():
+    return render_template('landing.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('Profile.html')
