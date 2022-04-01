@@ -1,4 +1,5 @@
 from User import User
+from app import mongo
 class Item:
     """
     Creates an item that stores its values, like name, price, size, stype, gender, 
@@ -23,6 +24,24 @@ class Item:
         self.description = self.valid_string_length(self.valid_string_type(description), 1, 150)
         self.image = self.valid_string_length(self.valid_string_type(image), 1, 150)
         self.username = self.valid_user_type(user).username # to avoid testing if the username is real
+
+    @staticmethod
+    def create_item(name, price, size, style, gender, description, image, user):
+        item = Item(name, price, size, style, gender, description, image, user)
+        item_document = item.to_json()
+        collection = mongo.db.items
+        collection.insert_one(item_document)
+        return item
+    
+    @staticmethod
+    def get_item(name, username):
+        collection = mongo.db.items
+        item = collection.find_one({"name": name, "username": username})
+        return item
+
+    
+    def to_json(self):
+        return {'name': self.name, 'price': self.price, 'style': self.style, 'gender': self.gender, 'description': self.description, 'image': self.image, 'username': self.username}
 
     def valid_string_type(self, string_input):
         # checking to see if input is a string
