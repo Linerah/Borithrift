@@ -18,6 +18,9 @@ from flask import Flask
 from flask import render_template
 from flask import request, redirect
 from flask_pymongo import PyMongo
+from flask import session
+from User import User
+import secrets
 
 # -- Initialization section --
 app = Flask(__name__)
@@ -31,18 +34,49 @@ app.config['MONGO_URI'] = "mongodb+srv://admin:uEu9OcSgs1v42KG2@cluster0.3kizj.m
 #Initialize PyMongo
 mongo = PyMongo(app)
 
+# -- Session data --
+app.secret_key = secrets.token_urlsafe(16)
+
+# Fake users - DB
+victor = User("victor@whereever.com", "a12341231", "victorandresvega")
+josue = User("josue@whereever.com", "b5678567857", "josueestr")
+kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
+all_users= {"victorandresvega": victor,"josueestr": josue,"kevilin": kevin}
+
 # -- Routes section --
-# INDEX Route
+# LOGIN Route
 @app.route('/')
-@app.route('/index')
-def index():
-    return render_template('index.html')
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('index.html')
+    else:
+        username = request.form['username']
+        if username not in all_users:
+            return 'Invalid username or password.'
+        else:
+            user = all_users[username] 
+            password = request.form['password']
+            password_correct = user.compare_password(password)
+            if(password_correct):
+                session['username'] = request.form['username']
+                return redirect('/landing') 
+            else:
+               return 'Invalid username or password.' 
+   
+
+# LOGOUT Route
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/landing')
 
 # LANDING Route
 @app.route('/landing')
 def landing():
     return render_template('landing.html')
 
+# PROFILE Route
 @app.route('/profile')
 def profile():
     return render_template('Profile.html')

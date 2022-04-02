@@ -39,15 +39,22 @@
             <div id="logo" class="flex w-1/2 items-center">
                 <img class="pl-3 h-52 rounded" src="./static/images/Borithrift-1000.png" alt="puerto rico flag" srcset="">
             </div>
-            <div class="flex items-center w-1/2">
+            {% if session %}
+            <div class="flex flex-row-reverse items-center ml-auto">
                 <div class="user-img-container ">
-                    <img class="user-img" src="https://avatars.dicebear.com/api/avataaars/kevin%20linera.svg" alt="person" srcset="">
+                    <img class="user-img" src="https://avatars.dicebear.com/api/avataaars/{{ session['username'] }}%20.svg" alt="person" srcset="">
                 </div>
                 <!-- need to change it so the text stays inside the container, when we change size  -->
                 <div class="header-button-container"><button class="header-button"><a href="/profile">Profile</a></button></div>
-                <div class="header-button-container"><button class="header-button"> <a href="/index">Logout</a></button></div>
-            
+                <div class="header-button-container"><button class="header-button"> <a href="/logout">Logout</a></button></div>
             </div>
+            {% else %}
+            <div class="flex flex-row-reverse items-center w-1/2">
+                <div class="header-button-container"><button class="header-button"><a href="/login">Login</a></button></div>
+                <div class="header-button-container"><button class="header-button"> <a href="/signup">Signup</a></button></div>
+            </div>
+            {% endif %}
+            
         </header>
         <div class="flex h-main w-auto">
             <div class="flex pl-3 pr-3 flex-wrap content-start w-4/5 overflow-scroll z-10">
