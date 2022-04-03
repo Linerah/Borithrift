@@ -21,18 +21,24 @@ from flask_pymongo import PyMongo
 from flask import session
 from User import User
 import secrets
+import certifi
+
+from item import Item
 
 # -- Initialization section --
 app = Flask(__name__)
 
 # name of database
-app.config['MONGO_DBNAME'] = 'database'
+app.config['MONGO_DBNAME'] = 'boricuas'
 
 # URI of database
 app.config['MONGO_URI'] = "mongodb+srv://admin:uEu9OcSgs1v42KG2@cluster0.3kizj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 #Initialize PyMongo
-mongo = PyMongo(app)
+mongo = PyMongo(app, tlsCAFile=certifi.where())
+
+# run this the first time, to create the collection
+# mongo.db.create_collection('items')
 
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
@@ -42,6 +48,16 @@ victor = User("victor@whereever.com", "a12341231", "victorandresvega")
 josue = User("josue@whereever.com", "b5678567857", "josueestr")
 kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
 all_users= {"victorandresvega": victor,"josueestr": josue,"kevilin": kevin}
+
+# department set:
+departments = {"women", "men"}
+
+# filter list:
+filters = {'new','tops', 'graphic tees', 'coats + jackets', 'bottoms', 'jeans', 'activewear', 'shoes','vintage', 'bottoms', 'sale'}
+
+# top sellers this week:
+top_sellers = {'victorvega', 'josueestrada', 'kevinlinera'}
+
 
 # -- Routes section --
 # LOGIN Route
@@ -72,11 +88,28 @@ def logout():
     return redirect('/landing')
 
 # LANDING Route
-@app.route('/landing')
+@app.route('/landing', methods = ['GET', 'POST'])
 def landing():
-    return render_template('landing.html')
+    if request.method == 'GET':
+        items = Item.get_items(mongo)
+    else:
+        items = Item.get_filtered_items(mongo, request.form)
+    return render_template('landing.html', departments=departments, filters=filters, top_sellers=top_sellers, items=items)
 
 # PROFILE Route
 @app.route('/profile')
 def profile():
     return render_template('Profile.html')
+
+
+@app.route('/seed_items')
+def seed_items():
+    # collection = mongo.db.items
+    # document = {'test': 'test2'}
+    # collection.insert_one(document)
+    # Item.create_item('Yosemite Tee', 15.0, 'M', 'vintage', 'Men', 'its a tee', 'yosemite_tee.png', victor, mongo)
+    # Item.create_item('Japan Tee', 25.0, 'L', 'graphic tees', 'Men', 'its a tee', 'japan_tee.png', josue, mongo)
+    # Item.create_item('Running Jacket', 55.0, 'M', 'activewear', 'Men', 'its a tee', 'running_jacket_black.png', kevin, mongo)
+    # Item.create_item('Spread Energy Tee', 20.0, 'S', 'graphic tees', 'Men', 'its a tee', 'spreed_energy_tee.png', victor, mongo)
+    # Item.create_item('Gym Jacket', 45.0, 'S', 'activewear', 'Men', 'its a tee', 'running_jacket_green.png', kevin, mongo)
+    return 'Seeded succesfuly'

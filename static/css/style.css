@@ -11,6 +11,7 @@ body {
     margin: 2.75rem 0.75rem 0 0.75rem;
     border-radius: 0.25rem;
     height: 13rem;
+    width: 22rem;
     background-color:rgba(24, 58, 29, 0.7);
 }
 .item-image{
@@ -19,6 +20,8 @@ body {
 }
 .item-info-container{
     margin: 0.75rem 0 0 0.75rem;
+    width: 100%;
+    padding-left: 00.125rem;
 }
 .item-name{
     font-weight: bold;

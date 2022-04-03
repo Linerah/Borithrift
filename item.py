@@ -1,5 +1,4 @@
 from User import User
-from app import mongo
 class Item:
     """
     Creates an item that stores its values, like name, price, size, stype, gender, 
@@ -26,22 +25,39 @@ class Item:
         self.username = self.valid_user_type(user).username # to avoid testing if the username is real
 
     @staticmethod
-    def create_item(name, price, size, style, gender, description, image, user):
+    def create_item(name, price, size, style, gender, description, image, user, database):
         item = Item(name, price, size, style, gender, description, image, user)
         item_document = item.to_json()
-        collection = mongo.db.items
+        collection = database.db.items
+        print(item_document)
         collection.insert_one(item_document)
         return item
     
     @staticmethod
-    def get_item(name, username):
-        collection = mongo.db.items
-        item = collection.find_one({"name": name, "username": username})
-        return item
+    def get_items(database):
+        collection = database.db.items
+        items = collection.find()
+        return list(items)
 
-    
+    @staticmethod
+    def get_filtered_items(database, filters):
+        collection = database.db.items
+        filtered_items = []
+        for filter in filters.keys():
+            if(filter != 'gender'):
+                filtered_items.append(filter)
+        if('gender' in filters.keys()):
+            if(len(filtered_items) == 0):
+                return list(collection.find({'gender': filters['gender']}))
+            else:
+                return list(collection.find({'gender': filters['gender'], 'style':{'$in': filtered_items}}))
+        else:
+            if(len(filtered_items) == 0):
+                return []
+            return list(collection.find({'style':{'$in': filtered_items}}))
+
     def to_json(self):
-        return {'name': self.name, 'price': self.price, 'style': self.style, 'gender': self.gender, 'description': self.description, 'image': self.image, 'username': self.username}
+        return {'name': self.name, 'size': self.size , 'price': self.price, 'style': self.style, 'gender': self.gender, 'description': self.description, 'image': self.image, 'username': self.username}
 
     def valid_string_type(self, string_input):
         # checking to see if input is a string

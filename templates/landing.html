@@ -59,230 +59,89 @@
         <div class="flex h-main w-auto">
             <div class="flex pl-3 pr-3 flex-wrap content-start w-4/5 overflow-scroll z-10">
 
-            
+                {% for item in items %}
                 <div class="item-outer-container drop-shadow-xl">
                     
-                    <img class="item-image w-40" src="./static/images/yosemite_tee.png" alt="grey shirt" srcset="">
+                    <img class="item-image w-40" src="./static/images/{{ item['image'] }}" alt="{{ item['name'] }}" srcset="">
                         
                     <div class="item-info-container">
                         <div class="item-name">
-                            Yosemite Tee
+                            {{ item['name'] }}
                         </div>
                         <div class="item-price">
-                            $15.00
+                            ${{ item['price'] }}
                         </div>
                         <div class="item-description">
                             <div>
-                                <div class="general-button-container "><button class="general-button">S</button></div>
+                                <div class="general-button-container "><button class="general-button">{{ item['size'] }}</button></div>
                             </div>
-                            <div>
-                                <div class="general-button-container-pressed"><button class="general-button-pressed">M</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container "><button class="general-button ">L</button></div>
-                            </div>
-                            <div>
-                                <div class=" general-button-container "><button class="general-button ">XL</button></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row-reverse"><div>
-                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
-                        </div></div>
-                    </div> 
-                </div>
-                <div class="item-outer-container drop-shadow-xl">
-                    
-                    <img class="item-image w-40" src="./static/images/japan_tee.png" alt="grey shirt" srcset="">
-                        
-                    <div class="item-info-container">
-                        <div class="item-name">
-                            Japan Tee
-                        </div>
-                        <div class="item-price">
-                            $15.00
-                        </div>
-                        <div class="item-description">
-                            <div>
-                                <div class="general-button-container "><button class="general-button">S</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container-pressed"><button class="general-button-pressed">M</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container "><button class="general-button ">L</button></div>
-                            </div>
-                            <div>
-                                <div class=" general-button-container "><button class="general-button ">XL</button></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row-reverse"><div>
-                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
-                        </div></div>
-                    </div> 
-                </div>
-                <div class="item-outer-container drop-shadow-xl">
-                    
-                    <img class="item-image w-40" src="./static/images/running_jacket_black.png" alt="grey shirt" srcset="">
-                        
-                    <div class="item-info-container">
-                        <div class="item-name">
-                            Running Jacket
-                        </div>
-                        <div class="item-price">
-                            $55.00
-                        </div>
-                        <div class="item-description">
-                            <div>
-                                <div class="general-button-container "><button class="general-button">S</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container-pressed"><button class="general-button-pressed">M</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container "><button class="general-button ">L</button></div>
-                            </div>
-                            <div>
-                                <div class=" general-button-container "><button class="general-button ">XL</button></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row-reverse"><div>
-                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
-                        </div></div>
-                    </div> 
-                </div>
-                <div class="item-outer-container drop-shadow-xl">
-                    
-                    <img class="item-image w-40" src="./static/images/spreed_energy_tee.png" alt="grey shirt" srcset="">
-                        
-                    <div class="item-info-container">
-                        <div class="item-name">
-                            Spread Energy Tee
-                        </div>
-                        <div class="item-price">
-                            $20.00
-                        </div>
-                        <div class="item-description">
-                            <div>
-                                <div class="general-button-container "><button class="general-button">S</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container-pressed"><button class="general-button-pressed">M</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container "><button class="general-button ">L</button></div>
-                            </div>
-                            <div>
-                                <div class=" general-button-container "><button class="general-button ">XL</button></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row-reverse"><div>
-                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
-                        </div></div>
-                    </div> 
-                </div>
-                <div class="item-outer-container drop-shadow-xl">
-                    
-                    <img class="item-image w-40" src="./static/images/running_jacket_green.png" alt="grey shirt" srcset="">
-                        
-                    <div class="item-info-container">
-                        <div class="item-name">
-                            Gym Jacket
-                        </div>
-                        <div class="item-price">
-                            $45.00
-                        </div>
-                        <div class="item-description">
-                            <div>
-                                <div class="general-button-container "><button class="general-button">S</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container-pressed"><button class="general-button-pressed">M</button></div>
-                            </div>
-                            <div>
-                                <div class="general-button-container "><button class="general-button ">L</button></div>
-                            </div>
-                            <div>
-                                <div class=" general-button-container "><button class="general-button ">XL</button></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row-reverse"><div>
-                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
-                        </div></div>
-                    </div> 
-                </div>
                 
-
+                        </div>
+                        <div class="flex flex-row-reverse"><div>
+                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
+                        </div></div>
+                    </div> 
+                </div>
+                {% endfor %}
 
             </div>
 
-            <div class="w-1/5 flex flex-col mt-11">
-                <div class="flex mb-3">
-                    <div class="tittle">Department: </div>
-                </div>
-                <div class=" flex flex-wrap w-full mt-3 mb-3"> 
-                    <div>
-                        <div class="general-button-container "><button class="general-button">Women</button></div>
-                    </div> 
-                    <div>
-                        <div class="general-button-container-pressed"><button class="general-button-pressed">Men</button></div>
+            <div  class="w-1/5 flex flex-col mt-11">
+                <form method="post" action="/landing">
+                    <div class="flex mb-3">
+                        <div class="tittle">Department: </div>
                     </div>
-                </div>     
-                <div class="flex mb-3">
-                    <div class="tittle">Browse by: </div>
-                </div>
-                <div class="w-full flex flex-wrap mt-3 mb-3">
-                    <div>
-                        <div class="general-button-container "><button class=" general-button">New</button></div>
+                    <div class="flex items-end flex-wrap w-full mt-3 mb-3">
+                        {% for department in departments %}
+                        <div>
+                            <input class="peer hidden" type="radio" name="gender" id="{{ department }}" value="{{ department }}">
+                            <div class="peer-checked:pb-1 general-button-container  pb-2">
+                                <div class="general-button">
+                                    <label for="{{ department }}" class="cursor-pointer">{{ department }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}      
+                    </div>  
+    
+                    <div class="flex mb-3">
+                        <div class="tittle">Browse by: </div>
                     </div>
-                    <div>
-                        <div class="general-button-container-pressed "><button class="general-button-pressed">Tops</button></div>
+                    <div class="w-full flex  items-end flex-wrap mt-3 mb-3">
+                        {% for filter in filters %}
+                        <div>
+                            <input class="peer hidden" type="checkbox" name="{{ filter }}" id="{{ filter }}" value="{{ filter }}">
+                            <div class="peer-checked:pb-1 general-button-container  pb-2">
+                                <div class="general-button">
+                                    <label for="{{ filter }}" class="cursor-pointer">{{ filter }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+    
+                        <input class="peer hidden" id="submit" type="submit" value="">
+                        <div class="general-button-container w-full">
+                            <div class="general-button w-full">
+                                <label class="cursor-pointer flex items-center justify-center w-full" for="submit">
+                                    Search
+                                </label>
+                            </div>
+                        </div>
+                             
                     </div>
-                    <div>
-                        <div class="general-button-container "><button class=" general-button">Graphic Tees</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container "><button class=" general-button">Coats + Jackets</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container "><button class=" general-button">Bottoms</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container "><button class=" general-button">Jeans</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container-pressed"><button class="general-button-pressed">Activewear</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container "><button class=" general-button">Shoes</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container "><button class="general-button">Vintage</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container "><button class="general-button">Bottoms</button></div>
-                    </div>
-                    <div>
-                        <div class="general-button-container "><button class="general-button">Sale</button></div>
-                    </div>
-                </div>
-                <div class="flex flex-col-reverse">
-                    <div class="general-button-container "><button class="general-button w-full">Search</button></div>
-                </div>
+                </form>
                 <div class="mt-6 flex flex-col">
                     <div class="tittle">Top sellers this week: </div>
                     <div class="flex mt-6">
+                        {% for seller in top_sellers %}
                         <div class="top-user-img-container">
-                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/victorvega.svg" alt="person" srcset="">
+                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/{{ seller }}.svg" alt="person" srcset="">
                         </div>
-                        <div class=" top-user-img-container">
-                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/josueestrada.svg" alt="person" srcset="">
-                        </div>
-                        <div class=" top-user-img-container">
-                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/kevinlinera.svg" alt="person" srcset="">
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 
