@@ -24,7 +24,7 @@ import secrets
 import certifi
 
 from item import Item
-
+from Profile import Profile
 # -- Initialization section --
 app = Flask(__name__)
 
@@ -32,7 +32,7 @@ app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'boricuas'
 
 # URI of database
-app.config['MONGO_URI'] = "mongodb+srv://admin:uEu9OcSgs1v42KG2@cluster0.3kizj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://SDS:Boricuas@cluster0.zc52h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app, tlsCAFile=certifi.where())
@@ -107,9 +107,16 @@ def seed_items():
     # collection = mongo.db.items
     # document = {'test': 'test2'}
     # collection.insert_one(document)
-    # Item.create_item('Yosemite Tee', 15.0, 'M', 'vintage', 'Men', 'its a tee', 'yosemite_tee.png', victor, mongo)
-    # Item.create_item('Japan Tee', 25.0, 'L', 'graphic tees', 'Men', 'its a tee', 'japan_tee.png', josue, mongo)
-    # Item.create_item('Running Jacket', 55.0, 'M', 'activewear', 'Men', 'its a tee', 'running_jacket_black.png', kevin, mongo)
-    # Item.create_item('Spread Energy Tee', 20.0, 'S', 'graphic tees', 'Men', 'its a tee', 'spreed_energy_tee.png', victor, mongo)
-    # Item.create_item('Gym Jacket', 45.0, 'S', 'activewear', 'Men', 'its a tee', 'running_jacket_green.png', kevin, mongo)
+    # Item.create_item('Yosemite Teefewewfew', 15.0, 'M', 'vintage', 'Men', 'its a tee', 'yosemite_tee.png', victor, mongo)
+    # Item.create_item('Japan Teefewewf', 25.0, 'L', 'graphic tees', 'Men', 'its a tee', 'japan_tee.png', josue, mongo)
+    # Item.create_item('Running Jackefewweft', 55.0, 'M', 'activewear', 'Men', 'its a tee', 'running_jacket_black.png', kevin, mongo)
+    # Item.create_item('Spread Energy Teefwefwe', 20.0, 'S', 'graphic tees', 'Men', 'its a tee', 'spreed_energy_tee.png', victor, mongo)
+    # Item.create_item('Gym Jacketfdsf', 45.0, 'S', 'activewear', 'Men', 'its a tee', 'running_jacket_green.png', kevin, mongo)
+    collection = mongo.db.Profiles
+    document = {'test': 'test2'}
+    collection.insert_one(document)
+    Profile.create_profile("victorandresvega", 5.0,10,"https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80", mongo)
+    Profile.create_profile('josueestr', 4.75, 20,"https://images.unsplash.com/photo-1594751543129-6701ad444259?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80" , mongo)
+    Profile.create_profile('kevilin', 4.50, 4,"https://i.etsystatic.com/15418561/c/2250/1788/0/230/il/f06c80/3233862560/il_340x270.3233862560_jwqd.jpg" , mongo)
+    
     return 'Seeded succesfuly'

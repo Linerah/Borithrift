@@ -36,6 +36,29 @@ class Profile():
     taking into account the number of their previous raters and rating. It then returns the updated rating of that seller
     in two decimal places
     '''
+    @staticmethod
+    def create_profile(username, rating, raters_amount, profile_image,database):
+        profile = Profile(username, rating, raters_amount, profile_image)
+        profile_document = profile.to_json()
+        collection = database.db.profiles
+        print(profile)
+        collection.insert_one(profile_document)
+        return profile
+
+    @staticmethod
+    def get_user_items(username,database):
+        collection = database.db.items
+        Items = collection.find_many({"user": username})
+        return Items
+    @staticmethod
+    def get_profile(username,database):
+        collection=database.db.Profiles
+        profile=collection.find_one({"username":username})
+        return profile
+        
+    def to_json(self):
+        return {'username': self.username, 'ratings': self.ratings , 'raters_amount': self.raters_amount, 'user_items': self.user_items, 'profile_image': self.profile_image}
+
     def _Review_Score(self, new_review):
         if(type(self.ratings)==None):
             raise ValueError

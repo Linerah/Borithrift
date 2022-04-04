@@ -44,7 +44,6 @@ color:orange;
     position:relative;
     max-width: 20%;
     max-height: 20%;
-    border-radius: 50%;
     border-style:ridge;
     border-image:round;
     border-width: 10px;
@@ -56,6 +55,7 @@ color:orange;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
+    border-radius: 100%;
 }
 .container{
     background: none;
@@ -145,3 +145,19 @@ body
     .demo:hover {
         opacity: 1;
     }
+.Profile-block{
+    width: 100vw; 
+    display: block; 
+    height: 100%; 
+    align-items: center;
+}
+button .Home{
+    margin-top:-5%;
+    margin-left:500px;
+    margin-right:-300px;
+    float:right;
+    width: 100px; 
+    height: 50px; 
+    font-size: large;
+    color:rgba(24, 58, 29);
+}
