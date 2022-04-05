@@ -97,9 +97,15 @@
                     <div class="row">
                     {% for item in user_items %}
                         <div class="column">
+                            
+                            <p>{{item['gender']}}'s' {{item['name']}}</p>
+                            <p>{{item['description']}}</p>
+                            <p>Size: {{item['size']}} </p>
+                           
                             <img class="demo cursor"
                                 src="{{item['image']}}"  
                                 style="width:100%" >
+                            
                             <p>${{item['price']}}</p>
                         </div>
                     {% endfor %}
