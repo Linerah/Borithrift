@@ -108,7 +108,23 @@ def profile():
         user_items=list(collection.find({"username":username}))
     else: 
         user_items=list(collection.find({"username":username}))
+        return redirect('/remove')
+        
+        
     return render_template('Profile.html',session=session,user_items=user_items,profile=profile)
+@app.route('/remove',methods = ['GET', 'POST'])
+def remove():
+
+    username=session.get('username')
+    collection=mongo.db.items
+    profile=Profile.get_profile(username,mongo)
+    if request.method == 'GET':
+        user_items=list(collection.find({"username":username}))
+    else:
+        item_to_remove=request.form["remove_item"]
+        collection.remove({"name":item_to_remove})
+        return redirect('/profile')
+    return render_template('RemoveItem.html',session=session,user_items=user_items,profile=profile)
 
 
 @app.route('/seed_items')
