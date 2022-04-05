@@ -14,6 +14,7 @@
 
 # ---- YOUR APP STARTS HERE ----
 # -- Import section --
+from typing import Collection
 from flask import Flask
 from flask import render_template
 from flask import request, redirect
@@ -29,10 +30,10 @@ from Profile import Profile
 app = Flask(__name__)
 
 # name of database
-app.config['MONGO_DBNAME'] = 'boricuas'
+app.config['MONGO_DBNAME'] = 'cluster0'
 
 # URI of database
-app.config['MONGO_URI'] = "mongodb+srv://SDS:Boricuas@cluster0.zc52h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://SDS:Boricuas@cluster0.zc52h.mongodb.net/myFirstDatabase?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app, tlsCAFile=certifi.where())
@@ -97,26 +98,47 @@ def landing():
     return render_template('landing.html', departments=departments, filters=filters, top_sellers=top_sellers, items=items)
 
 # PROFILE Route
-@app.route('/profile')
+@app.route('/profile',methods = ['GET', 'POST'])
 def profile():
-    return render_template('Profile.html')
+
+    username=session.get('username')
+    collection=mongo.db.items
+    profile=Profile.get_profile(username,mongo)
+    if request.method == 'GET':
+        user_items=list(collection.find({"username":username}))
+    else: 
+        user_items=list(collection.find({"username":username}))
+    return render_template('Profile.html',session=session,user_items=user_items,profile=profile)
 
 
 @app.route('/seed_items')
 def seed_items():
     # collection = mongo.db.items
-    # document = {'test': 'test2'}
-    # collection.insert_one(document)
-    # Item.create_item('Yosemite Teefewewfew', 15.0, 'M', 'vintage', 'Men', 'its a tee', 'yosemite_tee.png', victor, mongo)
-    # Item.create_item('Japan Teefewewf', 25.0, 'L', 'graphic tees', 'Men', 'its a tee', 'japan_tee.png', josue, mongo)
-    # Item.create_item('Running Jackefewweft', 55.0, 'M', 'activewear', 'Men', 'its a tee', 'running_jacket_black.png', kevin, mongo)
-    # Item.create_item('Spread Energy Teefwefwe', 20.0, 'S', 'graphic tees', 'Men', 'its a tee', 'spreed_energy_tee.png', victor, mongo)
-    # Item.create_item('Gym Jacketfdsf', 45.0, 'S', 'activewear', 'Men', 'its a tee', 'running_jacket_green.png', kevin, mongo)
-    collection = mongo.db.Profiles
-    document = {'test': 'test2'}
-    collection.insert_one(document)
-    Profile.create_profile("victorandresvega", 5.0,10,"https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80", mongo)
-    Profile.create_profile('josueestr', 4.75, 20,"https://images.unsplash.com/photo-1594751543129-6701ad444259?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80" , mongo)
-    Profile.create_profile('kevilin', 4.50, 4,"https://i.etsystatic.com/15418561/c/2250/1788/0/230/il/f06c80/3233862560/il_340x270.3233862560_jwqd.jpg" , mongo)
+    # victorItem1=Item.create_item('Yosemite Teefewewfew', 15.0, 'M', 'vintage', 'Men', 'its a tee', 'yosemite_tee.png', victor, mongo)
+    # josueItem1=Item.create_item('Japan Teefewewf', 25.0, 'L', 'graphic tees', 'Men', 'its a tee', 'japan_tee.png', josue, mongo)
+    # kevinItem1=Item.create_item('Running Jackefewweft', 55.0, 'M', 'activewear', 'Men', 'its a tee', 'running_jacket_black.png', kevin, mongo)
+    # victorItem2=Item.create_item('Spread Energy Teefwefwe', 20.0, 'S', 'graphic tees', 'Men', 'its a tee', 'spreed_energy_tee.png', victor, mongo)
+    # kevinItem2=Item.create_item('Gym Jacketfdsf', 45.0, 'S', 'activewear', 'Men', 'its a tee', 'running_jacket_green.png', kevin, mongo)
+    collection = mongo.db.profiles
+    victorP=Profile.create_profile("victorandresvega", 5.0,10,"https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80", mongo)
+    josueP=Profile.create_profile('josueestr', 4.75, 20,"https://images.unsplash.com/photo-1594751543129-6701ad444259?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80" , mongo)
+    kevinP=Profile.create_profile('kevilin', 4.50, 4,"https://i.etsystatic.com/15418561/c/2250/1788/0/230/il/f06c80/3233862560/il_340x270.3233862560_jwqd.jpg" , mongo)
+    # collection.update({'username':'victorandresvega'},{'$push':{'user_items':victorItem1.to_json()}})
+    # collection.update({'username':'victorandresvega'},{'$push':{'user_items':victorItem2.to_json()}})
+    # collection.update({'username':'kevilin'},{'$push':{'user_items':kevinItem1.to_json()}})
+    # collection.update({'username':'kevilin'},{'$push':{'user_items':kevinItem2.to_json()}})
+    # collection.update({'username':'josueestr'},{'$push':{'user_items':josueItem1.to_json()}})
+    for item in mongo.db.items.find():
+        username=item['username']
+        user=all_users[username]
+        Profile.Add_Item_to_SellDb(username,Item(item['name'],item['price'],item['size'],item['style'],item['gender'],item['description'],item['image'],user),mongo)
+
     
+    # victorP.Add_Item_to_Sell(victorItem1)
+    # victorP.Add_Item_to_Sell(victorItem2)
+    # kevinP.Add_Item_to_Sell(kevinItem1)
+    # kevinP.Add_Item_to_Sell(kevinItem2)
+    # josueP.Add_Item_to_Sell(josueItem1)
+
     return 'Seeded succesfuly'
+

@@ -33,9 +33,12 @@
     
     <div class="Profile-block">
         <div class="Pictures">
+        {% if session %}
             <img class="Profile-pic"
-                src="https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+                src=" {{ profile['profile_image'] }}"
                 alt="Profile Picture" class="img-circle">
+            <h1>My Profile</h1>
+        {% endif %}
             <!-- <img style="display: block;" class="Cover"
                 src="https://maigensawyer.com/wp-content/uploads/2014/03/stacks-on-racks-shirts.jpg"
                 alt="Profile Picture"> -->
@@ -46,8 +49,10 @@
 
 
         </div>
+        {% if session %}
         <div class="Reviews" style="align-items: center;">
-            <h2 style="text-align: left;">Victor Vega </h2>
+            <h2 style="text-align: left;">{{session['username']}}</h2>
+        
             &nbsp
             <div>
                 <link rel="stylesheet"
@@ -57,17 +62,15 @@
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star-half-full"></span>
-                <small> 352</small>
+                <small> {{profile['ratings']}}</small>
+            {% endif %}
             </div>
         </div>
 
-        <button class="general-button">Send an
-            email</button>
-        <button class="general-button">Add User to
-            Favorites</button>
-        <button class="general-button">Report this
-            user for spam</button>
-        <button class="general-button">Unfollow
+        <button class="general-button">Add an Item</button>
+        <button class="general-button">Remove an Item</button>
+        <button class="general-button">Report</button>
+        <button class="general-button">Deactivate Account
         </button>
 
 
@@ -79,7 +82,7 @@
                 <span class="tags">casual</span>
             </p>
             <div class="SalesImages" style="width: 100vw;">     
-                <h2 style="text-align:center;display: inline-block;">Your Items:</h2>
+                <h2 style="text-align:center;display: inline-block;">My Items:</h2>
 
                 <div class="container">
                     
@@ -87,24 +90,27 @@
                     <div class="gallery-header">
                         <p ></p>
                     </div>
-
+                    
                     <div class="row">
+                    {% for item in user_items %}
                         <div class="column">
                             <img class="demo cursor"
-                                src="https://res.cloudinary.com/webstore/image/fetch/w_450,c_limit,c_fit,f_auto,e_trim/https%3A%2F%2Fae01.alicdn.com%2Fkf%2FHcdcfc88aba0c4a6786191490a8774751m%2FHip-Hop-Sweat-Pants-Embroidery-Japanese-Style-Trousers-Sweatpants-Streetwear-Men-Joggers-Track-Casual-Cargo-Pants.jpg"
-                                style="width:100%"  alt="Grey Cargo Pants">
+                                src="../static/images/{{item['image']}}"  
+                                style="width:100%" >
+                            <p>${{item['price']}}</p>
                         </div>
-                        <div class="column">
+                    {% endfor %}
+                        <!-- <div class="column">
                             <img class="demo cursor"
                                 src="https://image.made-in-china.com/202f0j00zkTuvlCMvgpG/Baggy-Jeans-Men-Streetwear-Jogger-Jeans-Denim-Harem-Pants.jpg"
                                 style="width:100%" alt="Jean Joggers">
-                        </div>
-                        <div class="column">
+                        </div> -->
+                        <!-- <div class="column">
                             <img class="demo cursor"
                                 src="https://img.joomcdn.net/32cadd07bfbe62657b9ec515bcd0161f613a8d6b_original.jpeg"
                                 style="width:100%" alt="Official Fanny Pack">
-                        </div>
-                        <div class="column">
+                        </div> -->
+                        <!-- <div class="column">
                             <img class="demo cursor"
                                 src="https://img.joomcdn.net/abfe53e064180ff3ac88a4f9385465004b26dd34_original.jpeg"
                                 style="width:100%"  alt="Black Joggers">
@@ -118,7 +124,7 @@
                             <img class="demo cursor"
                                 src="https://canary.contestimg.wish.com/api/webimage/5d0488efd80529331f90314c-large.jpg?cache_buster=4b2b9c30c475dcdcdac4647fd3899e93"
                                 style="width:100%" alt="Palm trees T-shirt">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
