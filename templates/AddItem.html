@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html style="height: 100vh">
+    <head>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Borithrift</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        </head>
+    <body style="align-items: center;align-self: center;">
+        <header class="center">
+            <img src="./static/images/Borithrift-500.png" alt="Borithrift logo">
+        </header>
+        <h3>Insert values to fields to add item to sell:</h3>
+        
+        <div style="width:20vw; align-items: center; display: block; text-align: center; max-width: 500px; margin: auto; float:inline-start;" >
+            <!-- Item.create_item(name,price,size,style,gender,description,image,user) -->
+            <div class="peer-checked:pb-1 general-button-container  pb-2">
+                <form method="POST">
+                <div class="general-button">
+                    
+                    <input type="text" name="name" class="cursor-pointer" placeholder="Item Name">
+                    </input>
+                </div>
+                <div class="general-button">
+                    <input type="text" name="price" class="cursor-pointer" placeholder="Price of Item($)">
+                    </input>
+                </div>
+                <div class="general-button">
+                    <input type="text" name="size" class="cursor-pointer" placeholder="Size of Item">
+                    </input>
+                </div>
+                <div class="general-button">
+                    <input type="text" name="style" class="cursor-pointer" placeholder="Item Style">
+                    </input>
+                </div>
+                <div class="general-button">
+                    <input type="text" name="gender" class="cursor-pointer" placeholder="Item Gender">
+                    </input>
+                </div>
+                <div class="general-button">
+                    <input type="text" name="description" class="cursor-pointer" placeholder="Item Description">
+                    </input>
+                </div>
+                <div class="general-button">
+                    <input type="text" name="image_URL" class="cursor-pointer" placeholder="Image URL">
+                    </input>
+                </div>
+                <input class="general-button" type="submit" value="Add this Item">
+                    </input>
+                </form>
+            </div>
+        </div>
+   
+    </body>
+</html>
