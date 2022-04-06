@@ -81,9 +81,27 @@ class User:
         hashed_time = hashlib.sha1()
         hashed_time.update(cur_time.encode("utf8"))
         return hashed_time.hexdigest()
+    def to_json(self):
+        return {
+            "email": self.email,
+            "password": self.password,
+            "username": self.username,
+            "usr_id": self.usr_id
+        }
 
     # Compare
     def compare_password(self, password):
         if (self.password == self.hash_password(password)):
             return True
         return False
+
+    # MongoDb 
+    @staticmethod
+    def create_user(email, password, username, database):
+        user = User(email, password, username)
+        user_document = user.to_json()
+        collection = database.db.items
+        print(user_document)
+        collection.insert_one(user_document)
+        return user
+    
