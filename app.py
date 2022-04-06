@@ -33,7 +33,7 @@ app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'cluster0'
 
 # URI of database
-app.config['MONGO_URI'] = "mongodb+srv://SDS:Boricuas@cluster0.zc52h.mongodb.net/myFirstDatabase?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://SDS:Boricuas@cluster0.zc52h.mongodb.net/myFirstDatabase?ssl=true&retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app, tlsCAFile=certifi.where())
