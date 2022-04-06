@@ -106,4 +106,10 @@ class User:
         print(user_document)
         collection.insert_one(user_document)
         return user
-    
+    @staticmethod
+    def get_user(username, database):
+        collection = database.db.items
+        user_document = collection.find_one({"username": username})
+        if (user_document is None):
+            return None
+        return User(user_document["email"], user_document["password"], user_document["username"])
