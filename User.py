@@ -100,6 +100,7 @@ class User:
     # MongoDb 
     @staticmethod
     def create_user(email, password, username, database):
+        # Creates and returns a user object which is also stores in mongoDB database
         user = User(email, password, username)
         user_document = user.to_json()
         collection = database.db.items
@@ -108,6 +109,7 @@ class User:
         return user
     @staticmethod
     def get_user(username, database):
+        # Returns a user object from mongoDB database if user if found. Returns None otherwise
         collection = database.db.items
         user_document = collection.find_one({"username": username})
         if (user_document is None):
