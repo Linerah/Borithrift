@@ -50,7 +50,7 @@ class User:
 
     # Validity checks
     def check_valid_email(self, email):
-        # RFC 5322 email standard
+        # Uses RFC 5322 email standard to check if an email is valid
         regex = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
         if (re.fullmatch(regex, email)):
             return True
@@ -63,7 +63,7 @@ class User:
             return True
         return False
     def check_valid_username(self, username):
-        # 3-20 alphanum cahrs and "." "_"
+        # 3-20 alphanum chars and "." "_"
         regex = re.compile(r"[a-zA-Z0-9._]{3,20}$")
         if (re.fullmatch(regex, username)):
             return True
@@ -82,6 +82,7 @@ class User:
         hashed_time.update(cur_time.encode("utf8"))
         return hashed_time.hexdigest()
     def to_json(self):
+        # Returns a dictionary of the user's attributes
         return {
             "email": self.email,
             "password": self.password,
@@ -91,6 +92,7 @@ class User:
 
     # Compare
     def compare_password(self, password):
+        # Checks if input password matches stored password
         if (self.password == self.hash_password(password)):
             return True
         return False
