@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borithrift</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              height: {
+                header: "9%",
+                main: "91%",     
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body>
+    <div class="flex flex-col h-screen">
+
+        <svg class="blob top-72 left-52 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#f6c453" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
+        </svg>
+
+        <svg class="blob top-72 right-52 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#f0a04b" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
+        </svg>
+
+        <svg class="blob right-72 bottom-10 h-60" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#f0a04b" d="M40.5,-47.2C55.5,-53.3,72.8,-47.3,77.5,-35.8C82.2,-24.3,74.2,-7.4,61.2,1.2C48.2,9.8,30.1,10.1,20.8,14.4C11.4,18.7,10.9,27,4.3,40.9C-2.2,54.7,-14.9,74.2,-18.3,69.8C-21.8,65.4,-16.1,37.2,-27.8,24C-39.5,10.7,-68.6,12.4,-70.7,9.1C-72.8,5.9,-47.8,-2.3,-35.9,-11.4C-23.9,-20.5,-25.1,-30.6,-21.3,-29.6C-17.5,-28.5,-8.7,-16.3,2,-19.4C12.7,-22.5,25.5,-41,40.5,-47.2Z" transform="translate(100 100)" />
+        </svg>
+
+        <header class="flex h-header bg-[#183a1d] bg-opacity-70 ">  
+            <div id="logo" class="flex w-1/2 items-center">
+                <img class="pl-3 h-52 rounded" src="./static/images/Borithrift-1000.png" alt="puerto rico flag" srcset="">
+            </div>
+            {% if session %}
+            <div class="flex flex-row-reverse items-center ml-auto">
+                <div class="user-img-container ">
+                    <img class="user-img" src="https://avatars.dicebear.com/api/avataaars/{{ session['username'] }}%20.svg" alt="person" srcset="">
+                </div>
+                <!-- need to change it so the text stays inside the container, when we change size  -->
+                <div class="header-button-container"><button class="header-button"><a href="/profile">Profile</a></button></div>
+                <div class="header-button-container"><button class="header-button"> <a href="/logout">Logout</a></button></div>
+            </div>
+            {% else %}
+            <div class="flex flex-row-reverse items-center w-1/2">
+                <div class="header-button-container"><button class="header-button"><a href="/login">Login</a></button></div>
+                <div class="header-button-container"><button class="header-button"> <a href="/signup">Signup</a></button></div>
+            </div>
+            {% endif %}
+            
+        </header>
+        <div class="flex h-main w-auto">
+            <div class="flex pl-3 pr-3 flex-wrap content-start w-4/5 overflow-scroll z-10">
+
+                {% for item in items %}
+                <div class="item-outer-container drop-shadow-xl">
+                    
+                    <img class="item-image w-40" src="./static/images/{{ item['image'] }}" alt="{{ item['name'] }}" srcset="">
+                        
+                    <div class="item-info-container">
+                        <div class="item-name">
+                            {{ item['name'] }}
+                        </div>
+                        <div class="item-price">
+                            ${{ item['price'] }}
+                        </div>
+                        <div class="item-description">
+                            <div>
+                                <div class="general-button-container "><button class="general-button">{{ item['size'] }}</button></div>
+                            </div>
+                
+                        </div>
+                        <div class="flex flex-row-reverse"><div>
+                            <div class="buy-button-container "><button class=" buy-button">Buy</button></div>
+                        </div></div>
+                    </div> 
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div  class="w-1/5 flex flex-col mt-11">
+                <form method="post" action="/landing">
+                    <div class="flex mb-3">
+                        <div class="tittle">Department: </div>
+                    </div>
+                    <div class="flex items-end flex-wrap w-full mt-3 mb-3">
+                        {% for department in departments %}
+                        <div>
+                            <input class="peer hidden" type="radio" name="gender" id="{{ department }}" value="{{ department }}">
+                            <div class="peer-checked:pb-1 general-button-container  pb-2">
+                                <div class="general-button">
+                                    <label for="{{ department }}" class="cursor-pointer">{{ department }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}      
+                    </div>  
+    
+                    <div class="flex mb-3">
+                        <div class="tittle">Browse by: </div>
+                    </div>
+                    <div class="w-full flex  items-end flex-wrap mt-3 mb-3">
+                        {% for filter in filters %}
+                        <div>
+                            <input class="peer hidden" type="checkbox" name="{{ filter }}" id="{{ filter }}" value="{{ filter }}">
+                            <div class="peer-checked:pb-1 general-button-container  pb-2">
+                                <div class="general-button">
+                                    <label for="{{ filter }}" class="cursor-pointer">{{ filter }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+    
+                        <input class="peer hidden" id="submit" type="submit" value="">
+                        <div class="general-button-container w-full">
+                            <div class="general-button w-full">
+                                <label class="cursor-pointer flex items-center justify-center w-full" for="submit">
+                                    Search
+                                </label>
+                            </div>
+                        </div>
+                             
+                    </div>
+                </form>
+                <div class="mt-6 flex flex-col">
+                    <div class="tittle">Top sellers this week: </div>
+                    <div class="flex mt-6">
+                        {% for seller in top_sellers %}
+                        <div class="top-user-img-container">
+                            <img class="top-user bg-white" src="https://avatars.dicebear.com/api/avataaars/{{ seller }}.svg" alt="person" srcset="">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>

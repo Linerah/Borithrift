@@ -1,8 +1,17 @@
+body {
+    background-color: #fefbe9;
+}
+
+@font-face {
+    font-family: MaryKate;
+    src: url("fonts/MaryKate.ttf") format("truetype");
+}
 .item-outer-container{
     display: flex;
     margin: 2.75rem 0.75rem 0 0.75rem;
     border-radius: 0.25rem;
     height: 13rem;
+    width: 22rem;
     background-color:rgba(24, 58, 29, 0.7);
 }
 .item-image{
@@ -11,6 +20,8 @@
 }
 .item-info-container{
     margin: 0.75rem 0 0 0.75rem;
+    width: 100%;
+    padding-left: 00.125rem;
 }
 .item-name{
     font-weight: bold;
@@ -56,7 +67,7 @@
     margin-right: 0.75rem;
     padding: 0.125rem;
     border-radius: 0.75rem;
-    background-color: #f0a04b;
+    background-color: #e1eedd;
 
 }
 
@@ -64,35 +75,36 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
     padding: 0.5rem 1.5rem;
-    background-color:rgba(24, 58, 29);
+    background-color:#f0a04b;
     border-radius: 0.75rem;
-    color: #f0a04b;
+    color: rgba(24, 58, 29);
     width: 100%;
 }
 
 .general-button-container{
     margin-right: 0.75rem;
     margin-bottom: 0.75rem;
-    padding: 0.125rem;
+    padding: 0.1rem;
     border-radius: 0.75rem;
-    background-color: #f0a04b;
+    border:1px;
+    background-color: #e1eedd;
 }
 
 .general-button{
-    margin-bottom:  0.3rem;
+    margin-bottom:  0.15rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
     padding: 0.5rem;
     border-radius: 0.75rem;
-    background-color:rgba(24, 58, 29);
-    color: #f0a04b;
+    background-color:#f0a04b;
+    color: rgba(24, 58, 29);
 }
 .general-button-container-pressed{
     margin-right: 0.75rem;
     margin-top: 0.3rem;
     padding: 0.125rem;
     border-radius: 0.75rem;
-    background-color: #f6c453;
+    background-color:rgba(24, 58, 29);
 }
 
 .general-button-pressed{
@@ -145,5 +157,46 @@
     background-color: #e1eedd;
 }
 
+.sign-in-button-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
 
+.center {
+    display: flex;
+    justify-content: center;
+}
 
+.user-credentials-label {
+    font-family: MaryKate;
+    font-size: 2em;
+    padding-right: 1em;
+    color: #183a1d;
+}
+
+.user-credentials-input {
+    border: solid 1px black;
+}
+
+.footer-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.links {
+    text-decoration: underline;
+    font-size: 1.3em;
+    color: #183a1d;
+}
+
+.text-font-MaryKate {
+    font-family: MaryKate;
+    font-size: 2.5em;
+}
+
+.footer-big-text {
+    color: #f0a04b;
+    font-size: 3.5em;
+}
