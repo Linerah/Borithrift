@@ -51,7 +51,7 @@ kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
 all_users= {"victorandresvega": victor,"josueestr": josue,"kevilin": kevin}
 
 # department set:
-departments = {"women", "men"}
+departments = {"Women", "Men"}
 
 # filter list:
 filters = {'new','tops', 'graphic tees', 'coats + jackets', 'bottoms', 'jeans', 'activewear', 'shoes','vintage', 'bottoms', 'sale'}
@@ -93,6 +93,7 @@ def logout():
 def landing():
     if request.method == 'GET':
         items = Item.get_items(mongo)
+        print(items)
     else:
         items = Item.get_filtered_items(mongo, request.form)
     return render_template('landing.html', departments=departments, filters=filters, top_sellers=top_sellers, items=items)
