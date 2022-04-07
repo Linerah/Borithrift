@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html style="height: 100vh">
+    <head>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Borithrift</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        </head>
+    <body style="align-items: center;align-self: center;">
+        <header class="center">
+            <img src="./static/images/Borithrift-500.png" alt="Borithrift logo">
+        </header>
+        <h3>Insert values to fields to add item to sell:</h3>
+        
+        <div style="width:30vw; align-items: center; display: block; text-align: center; max-width: 1000px; margin: auto;" >
+            <!-- Item.create_item(name,price,size,style,gender,description,image,user) -->
+            <div class="peer-checked:pb-1 general-button-container  pb-2">
+                <form method="POST">
+                <div class="general-button">
+                    <p>Name of Item:</p>
+                    <input type="text" name="name" class="cursor-pointer" placeholder="Name of Item">
+                    </input>
+                </div>
+                 
+                <div class="general-button" >
+                    <p>Price of Item(USD $, 2 decimal places):</p>
+                    <input type="text" name="price" class="cursor-pointer" placeholder="Price of Item($) 2 decimal spaces">
+                    </input>
+                </div>
+                 
+                <div class="general-button">
+                    <p>Size of Item:</p>
+                        <input type="radio" id="html" name="size" value="S">
+                        <label for="html">Small</label><br>
+                        <input type="radio" id="css" name="size" value="M">
+                        <label for="css">Medium</label><br>
+                        <input type="radio" id="javascript" name="size" value="L">
+                        <label for="large">Large</label>
+                    
+                </div>
+                 
+                <div class="general-button">
+                   <p>Type of Item to Sell:</p>
+                    <input type="radio" id="css" name="style" value="graphic tees">
+                    <label for="css">graphic tees</label><br>
+                    <input type="radio" id="javascript" name="style" value="coats + jackets">
+                    <label for="large">coats + jackets</label>
+                    <input type="radio" id="javascript" name="style" value="bottoms">
+                    <label for="large">bottoms</label>
+                    <input type="radio" id="javascript" name="style" value="jeans">
+                    <label for="large">jeans</label>
+                    <input type="radio" id="javascript" name="style" value="activewear">
+                    <label for="large">activewear</label>
+                    <input type="radio" id="javascript" name="style" value="shoes">
+                    <label for="large">shoes</label>
+                    <input type="radio" id="javascript" name="style" value="vintage">
+                    <label for="large">vintage</label>
+                    <input type="radio" id="javascript" name="style" value="sale">
+                    <label for="large">sale</label>
+                    </input>
+                </div>
+                 
+                <div class="general-button">
+                    <p>Gender of Item:</p>
+                        <input type="radio" id="Women" name="gender" value="Women">
+                        <label for="Women">Women</label><br>
+                        <input type="radio" id="Men" name="gender" value="Men">
+                        <label for="Men">Men</label><br>
+                    </input>
+                </div>
+                 
+                <div class="general-button">
+                    <p>Item Description:</p>
+                    <input type="text" name="description" class="cursor-pointer" placeholder="Item Description">
+                    </input>
+                </div>
+                 
+                <div class="general-button">
+                    <p>Image URL:</p>
+                    <input type="text" name="image_URL" class="cursor-pointer" placeholder="Image URL">
+                    </input>
+                </div>
+                 
+                <div class="general-button">
+                <input type="submit" value="Add this Item">
+                    </input></div>
+                </form>
+            </div>
+        </div>
+   
+    </body>
+</html>

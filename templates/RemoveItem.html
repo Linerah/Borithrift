@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html style="height: 100vh">
+    <head>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Borithrift</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        </head>
+    <body style="align-items: center;align-self: center;">
+        <header class="center">
+            <img src="./static/images/Borithrift-500.png" alt="Borithrift logo">
+        </header>
+        <h3>Choose Item To Remove:</h3>
+        {% for item in user_items %}
+        
+        <div style="width:20vw; align-items: center; display: block; text-align: center; max-width: 500px; margin: auto; float:inline-start;" >
+            
+            <div class="peer-checked:pb-1 general-button-container  pb-2">
+                <form method="POST">
+                <div class="general-button">
+                    <input type="radio" name="remove_item" class="cursor-pointer" value="{{ item['name'] }}">{{ item['name'] }}</button>
+                    <img src="{{item['image']}}">
+                    <input class="general-button" type="submit" value="Remove this Item">
+                    </input>
+                </div>
+                </form>
+            </div>
+        </div>
+   
+        {% endfor %}
+    </body>
+</html>

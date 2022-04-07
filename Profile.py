@@ -36,6 +36,32 @@ class Profile():
     taking into account the number of their previous raters and rating. It then returns the updated rating of that seller
     in two decimal places
     '''
+    @staticmethod
+    def create_profile(username, rating, raters_amount, profile_image,database):
+        profile = Profile(username, rating, raters_amount, profile_image)
+        profile_document = profile.to_json()
+        collection = database.db.profiles
+        print(profile)
+        collection.insert_one(profile_document)
+        return profile
+
+    @staticmethod
+    def get_user_items(username,database):
+        collection = database.db.items
+        # Items=collection.find( { "username": username}, { "_id": 0, "name": 0, "size": 0,"price":0,"style":0,"gender":0,"description":0,"image":1,"username":0} )
+        Items=collection.find({"username":"kevilin"})
+        # Items = collection.find_one({"username": username}).project({"user_items":1})
+        return Items
+
+    @staticmethod
+    def get_profile(username,database):
+        collection=database.db.profiles
+        profile=collection.find_one({"username":username})
+        return profile
+        
+    def to_json(self):
+        return {'username': self.username, 'ratings': self.ratings , 'raters_amount': self.raters_amount, 'user_items': self.user_items, 'profile_image': self.profile_image}
+
     def _Review_Score(self, new_review):
         if(type(self.ratings)==None):
             raise ValueError
@@ -52,7 +78,8 @@ class Profile():
     '''
     Function that takes an Item that the user wants to add to the items they are currently selling and updates their list of items
     '''
-    def _Add_Item_to_Sell(self,item):
+    
+    def Add_Item_to_Sell(self,item):
         
         if(type(item)==None):
             raise ValueError("Cannot be type None")
@@ -61,11 +88,32 @@ class Profile():
         if(self.username != item.username):
             raise ValueError("Incorrect Owner")
         self.user_items.append(item)
+    @staticmethod
+    def Add_Item_to_SellDb(username,item,database):
+        collection = database.db.profiles
+        collection.update({'username':username},{'$push':{'user_items':item.to_json()}})
+        if(type(item)==None):
+            raise ValueError("Cannot be type None")
+        if(type(item) != Item):
+            raise TypeError("object has to be of type Item")
+        if(username != item.username):
+            raise ValueError("Incorrect Owner")
+    @staticmethod
+    def get_user_items(username,database):
+        collection = database.db.items
+        items = collection.find_one({'username':username})
+        return items
+    @staticmethod
+    def get_profile(username,database):
+        collection = database.db.profiles
+        profile = collection.find_one({'username':username})
+        return profile
+
     '''
     Function that takes in an Item and deletes it from the user's list of items on sale, this is done when a 
     user chooses to stop selling and item or when an item is bought
     '''
-    def _Remove_Item(self,item):
+    def Remove_Item(self,item):
         if(type(item)==None):
             raise ValueError("Cannot be type None")
         if(type(item) != Item):

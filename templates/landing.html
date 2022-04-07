@@ -62,7 +62,7 @@
                 {% for item in items %}
                 <div class="item-outer-container drop-shadow-xl">
                     
-                    <img class="item-image w-40" src="./static/images/{{ item['image'] }}" alt="{{ item['name'] }}" srcset="">
+                    <img class="item-image w-40" src="{{ item['image'] }}" alt="{{ item['name'] }}" srcset="">
                         
                     <div class="item-info-container">
                         <div class="item-name">

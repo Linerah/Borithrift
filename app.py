@@ -14,6 +14,7 @@
 
 # ---- YOUR APP STARTS HERE ----
 # -- Import section --
+from typing import Collection
 from flask import Flask
 from flask import render_template
 from flask import request, redirect
@@ -24,15 +25,15 @@ import secrets
 import certifi
 
 from item import Item
-
+from Profile import Profile
 # -- Initialization section --
 app = Flask(__name__)
 
 # name of database
-app.config['MONGO_DBNAME'] = 'boricuas'
+app.config['MONGO_DBNAME'] = 'cluster0'
 
 # URI of database
-app.config['MONGO_URI'] = "mongodb+srv://admin:uEu9OcSgs1v42KG2@cluster0.3kizj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://SDS:Boricuas@cluster0.zc52h.mongodb.net/myFirstDatabase?ssl=true&retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app, tlsCAFile=certifi.where())
@@ -97,19 +98,82 @@ def landing():
     return render_template('landing.html', departments=departments, filters=filters, top_sellers=top_sellers, items=items)
 
 # PROFILE Route
-@app.route('/profile')
+@app.route('/profile',methods = ['GET', 'POST'])
 def profile():
-    return render_template('Profile.html')
+
+    username=session.get('username')
+    collection=mongo.db.items
+    profile=Profile.get_profile(username,mongo)
+    if request.method == 'GET':
+        user_items=list(collection.find({"username":username}))
+    elif "Remove" in request.form: 
+        return redirect('/remove')
+    elif "Add" in request.form: 
+        return redirect('/Add')
+        
+        
+    return render_template('Profile.html',session=session,user_items=user_items,profile=profile)
+@app.route('/remove',methods = ['GET', 'POST'])
+def remove():
+
+    username=session.get('username')
+    collection=mongo.db.items
+    profile=Profile.get_profile(username,mongo)
+    if request.method == 'GET':
+        user_items=list(collection.find({"username":username}))
+    elif request.form["remove_item"]:
+        item_to_remove=request.form["remove_item"]
+        collection.remove({"name":item_to_remove})
+        return redirect('/profile')
+    return render_template('RemoveItem.html',session=session,user_items=user_items,profile=profile)
+
+@app.route('/Add',methods = ['GET', 'POST'])
+def Add():
+    username=session.get('username')
+    collection=mongo.db.items
+    if request.method == 'POST':
+        user=all_users[username]
+        name=request.form["name"]
+        price=float(request.form["price"])
+        size=request.form["size"]
+        style=request.form["style"]
+        gender=request.form["gender"]
+        description=request.form["description"]
+        image=request.form["image_URL"]
+        Item.create_item(name,price,size,style,gender,description,image,user,mongo)
+        return redirect('/profile')
+    return render_template('AddItem.html',session=session)
+
 
 
 @app.route('/seed_items')
 def seed_items():
-    # collection = mongo.db.items
-    # document = {'test': 'test2'}
-    # collection.insert_one(document)
-    # Item.create_item('Yosemite Tee', 15.0, 'M', 'vintage', 'Men', 'its a tee', 'yosemite_tee.png', victor, mongo)
-    # Item.create_item('Japan Tee', 25.0, 'L', 'graphic tees', 'Men', 'its a tee', 'japan_tee.png', josue, mongo)
-    # Item.create_item('Running Jacket', 55.0, 'M', 'activewear', 'Men', 'its a tee', 'running_jacket_black.png', kevin, mongo)
-    # Item.create_item('Spread Energy Tee', 20.0, 'S', 'graphic tees', 'Men', 'its a tee', 'spreed_energy_tee.png', victor, mongo)
-    # Item.create_item('Gym Jacket', 45.0, 'S', 'activewear', 'Men', 'its a tee', 'running_jacket_green.png', kevin, mongo)
+    collection = mongo.db.items
+    victorItem1=Item.create_item('Yosemite Tee', 15.0, 'M', 'vintage', 'Men', 'Classic T-shirt for everyday use', 'https://m.media-amazon.com/images/I/B1F9XqluwtS._CLa%7C2140%2C2000%7C818sGefkFxL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UL1500_.png', victor, mongo)
+    josueItem1=Item.create_item('Japan Tee', 25.0, 'L', 'graphic tees', 'Men', 'Japan T-shirt', 'jhttps://cdn.teeuni.com/wp-content/uploads/2021/08/vintage-graphic-tees-japanese-shirt-retro-skull-japan-tee-t-shirt_Men_1.jpg', josue, mongo)
+    kevinItem1=Item.create_item('Running Jacket', 55.0, 'M', 'activewear', 'Men', 'Black Jacket', 'https://images.bike24.net/i/mb/2f/75/51/nike-shield-womens-running-jacket-black-black-reflective-silver-cu3385-010-2-898743.jpg', kevin, mongo)
+    victorItem2=Item.create_item('Spread Energy Tee', 20.0, 'S', 'graphic tees', 'Men', 'T-shirt to improve mood', 'https://cdn.shopify.com/s/files/1/0067/4217/9924/products/mockup-f1877084.jpg?v=1556725761', victor, mongo)
+    kevinItem2=Item.create_item('Gym Jacket', 45.0, 'S', 'activewear', 'Men', 'Stylish Green Jacket, great for running', 'https://i.ebayimg.com/images/g/aw4AAOSwOVRhn8Q5/s-l400.jpg', kevin, mongo)
+    collection = mongo.db.profiles
+    victorP=Profile.create_profile("victorandresvega", 5.0,10,"https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80", mongo)
+    josueP=Profile.create_profile('josueestr', 4.75, 20,"https://images.unsplash.com/photo-1594751543129-6701ad444259?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80" , mongo)
+    kevinP=Profile.create_profile('kevilin', 4.50, 4,"https://i.etsystatic.com/15418561/c/2250/1788/0/230/il/f06c80/3233862560/il_340x270.3233862560_jwqd.jpg" , mongo)
+    collection.update({'username':'victorandresvega'},{'$push':{'user_items':victorItem1.to_json()}})
+    collection.update({'username':'victorandresvega'},{'$push':{'user_items':victorItem2.to_json()}})
+    collection.update({'username':'kevilin'},{'$push':{'user_items':kevinItem1.to_json()}})
+    collection.update({'username':'kevilin'},{'$push':{'user_items':kevinItem2.to_json()}})
+    collection.update({'username':'josueestr'},{'$push':{'user_items':josueItem1.to_json()}})
+    for item in mongo.db.items.find():
+        username=item['username']
+        user=all_users[username]
+        Profile.Add_Item_to_SellDb(username,Item(item['name'],item['price'],item['size'],item['style'],item['gender'],item['description'],item['image'],user),mongo)
+
+    
+    # victorP.Add_Item_to_Sell(victorItem1)
+    # victorP.Add_Item_to_Sell(victorItem2)
+    # kevinP.Add_Item_to_Sell(kevinItem1)
+    # kevinP.Add_Item_to_Sell(kevinItem2)
+    # josueP.Add_Item_to_Sell(josueItem1)
+
     return 'Seeded succesfuly'
+
