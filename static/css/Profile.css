@@ -19,24 +19,8 @@ color:orange;
 .Profile-description{
     text-align: center;
     order:1;
-    display: inline;
-    
+    display: inline;   
 } 
-.Cover{
-    position: absolute;
-    display:block;
-    z-index: -5;
-    object-fit:fill;
-    width: 100vw;
-    height: 250px;
-    padding: 0px;
-    background: 0px;
-    margin-top: -250px;
-    border: #f0a04b;;
-    border-width: 100px;
-    padding-left: 0%;
-    float: inline-start;
-}
 .Profile-pic{
     margin-top:20px;
     text-align: left;
@@ -47,7 +31,7 @@ color:orange;
     border-style:ridge;
     border-image:round;
     border-width: 10px;
-    border-color: #f0a04b;
+    border-color: #f39c12;
     padding: 5px;
     display: block;
     width: 200px;
@@ -68,9 +52,10 @@ color:orange;
 }
 h2{
     display: inline;
-    text-align: left;
+    text-align: center;
     font-size: x-large;
     color: #000000;
+    position: relative;
 }
 body
 {
@@ -99,9 +84,8 @@ body
 
 .Reviews{
     font-size: 15px;
-    text-align: left;
+    text-align: center;
     display: block;
-    margin-left: 9%;
     margin-top: 0%;
     position: relative;
     font-weight: bold;
@@ -130,7 +114,7 @@ body
     }
     .gallery-header {
         text-align: center;
-        background-color: #000;
+        background-color: black;
         padding: 2px 16px;
         color: white;
     }

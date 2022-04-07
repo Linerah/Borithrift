@@ -10,6 +10,15 @@ class User:
         password (str): The user's password. Verified to be 8 chara, 1 letter and 1 number minimum length. Stored as hash from sha512.
         username (str): The user's displayed name. Verified to be 3-20 alphanum characters and can include "." and "_".
     """
+    @staticMethod
+    def create_new_user(email, password, username):
+        return User(email, password, username)
+    
+    @staticMethod
+    def save_user(user):
+        connection = post.connect()
+        mongo.save({"user", convert_to_json(user)})
+        
     def __init__(self, email, password, username):
         if ((type(email) is not str) or (type(password) is not str) or 
         (type(username) is not str)):
