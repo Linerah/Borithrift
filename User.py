@@ -11,9 +11,10 @@ class User:
         email (str): The user's email adress. Verified to be RFC 5322 comliant.
         password (str): The user's password. Verified to be 8 chara, 1 letter and 1 number minimum length. Stored as hash from sha512.
         username (str): The user's displayed name. Verified to be 3-20 alphanum characters and can include "." and "_".
+        password_is_hashed (bool): If True, password is assumed to be hashed and not hashed.
     """
 
-    def __init__(self, email, password, username):
+    def __init__(self, email, password, username, password_is_hashed=False):
         if (
             (type(email) is not str)
             or (type(password) is not str)
@@ -22,7 +23,10 @@ class User:
             raise TypeError("email, password and username parameters must be strings")
 
         self.set_email(email.strip())
-        self.set_password(password.strip())
+        if password_is_hashed:
+            self.password = password
+        else:
+            self.set_password(password.strip())
         self.set_username(username.strip())
         self.usr_id = self.generate_user_ID()
 
@@ -127,5 +131,5 @@ class User:
         if user_document is None:
             return None
         return User(
-            user_document["email"], user_document["password"], user_document["username"]
+            user_document["email"], user_document["password"], user_document["username"], True
         )
