@@ -45,12 +45,6 @@ mongo = PyMongo(app, tlsCAFile=certifi.where())
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
 
-# Fake users - DB
-victor = User("victor@whereever.com", "a12341231", "victorandresvega")
-josue = User("josue@whereever.com", "b5678567857", "josueestr")
-kevin = User("kevin@whereever.com", "c0000000000", "kevilin")
-all_users= {"victorandresvega": victor,"josueestr": josue,"kevilin": kevin}
-
 # department set:
 departments = {"Women", "Men"}
 
@@ -70,10 +64,10 @@ def login():
         return render_template('index.html')
     else:
         username = request.form['username']
-        if username not in all_users:
+        user = User.get_user(username, mongo)
+        if not user:
             return 'Invalid username or password.'
         else:
-            user = all_users[username] 
             password = request.form['password']
             password_correct = user.compare_password(password)
             if(password_correct):
@@ -134,7 +128,7 @@ def Add():
     username=session.get('username')
     collection=mongo.db.items
     if request.method == 'POST':
-        user=all_users[username]
+        user = User.get_user(username, mongo)
         name=request.form["name"]
         price=float(request.form["price"])
         size=request.form["size"]
@@ -171,7 +165,7 @@ def seed_items():
     collection.update({'username':'josueestr'},{'$push':{'user_items':josueItem1.to_json()}})
     for item in mongo.db.items.find():
         username=item['username']
-        user=all_users[username]
+        user = User.get_user(username, mongo)
         Profile.Add_Item_to_SellDb(username,Item(item['name'],item['price'],item['size'],item['style'],item['gender'],item['description'],item['image'],user),mongo)
 
     
