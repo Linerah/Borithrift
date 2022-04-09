@@ -33,6 +33,9 @@ class User:
         self.username = username
         self.usr_id = self.generate_user_ID()
 
+    def __str__(self):
+        return f"Username: {self.username}\nEmail: {self.email}\nPassword: {self.password}"
+
     # Setters
     def set_email(self, email):
         if not self.check_valid_email(email):
