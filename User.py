@@ -21,9 +21,9 @@ class User:
         ):
             raise TypeError("email, password and username parameters must be strings")
 
-        self.set_email(email)
-        self.set_password(password)
-        self.set_username(username)
+        self.set_email(email.strip())
+        self.set_password(password.strip())
+        self.set_username(username.strip())
         self.usr_id = self.generate_user_ID()
 
     def __str__(self):
@@ -33,7 +33,7 @@ class User:
     def set_email(self, email):
         if not self.check_valid_email(email):
             raise ValueError("Invalid email")
-        self.email = email.strip()
+        self.email = email
 
     def set_password(self, password):
         if not self.check_valid_password(password):
@@ -43,7 +43,7 @@ class User:
     def set_username(self, username):
         if not self.check_valid_username(username):
             raise ValueError("Invalid username")
-        self.username = username.strip()
+        self.username = username
 
     # Getters
     def get_email(self):
@@ -82,7 +82,7 @@ class User:
     def hash_password(self, password):
         # Hashes password and returns hash in hexadecimal format
         hashed_password = hashlib.sha512()
-        hashed_password.update(password.strip().encode("utf8"))
+        hashed_password.update(password.encode("utf8"))
         return hashed_password.hexdigest()
 
     def generate_user_ID(self):
