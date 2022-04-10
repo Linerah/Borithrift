@@ -17,9 +17,9 @@
             <form method="POST" action="/login">
                 <label class="user-credentials-label" for="username">Username:</label><br>
                 <input class="user-credentials-input" type="text" id="email" name="username"> <br>
-
                 <label class="user-credentials-label" for="password">Password:</label> <br>
                 <input class="user-credentials-input" type="password" id="password" name="password"> <br>
+
                 {%if message == "User not found"%}
                     <div class="text-font-MaryKate">{{message}}</div> <br> 
                 {%elif message == "Incorrect password"%}
@@ -28,7 +28,10 @@
                 <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Sign in<input type="submit" value=""></button></div>
             </form>
         </div>
-    
+        <form method="GET" action="/signup">
+            <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Create an account<input type="submit" value=""></button></div>
+        </form>
+
         <footer class="footer-container">
             <p class="text-font-MaryKate footer-big-text">Why thrift?</p>
             <ul>
