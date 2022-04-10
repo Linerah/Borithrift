@@ -66,7 +66,7 @@ def login():
         username = request.form['username']
         user = User.get_user(username, mongo)
         if not user:
-            return 'Username was not found'
+            return render_template("index.html", message="User not found")
         else:
             password = request.form['password']
             password_correct = user.compare_password(password)
@@ -74,7 +74,7 @@ def login():
                 session['username'] = request.form['username']
                 return redirect('/landing') 
             else:
-               return 'Invalid password' 
+               return render_template("index.html", message="Incorrect password")
    
 
 # LOGOUT Route

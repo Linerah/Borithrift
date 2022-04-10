@@ -15,10 +15,16 @@
         </header>
         <div class="center">
             <form method="POST" action="/login">
-                <label class="user-credentials-label" for="username">Username:</label> <br>
+                <label class="user-credentials-label" for="username">Username:</label><br>
                 <input class="user-credentials-input" type="text" id="email" name="username"> <br>
+                {%if message == "User not found"%}
+                    {{message}} <br>
+                {%endif%}
                 <label class="user-credentials-label" for="password">Password:</label> <br>
                 <input class="user-credentials-input" type="password" id="password" name="password"> <br>
+                {%if message == "Incorrect password"%}
+                    {{message}} <br>
+                {%endif%}
                 <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Sign in<input type="submit" value=""></button></div>
             </form>
         </div>
