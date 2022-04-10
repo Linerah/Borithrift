@@ -22,8 +22,7 @@
                 <input class="user-credentials-input" type="password" id="password" name="password"> <br>
                 {%if message == "User not found"%}
                     <div class="text-font-MaryKate">{{message}}</div> <br> 
-                {%endif%}
-                {%if message == "Incorrect password"%}
+                {%elif message == "Incorrect password"%}
                     <div class="text-font-MaryKate">{{message}}</div> <br> 
                 {%endif%}
                 <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Sign in<input type="submit" value=""></button></div>
