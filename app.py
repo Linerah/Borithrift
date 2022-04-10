@@ -81,7 +81,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect('/landing')
+    return redirect('/login')
 
 # LANDING Route
 @app.route('/landing', methods = ['GET', 'POST'])
