@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html style="height: 100vh">
+    <head>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Borithrift</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        </head>
+    <body>
+        <header class="center">
+            <img src="./static/images/Borithrift-500.png" alt="Borithrift logo">
+        </header>
+        <div class="center">
+            <form method="POST" action="/signup">
+                <label class="user-credentials-label" for="username">Username:</label><br>
+                <input class="user-credentials-input" type="text" id="email" name="username"> <br>
+                <label class="user-credentials-label" for="password">Password:</label> <br>
+                <input class="user-credentials-input" type="password" id="password" name="password"> <br>
+                <label class="user-credentials-label" for="email">Email:</label> <br>
+                <input class="user-credentials-input" type="email" id="email" name="email"> <br>
+                {%if message == "User not found"%}
+                    <div class="text-font-MaryKate">{{message}}</div> <br> 
+                {%elif message == "Incorrect password"%}
+                    <div class="text-font-MaryKate">{{message}}</div> <br> 
+                {%elif message == "Email already in use"%}
+                    <div class="text-font-MaryKate">{{message}}</div> <br> 
+                {%endif%}
+                <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Sign up<input type="submit" value=""></button></div>
+            </form>
+        </div>
+    
+        <footer class="footer-container">
+            <p class="text-font-MaryKate footer-big-text">Why thrift?</p>
+            <ul>
+                <li>
+                    •<a class="links" href="https://www.bbc.com/future/article/20200710-why-clothes-are-so-hard-to-recycle">
+                        Clothing is really hard to recycle
+                    </a>
+                </li>
+                <li>
+                    •<a class="links" href="https://labs.theguardian.com/unicef-child-labour/">
+                        Child labour is often used to manufacture new clothes
+                    </a>
+                </li>
+                <li>
+                    •<a class="links" href="https://www.needhelppayingbills.com/html/thrift_stores_save_money.html">
+                        Thrifting is cheaper than buying new clothes
+                    </a>
+                </li>
+                <li>
+                    •<a class="links" href="https://www.2ndavestores.com/blog/why-thrifting-shopping-is-so-fun/">
+                        It's fun!
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>
