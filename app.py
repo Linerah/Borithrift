@@ -39,8 +39,8 @@ app.config['MONGO_URI'] = "mongodb+srv://admin:naABa2nWH2J9eNzd@cluster0.vsmni.m
 mongo = PyMongo(app, tlsCAFile=certifi.where())
 
 # run this the first time, to create the collection
-#mongo.db.create_collection('items')
-#mongo.db.create_collection('users')
+# mongo.db.create_collection('items')
+# mongo.db.create_collection('users')
 
 # -- Session data --
 app.secret_key = secrets.token_urlsafe(16)
@@ -164,9 +164,9 @@ def Add():
 @app.route('/seed_items')
 def seed_items():
     collection = mongo.db.users
-    josue = User.create_user("josue@techexchange.in", "secretPassword123", "josue11", mongo)
-    kevin = User.create_user("kevin@techexchange.in", "superSecretPassword123", "kevin22", mongo)
-    victor = User.create_user("victor@techexchange.in", "secretestPassword321", "victor33", mongo)
+    josue = User.create_user("josue@techexchange.in", "secretPassword123", "josueestr", mongo)
+    kevin = User.create_user("kevin@techexchange.in", "superSecretPassword123", "kevilin", mongo)
+    victor = User.create_user("victor@techexchange.in", "secretestPassword321", "victorandresvega", mongo)
     collection = mongo.db.items
     victorItem1=Item.create_item('Yosemite Tee', 15.0, 'M', 'vintage', 'Men', 'Classic T-shirt for everyday use', 'https://m.media-amazon.com/images/I/B1F9XqluwtS._CLa%7C2140%2C2000%7C818sGefkFxL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UL1500_.png', victor, mongo)
     josueItem1=Item.create_item('Japan Tee', 25.0, 'L', 'graphic tees', 'Men', 'Japan T-shirt', 'jhttps://cdn.teeuni.com/wp-content/uploads/2021/08/vintage-graphic-tees-japanese-shirt-retro-skull-japan-tee-t-shirt_Men_1.jpg', josue, mongo)
