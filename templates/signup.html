@@ -21,17 +21,21 @@
                 <input class="user-credentials-input" type="password" id="password" name="password"> <br>
                 <label class="user-credentials-label" for="email">Email:</label> <br>
                 <input class="user-credentials-input" type="email" id="email" name="email"> <br>
-                {%if message == "User not found"%}
-                    <div class="text-font-MaryKate">{{message}}</div> <br> 
-                {%elif message == "Incorrect password"%}
-                    <div class="text-font-MaryKate">{{message}}</div> <br> 
-                {%elif message == "Email already in use"%}
-                    <div class="text-font-MaryKate">{{message}}</div> <br> 
-                {%endif%}
                 <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Sign up<input type="submit" value=""></button></div>
             </form>
         </div>
-    
+        <div class="center">
+            {%if message == "User not found"%}
+                <div class="text-font-MaryKate">{{message}}</div> <br> 
+            {%elif message == "Incorrect password"%}
+                <div class="text-font-MaryKate">{{message}}</div> <br> 
+            {%elif message == "Email already in use"%}
+                <div class="text-font-MaryKate">{{message}}</div> <br>
+            {%else%}
+                <div class="text-font-MaryKate">{{message}}</div> <br>
+            {%endif%}
+        </div>
+
         <footer class="footer-container">
             <p class="text-font-MaryKate footer-big-text">Why thrift?</p>
             <ul>

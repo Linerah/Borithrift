@@ -77,9 +77,6 @@ def login():
                return render_template("index.html", message="Incorrect password")
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
-    #TODO Not crash if password is invalid
-    #TODO Not crash if email is invalid
-    #TODO Test what happens if user or email already exist
     if request.method == 'GET':
         return render_template('signup.html')
     else:
@@ -88,9 +85,12 @@ def signup():
         username = request.form['username']
         user = User.get_user(username, mongo)
         if not user:
-            user = User.create_user(email, password, username, mongo)
-            session['username'] = request.form['username']
-            return redirect('/landing')
+            try:
+                user = User.create_user(email, password, username, mongo)
+                session['username'] = request.form['username']
+                return redirect('/landing')
+            except:
+                return render_template("signup.html", message="Invalid email, username or password")
         elif user['email'] == email:
             return render_template("signup.html", message="Email already exists")
         else:
