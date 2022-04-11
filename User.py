@@ -31,7 +31,9 @@ class User:
         self.usr_id = self.generate_user_ID()
 
     def __str__(self):
-        return f"Username: {self.username}\nEmail: {self.email}\nPassword: {self.password}"
+        return (
+            f"Username: {self.username}\nEmail: {self.email}\nPassword: {self.password}"
+        )
 
     # Setters
     def set_email(self, email):
@@ -131,5 +133,8 @@ class User:
         if user_document is None:
             return None
         return User(
-            user_document["email"], user_document["password"], user_document["username"], True
+            user_document["email"],
+            user_document["password"],
+            user_document["username"],
+            True,
         )
