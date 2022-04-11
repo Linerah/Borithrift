@@ -169,7 +169,7 @@ def seed_items():
     victor = User.create_user("victor@techexchange.in", "secretestPassword321", "victorandresvega", mongo)
     collection = mongo.db.items
     victorItem1=Item.create_item('Yosemite Tee', 15.0, 'M', 'vintage', 'Men', 'Classic T-shirt for everyday use', 'https://m.media-amazon.com/images/I/B1F9XqluwtS._CLa%7C2140%2C2000%7C818sGefkFxL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UL1500_.png', victor, mongo)
-    josueItem1=Item.create_item('Japan Tee', 25.0, 'L', 'graphic tees', 'Men', 'Japan T-shirt', 'jhttps://cdn.teeuni.com/wp-content/uploads/2021/08/vintage-graphic-tees-japanese-shirt-retro-skull-japan-tee-t-shirt_Men_1.jpg', josue, mongo)
+    josueItem1=Item.create_item('Japan Tee', 25.0, 'L', 'graphic tees', 'Men', 'Japan T-shirt', 'https://media.endclothing.com/media/f_auto,q_auto:eco/prodmedia/media/catalog/product/2/3/23-02-2022_LL_UC1B4804-2-DGR_1_1.jpg', josue, mongo)
     kevinItem1=Item.create_item('Running Jacket', 55.0, 'M', 'activewear', 'Men', 'Black Jacket', 'https://images.bike24.net/i/mb/2f/75/51/nike-shield-womens-running-jacket-black-black-reflective-silver-cu3385-010-2-898743.jpg', kevin, mongo)
     victorItem2=Item.create_item('Spread Energy Tee', 20.0, 'S', 'graphic tees', 'Men', 'T-shirt to improve mood', 'https://cdn.shopify.com/s/files/1/0067/4217/9924/products/mockup-f1877084.jpg?v=1556725761', victor, mongo)
     kevinItem2=Item.create_item('Gym Jacket', 45.0, 'S', 'activewear', 'Men', 'Stylish Green Jacket, great for running', 'https://i.ebayimg.com/images/g/aw4AAOSwOVRhn8Q5/s-l400.jpg', kevin, mongo)
