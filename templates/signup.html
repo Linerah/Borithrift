@@ -14,23 +14,27 @@
             <img src="./static/images/Borithrift-500.png" alt="Borithrift logo">
         </header>
         <div class="center">
-            <form method="POST" action="/login">
+            <form method="POST" action="/signup">
                 <label class="user-credentials-label" for="username">Username:</label><br>
                 <input class="user-credentials-input" type="text" id="email" name="username"> <br>
                 <label class="user-credentials-label" for="password">Password:</label> <br>
                 <input class="user-credentials-input" type="password" id="password" name="password"> <br>
-
-                {%if message == "User not found"%}
-                    <div class="text-font-MaryKate">{{message}}</div> <br> 
-                {%elif message == "Incorrect password"%}
-                    <div class="text-font-MaryKate">{{message}}</div> <br> 
-                {%endif%}
-                <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Sign in<input type="submit" value=""></button></div>
+                <label class="user-credentials-label" for="email">Email:</label> <br>
+                <input class="user-credentials-input" type="email" id="email" name="email"> <br>
+                <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Sign up<input type="submit" value=""></button></div>
             </form>
         </div>
-        <form method="GET" action="/signup">
-            <div class="sign-in-button-container"><button class="general-button text-font-MaryKate">Create an account<input type="submit" value=""></button></div>
-        </form>
+        <div class="center">
+            {%if message == "User not found"%}
+                <div class="text-font-MaryKate">{{message}}</div> <br> 
+            {%elif message == "Incorrect password"%}
+                <div class="text-font-MaryKate">{{message}}</div> <br> 
+            {%elif message == "Email already in use"%}
+                <div class="text-font-MaryKate">{{message}}</div> <br>
+            {%else%}
+                <div class="text-font-MaryKate">{{message}}</div> <br>
+            {%endif%}
+        </div>
 
         <footer class="footer-container">
             <p class="text-font-MaryKate footer-big-text">Why thrift?</p>
