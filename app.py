@@ -23,6 +23,7 @@ from flask import session
 from User import User
 import secrets
 import certifi
+import os
 
 from item import Item
 from Profile import Profile
@@ -36,7 +37,7 @@ app.config["MONGO_DBNAME"] = "cluster0"
 # URI of database
 app.config[
     "MONGO_URI"
-] = "mongodb+srv://admin:naABa2nWH2J9eNzd@cluster0.vsmni.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+] = "mongodb+srv://admin:"+ os.environ.get("MONGO_PW")+ "@cluster0.vsmni.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 # Initialize PyMongo
 mongo = PyMongo(app, tlsCAFile=certifi.where())
